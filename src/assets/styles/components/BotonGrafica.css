@@ -1,0 +1,11 @@
+.ChartsButtons {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #1e2938;
+}
+.graficBtnName {
+    font-size: 1.5em;
+}
+.mainGraficName {
+    padding: 1em;
+}

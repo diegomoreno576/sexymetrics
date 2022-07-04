@@ -1,0 +1,28 @@
+import React, { useReducer, createContext } from 'react';
+
+import reducer from '../reducer';
+
+
+let date = new Date();
+const start = String(date.getFullYear() + String(date.getMonth() + 1).padStart(2, '0') + '01');
+const end = String(date.getFullYear() + String(date.getMonth() + 1).padStart(2, '0') + String(date.getDate()).padStart(2, '0'));
+
+const ThemeContext = createContext({});
+const initialState = {
+  darkmode: true,
+  FbDatos: [],
+  TimeStart: start,
+  TimeEnd: end
+};
+
+const ThemeContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <ThemeContext.Provider value={[state, dispatch]}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export { ThemeContext, ThemeContextProvider };
