@@ -1,10 +1,14 @@
 import React from "react";
+import ApexCharts from "apexcharts";
 import Chart from 'react-apexcharts'
 
 
 function MixedGrafica(props) {
 
+
   return (
+
+    
     
     <div  className="ChartsMixed">
      
@@ -50,6 +54,7 @@ function MixedGrafica(props) {
                       }
                   }
               },
+              colors: props.colors,
               fill: {
                 type: 'gradient',
                 gradient: {

@@ -6,16 +6,19 @@ import Avatar from './Avatar';
 const Navbar = () => {
   return (
     <div className="container">
-  <nav className="customNavbar navbar navbar-expand-lg ">
-    <div className="container-fluid">
-    <MonthYearCalendar/>
+  <nav className="customNavbar navbar">
 
-      <Avatar/>
-      
+      <div className='col-6'>
+        
+      </div>
+      <div className='col-4 calendarNavbar'>
+      <MonthYearCalendar/>
+        </div>
+        <div className='col-2'>
+        <Avatar/>
+        </div>
+   
 
-      
-
-    </div>
   </nav>
 </div>
   )

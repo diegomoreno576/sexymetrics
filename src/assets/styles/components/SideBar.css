@@ -4,20 +4,21 @@
     color: white;
     height: 100vh;
     overflow-y: auto;
+    position: fixed;
+    z-index: 99;
   }
-  
-  .top_section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 10px;
-  }
+ .top_section > div > svg{
+  font-size: 22px;
+ }
+ .top_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 19px;
+}
   .logo {
     font-size: 18px;
     line-height: 0;
-  }
-  .bars {
-    width: 30px;
   }
   .hide {
     display: none;
@@ -45,14 +46,17 @@
     flex-direction: column;
     gap: 5px;
   }
+
   .link {
     display: flex;
+    font-size: 22px;
+    align-items: center;
     color: white;
     gap: 10px;
-    padding: 5px 10px;
+    padding: 9px 17px;
     border-right: 4px solid transparent;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  }
+}
   .link:hover {
     border-right: 4px solid white;
     background: rgb(45, 51, 89);
@@ -60,12 +64,12 @@
   }
   .active {
     border-right: 4px solid white;
-    background: rgb(45, 51, 89);
-  }
+    background: rgb(41 62 146);
+}
   .link_text {
     white-space: nowrap;
-    font-size: 15px;
-  }
+    font-size: 18px;
+}
   
   .menu {
     display: flex;

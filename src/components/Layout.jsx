@@ -8,11 +8,11 @@ const Layout = ({children}) => {
 <div className='mainApp'>
 <div className='row'>
        <Navbar/>
-      <div className='col-1'>
+      <div className='col-2'>
          <Sidebar/>
       </div>
      
-      <div className='col-11 mainContainer'>
+      <div className='col-10 mainContainer'>
      
       {children}
       </div>

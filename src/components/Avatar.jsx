@@ -5,8 +5,8 @@ import '../assets/styles/components/Avatar.css';
 
 
 const Avatar = () => {
-    const Avatar =`https://app.metricool.com/api/admin/profile?userToken=HTDJDJSLGBKTFLIDAHAQLCESCFTPHUFYXNEIMVNLLZCXVUNOXCJQVYRAHAHWFLFW&blogId=557387&userId=44035&username=notecopies.sm@outlook.com`;
-    const avatar= useData(Avatar);
+   
+    const avatar= useData("/admin/profile");
 
 
     return (

@@ -1,34 +1,24 @@
 import React, { useContext} from 'react';
 import useData from '../hooks/useData';
-import { ThemeContext } from '../context';
 import SeccionesGraficas from '../components/SeccionesGraficas';
 
-const usuario = 'username=notecopies.sm@outlook.com'
-const blogId = 'blogId=557387' 
-const userId = 'userId=44035'
-const userToken = 'userToken=HTDJDJSLGBKTFLIDAHAQLCESCFTPHUFYXNEIMVNLLZCXVUNOXCJQVYRAHAHWFLFW'
-const baseURL = 'https://app.metricool.com/api'
-
-
-let date = new Date();
-const start = String(date.getFullYear() + String(date.getMonth() + 1).padStart(2, '0') + '01');
-let end = String(date.getFullYear() + String(date.getMonth() + 1).padStart(2, '0') + date.getDate()).padStart(2, '0');
 
 
 const Instagram = () => {
-  const [state, dispatch] = useContext(ThemeContext);
-  // Crecimiento
-  const IGFollows = `${baseURL}/stats/timeline/igFollowing?${userToken}&${blogId}&start=${state.TimeStart}&end=${state.TimeEnd}&${userId}&${usuario}`;
-  const IGUnFollows = `${baseURL}/stats/timeline/igFollowing?${userToken}&${blogId}&start=${state.TimeStart}&end=${state.TimeEnd}&${userId}&${usuario}`;
-  const IGPost = `${baseURL}/stats/timeline/igPosts?${userToken}&${blogId}&start=${state.TimeStart}&end=${state.TimeEnd}&${userId}&${usuario}`;
 
-     const igFollows = useData(IGFollows);
-     const igUnFollows = useData(IGUnFollows);
-     const igPost = useData(IGPost);
+ //Crecimiento
+     const igFollows = useData("/stats/timeline/igFollowing");
+     const igUnFollows = useData("/stats/timeline/igFollowing");
+     const igPost = useData("/stats/timeline/igPosts");
+
+//Alcance de Pagina
+const igimpresiones = useData("/stats/timeline/igPosts");
+const igAlcance = useData("/stats/timeline/igPosts");
+const visitasPerfil = useData("/stats/timeline/igPosts");
 
 
 
-      const TimeLine = igFollows.map((d) => {
+      const TimeLine = igUnFollows.map((d) => {
         return +d[0];
       });
  
@@ -68,7 +58,7 @@ const Instagram = () => {
 
   ]
 
-  const igAlcancePag = [{
+  const igBalanceSeg = [{
     data: igFollows.map((d) => {
       return +d[1];
     }),
@@ -92,11 +82,56 @@ const Instagram = () => {
 
 ]
 
+const igAlcancePagina = [{
+  data: igimpresiones.map((d) => {
+    return +d[1];
+  }),
+  type: 'line',
+  id: 'igIP',
+  name: 'Impresiones',
+  group: 'crecimiento',
+  background: '#42a5f5'
+},
+{
+data: igAlcance.map((d) => {
+  return +d[1];
+}),
+type: 'line',
+id: 'igPost',
+name: 'Alcance',
+group: 'crecimiento',
+background: '#4dd0e1'
+},
+{
+  data: visitasPerfil.map((d) => {
+    return +d[1];
+  }),
+  type: 'line',
+  id: 'igPost',
+  name: 'Visitas al perfil',
+  group: 'crecimiento',
+  background: '#f06292'
+  },
+  {
+    data: igPost.map((d) => {
+      return +d[1];
+    }),
+    type: 'bar',
+    id: 'igPost',
+    name: 'Posts',
+    group: 'crecimiento',
+    background: '#fff176'
+  },
+
+
+]
+
 
 
 const FbAllData = [
   igDatosCrecimiento,
-   igAlcancePag 
+  igBalanceSeg ,
+  igAlcancePagina
    
 ]
 

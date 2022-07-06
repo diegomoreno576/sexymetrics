@@ -2,7 +2,13 @@
     background-color: #293e92 !important;
     height: 92px;
     color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 .navbrand{
     color: white;
+}
+.calendarNavbar{
+    text-align: end;
 }

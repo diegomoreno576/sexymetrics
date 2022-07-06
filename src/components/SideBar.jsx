@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse, BiSearch } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
-import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
-import { BsCartCheck } from "react-icons/bs";
+import { FaBars, FaFacebookF } from "react-icons/fa";
+import { BsInstagram, BsTwitter, BsLinkedin, BsCalendarRange } from "react-icons/bs";
+import { SiGooglemybusiness, SiGoogleads} from "react-icons/si";
+import { MdCampaign} from "react-icons/md";
+import {  AiOutlineGlobal } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
@@ -15,18 +14,48 @@ import '../assets/styles/components/SideBar.css';
 const routes = [
   {
     path: "/",
-    name: "Inicio",
-    icon: <FaHome />,
-  },
-  {
-    path: "/facebook",
     name: "Facebook",
-    icon: <FaUser />,
+    icon: <FaFacebookF />,
   },
   {
     path: "/Instagram",
     name: "Instagram",
-    icon: <MdMessage />,
+    icon: <BsInstagram />,
+  },
+  {
+    path: "/twitter",
+    name: "twitter",
+    icon: <BsTwitter />,
+  },
+  {
+    path: "/linkeding",
+    name: "Linkeding",
+    icon: <BsLinkedin />,
+  },
+  {
+    path: "/googlemybussines",
+    name: "Google my Bussines",
+    icon: <SiGooglemybusiness />,
+  },
+  {
+    path: "/web",
+    name: "web",
+    icon: <AiOutlineGlobal />,
+  },
+  {
+    path: "/googleads",
+    name: "Google Ads",
+    icon: <SiGoogleads />,
+  },
+  {
+    path: "/facebookads",
+    name: "Facebook Ads",
+    icon: <MdCampaign />,
+  },
+  {
+    path: "/planificacion",
+    name: "Planificación",
+    icon: <BsCalendarRange />,
   },
   // {
   //   path: "/analytics",
@@ -103,7 +132,7 @@ const Sidebar = () => {
       },
     },
     show: {
-      width: "140px",
+      width: "180px",
       padding: "5px 15px",
       transition: {
         duration: 0.2,
@@ -134,7 +163,7 @@ const Sidebar = () => {
 
         <motion.div
           animate={{
-            width: isOpen ? "200px" : "45px",
+            width: isOpen ? "240px" : "60px",
 
             transition: {
               duration: 0.5,
@@ -145,6 +174,7 @@ const Sidebar = () => {
           className={`sidebar `}
         >
           <div className="top_section">
+          <div className="sidebarName">
             <AnimatePresence>
               {isOpen && (
                 <motion.h1
@@ -158,7 +188,7 @@ const Sidebar = () => {
                 </motion.h1>
               )}
             </AnimatePresence>
-
+            </div>
             <div className="bars">
               <FaBars onClick={toggle} />
             </div>

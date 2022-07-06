@@ -1,8 +1,15 @@
 .avatarImg img{
     border-radius: 100px;
-    width: 100%;
+    width: 60px;
+    object-fit: cover;
 }
 .MainAvatar{
     align-items: center;
+}
+.avatarImg {
+    text-align: end;
+}
+.avatarName {
+    text-align: end;
 }
 
