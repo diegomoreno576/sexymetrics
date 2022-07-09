@@ -1,0 +1,41 @@
+.CardItem {
+    min-width: 300px;
+    min-height: 20vh;
+    margin: 15px;
+    height: 315px;
+    font-size: 10px;
+    text-align: justify;
+    background: var(--Lista-de-publicaiones);
+    border-radius: 10px;
+    box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+}
+.itemimg {
+    height: 108px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.CardImg{
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    height: 100px;
+    object-fit: cover;
+}
+.childfbPostTime {
+    z-index: 9;
+    color: white;
+    background: #333333;
+    border-radius: 10px 10px;
+    padding: 4px 10px 5px 10px;
+    text-align: center;
+}
+.fbPostTime {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -12px;
+}
+td.childitemtable {
+    padding: 8px;
+    font-size: 10px;
+}

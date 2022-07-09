@@ -11,11 +11,6 @@ html[data-theme='light'] {
   --variant-color: #{$light-dark-color};
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html {
   font-size: $font-size;
@@ -25,6 +20,7 @@ body {
   font-family: "Work Sans",sans-serif;
   color: var(--secundary-color);
   background-color: var(--primary-color);
+  overflow-x: hidden;
 }
 
 #app {
@@ -35,4 +31,22 @@ body {
 
 main {
   padding: 20px 10px;
+}
+.Ancl {
+  margin-bottom: 4em;
+  margin-top: 1em;
+}
+a.SectionsAncles {
+  box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+  padding: 1.5em;
+  color: white;
+  margin: 5px;
+  background-color: #333;
+  border-radius: 10px;
+}
+a {
+  text-decoration: none;
+}
+a:active, a:focus, a:hover {
+  text-decoration: none;
 }

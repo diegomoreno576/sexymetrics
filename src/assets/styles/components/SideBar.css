@@ -1,12 +1,13 @@
 /* Sidebar */
 .sidebar {
-  background: #1e2938;
-    color: white;
-    height: 100vh;
-    overflow-y: auto;
-    position: fixed;
-    z-index: 99;
-  }
+  background: #333;
+  color: white;
+  box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  z-index: 99;
+}
  .top_section > div > svg{
   font-size: 22px;
  }

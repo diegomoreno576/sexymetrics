@@ -28,7 +28,6 @@ const MonthCalendar = () => {
     dispatch(setTimeEndPast(endPast));
   }, [value]); 
 
-  console.log(state)
 
   return (
     <DateRangePicker format="dd-MM-yyyy" value={value} onChange={setValue} />

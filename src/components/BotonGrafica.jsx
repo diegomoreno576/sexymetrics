@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import "../assets/styles/components/BotonGrafica.css";
-import { HiTrendingDown, HiTrendingUp} from "react-icons/hi";
+import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import { MdTrendingFlat } from "react-icons/md";
 function BotonGrafica(props) {
   const [isToggled, setToggled] = useState(false);
@@ -23,31 +23,37 @@ function BotonGrafica(props) {
       onClick={handleToogleClick}
       className="ChartsButtons"
     >
-    <div>
-    <div className="mainGraficName">
-        <div className="BtnNumberICon">
-          <div className="BtnIcon">{<i id="BtnIcon" class={props.icono}></i>} </div>
-          <div className="BtnNumber">
-            <span>{props.dataNumber} </span>
+      <div>
+        <div className="mainGraficName">
+          <div className="BtnNumberICon">
+            <div className="BtnIcon">
+              {<i id="BtnIcon" class={props.icono}></i>}{" "}
+            </div>
+            <div className="BtnNumber">
+              <span>{props.dataNumber} </span>
+            </div>
           </div>
+          <div className="btnNumberPast">
+            <div className="btnIconPast">
+              {props.dataNumber > props.dataNumberPast ? (
+                <HiTrendingDown />
+              ) : (
+                ""
+              )}
+              {props.dataNumber < props.dataNumberPast ? <HiTrendingUp /> : ""}
+              {props.dataNumber == props.dataNumberPast ? (
+                <MdTrendingFlat />
+              ) : (
+                ""
+              )}
+            </div>
+            <div>{props.dataNumberPast}</div>
+          </div>
+ 
         </div>
-       <div className="btnNumberPast">
-       <div className="btnIconPast">
-        {props.dataNumber >  props.dataNumberPast ? <HiTrendingDown/> : ""}
-        {props.dataNumber <  props.dataNumberPast ? <HiTrendingUp/> : ""}
-        {props.dataNumber ==  props.dataNumberPast ? <MdTrendingFlat/> : ""}
-        
-       </div>
-       <div>
-
-       {props.dataNumberPast}
-       </div>
-       </div>
-       
-    </div>
         <div className="MainGraficBtnName">
-        <span className="graficBtnName">{props.name}</span>
-        </div>
+            <span className="graficBtnName">{props.name}</span>
+          </div>
       </div>
       <Chart
         options={{
@@ -82,13 +88,8 @@ function BotonGrafica(props) {
           },
           labels: props.Timeline,
           xaxis: {
-            type: "datetime",
-            labels: {
-              datetimeFormatter: {
-                day: "dd",
-              },
-            },
-          },
+            type: 'datetime',
+        },
           tooltip: {
             theme: "dark",
           },

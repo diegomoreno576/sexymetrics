@@ -5,11 +5,16 @@ import '../assets/styles/components/seccionesGraficas.css';
 
 const SeccionesGraficas = (props) => {
     
+
     
     return (
-        <React.Fragment>
+        <div id={props.name}>
+          <div className='row'>
+            
+         
+       
             <div className='SeccionTitle'>
-              <p>{props.name} </p>
+              <h3>{props.name} </h3>
             </div>
        
     {
@@ -44,7 +49,8 @@ const SeccionesGraficas = (props) => {
        colors={props.colors}
         />
       </div>
-</React.Fragment>
+      </div>
+      </div>
       )
 }
 

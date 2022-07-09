@@ -30,12 +30,10 @@
 .BtnNumber {
     font-size: 25px;
     line-height: 0px;
-    margin-top: 20px;
-    margin-left: 0px;
     font-weight: bold;
 }
 .mainGraficName {
-    padding: 1em;
+    padding: 1em 1em 0em 1em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,6 +41,7 @@
 .BtnNumberICon {
     display: flex;
     gap: 8px;
+    align-items: center;
     height: 32px;
 }
 #BtnIcon {

@@ -1,9 +1,10 @@
 .customNavbar {
-    background-color: #293e92 !important;
+    background-color: #333;
     height: 92px;
     color: white;
     position: fixed;
     width: 100%;
+    box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
     z-index: 1;
 }
 .navbrand{
