@@ -27,7 +27,7 @@ function BotonGrafica(props) {
         <div className="mainGraficName">
           <div className="BtnNumberICon">
             <div className="BtnIcon">
-              {<i id="BtnIcon" class={props.icono}></i>}{" "}
+              {<i id="BtnIcon" className={props.icono}></i>}{" "}
             </div>
             <div className="BtnNumber">
               <span>{props.dataNumber} </span>

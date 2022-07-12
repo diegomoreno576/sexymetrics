@@ -8,7 +8,6 @@ const Avatar = () => {
    
     const avatar= useData("/admin/profile");
 
-
     return (
 
         <div className="row MainAvatar">

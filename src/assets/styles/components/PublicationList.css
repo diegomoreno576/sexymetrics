@@ -2,7 +2,7 @@
     min-width: 300px;
     min-height: 20vh;
     margin: 15px;
-    height: 315px;
+    height: 342px;
     font-size: 10px;
     text-align: justify;
     background: var(--Lista-de-publicaiones);
@@ -38,4 +38,18 @@
 td.childitemtable {
     padding: 8px;
     font-size: 10px;
+}
+.ContectText {
+ 
+    padding: 6px 15px 10px 15px;
+    font-size: 12px;
+
+}
+.itemtext {
+    padding: 2px 15px 6px 15px;
+    font-size: 12px;
+}
+i.iconosI{
+    font-size: 12px;
+    margin-left: 3px;
 }

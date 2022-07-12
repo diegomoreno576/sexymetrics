@@ -7,6 +7,8 @@ import PublicationList from '../components/PublicationList';
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import ChartPie from "../components/ChartPie";
+import ChartCountries from '../components/ChartCountries';
 var settings = {
   dots: false,
   infinite: false,
@@ -62,10 +64,10 @@ const Facebook = () => {
   const fbUnFollows = useData(`/stats/timeline/fbUnfollows`, start, end);
   const fbPost = useData(`/stats/timeline/fbPosts`, start, end);
 
-  //Datos
-  const AllPost = [];
-  fbPost.map((item) => {
-    AllPost.push(+item[1]);
+
+  //Datos  
+  const AllPost = fbPost.map((item) => {
+    return +item[1];
   });
   const totalPost = AllPost.reduce((acc, curr) => acc + curr, 0);
 
@@ -75,9 +77,8 @@ const Facebook = () => {
 
   //Datos
   //Impresiones
-  const AllfbImpresiones = [];
-  fbImpresiones.map((item) => {
-    AllfbImpresiones.push(+item[1]);
+   const AllfbImpresiones = fbImpresiones.map((item) => {
+    return +item[1];
   });
   const totalfbImpresiones = AllfbImpresiones.reduce(
     (acc, curr) => acc + curr,
@@ -100,9 +101,9 @@ const Facebook = () => {
 
   //Datos
   //Clicks
-  const AllfbctaClicks = [];
-  fbctaClicks.map((item) => {
-    AllfbctaClicks.push(+item[1]);
+
+   const AllfbctaClicks = fbctaClicks.map((item) => {
+    return +item[1];
   });
   const totalfbctaClicks = AllfbctaClicks.reduce((acc, curr) => acc + curr, 0);
 
@@ -116,18 +117,18 @@ const Facebook = () => {
     0
   );
     //telefono
-    const AllfbcallPhoneClicks = [];
-    fbcallPhoneClicks.map((item) => {
-      AllfbcallPhoneClicks.push(+item[1]);
+  
+     const AllfbcallPhoneClicks =  fbcallPhoneClicks.map((item) => {
+      return +item[1];
     });
     const totalfbcallPhoneClicks = AllfbcallPhoneClicks.reduce(
       (acc, curr) => acc + curr,
       0
     );
         //vistas de la pàgina
-        const AllfbpageViews = [];
-        fbpageViews.map((item) => {
-          AllfbpageViews.push(+item[1]);
+      
+        const AllfbpageViews =   fbpageViews.map((item) => {
+          return +item[1];
         });
         const totalfbpageViews = AllfbpageViews.reduce(
           (acc, curr) => acc + curr,
@@ -166,21 +167,73 @@ const Facebook = () => {
   const fbdailyShares = useData(`/stats/timeline/dailyShares`, start, end);
   const fbdailyClicks = useData(`/stats/timeline/dailyClicks`, start, end);
 
-  const TimeLine = fbLikes.map((d) => {
-    return +d[0];
-  });
+
+
+
+  //Sexo
+  const fbsexo = useData(`/stats/gender/facebook`, start, end);
+
+
+  let sexData = []
+  let sexValue = []
+
+  for (const [key, value] of Object.entries(fbsexo)) {
+    sexData.push(value);
+    sexValue.push(key);
+  }
+
+  // Paises 
+  const fbCountries = useData(`/stats/country/facebook`, start, end);
 
 
   //Lista de publicaciones
   const fbListPublications = useData(`/stats/facebook/posts`, start, end);
 
+const fbPostss = fbPost.map(([key, value]) => {
+ 
+ return  +key
+});
+
   
+
+  const TimeLine = fbLikes.map(([key, value]) => {
+    
+    return +key;
+
+  });
+
+ let Post = [];
+
+
+
+
+  TimeLine.forEach((key, index)=>{
+   let countPost = fbPostss.includes(key) ? fbPostss : [key,[0]]
+
+   Post.push(countPost)
+  })
+
+  console.log(Post)
+ 
+
+
+
+  
+
+  
+
+
+
+
+
+
+
 
 
   const FbDatosCrecimiento = [
     {
-      data: fbLikes.map((d) => {
-        return d[1];
+      data: fbLikes.map(([key, value]) => {
+        return value;
       }),
       dataNumber:
         fbLikes.length != 0 ? parseInt(fbLikes[fbLikes.length - 1][1], 0) : "",
@@ -219,9 +272,7 @@ const Facebook = () => {
       icono: "fa-solid fa-arrow-down",
     },
     {
-      data: fbPost.map((d) => {
-        return d[1];
-      }),
+      data: '0',
       dataNumber: totalPost,
       dataNumberPast: "5",
       type: "bar",
@@ -246,8 +297,8 @@ const Facebook = () => {
       color: "#42a5f5",
     },
     {
-      data: fbPost.map((d) => {
-        return +d[1];
+      data: fbPost.map(([key, value]) => {
+        return +value;
       }),
       dataNumber: totalPost,
       type: "bar",
@@ -406,7 +457,7 @@ const Facebook = () => {
       name: "Crecimiento",
       colors: ["#42a5f5", "#4dd0e1", "#f06292", "#fff176"],
       timeLine: fbLikes.map((d) => {
-        return +d[1];
+        return +d[0];
       }),
     },
     {
@@ -415,7 +466,7 @@ const Facebook = () => {
       name: "Alcance de Páginna",
       colors: ["#42a5f5", "#4dd0e1", "#f06292", "#fff176"],
       timeLine: fbImpresiones.map((d) => {
-        return +d[1];
+        return +d[0];
       }),
     },
     {
@@ -423,7 +474,7 @@ const Facebook = () => {
       data: FbClickPagina,
       name: "Clicks en la página",
       timeLine: fbctaClicks.map((d) => {
-        return +d[1];
+        return +d[0];
       }),
     },
     {
@@ -431,7 +482,7 @@ const Facebook = () => {
       data: FbPublicaciones,
       name: "Publicaciones",
       timeLine: fbLikes.map((d) => {
-        return +d[1];
+        return +d[0];
       }),
     },
     {
@@ -439,7 +490,7 @@ const Facebook = () => {
       data: Fbinteracciones,
       name: "Interacciones",
       timeLine: fbLikes.map((d) => {
-        return +d[1];
+        return +d[0];
       }),
     },
   ];
@@ -456,6 +507,7 @@ const Facebook = () => {
           );
         })}
       </div>
+      <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE FACEBOOK</h3>
       <div className="row">
         {FbAllData.map((item) => {
           return (
@@ -469,6 +521,24 @@ const Facebook = () => {
           );
         })}
       </div>
+
+<div className="row">
+<div className="charPie col-6">
+        <h5>Sexo</h5>
+      <ChartPie
+     series={sexData}
+     labels={sexValue}
+     />
+    </div>
+    <div className="charPie col-6">
+        <h5>Paises</h5>
+      <ChartCountries
+      data={fbCountries}
+      />
+    </div>
+</div>
+
+
       <h3>Lista de Publicaciones</h3>
       <Slider {...settings}>
       {fbListPublications.map((item) => {
@@ -485,13 +555,15 @@ const Facebook = () => {
       text={item.text}
       Likes={item.reactions}
       linkclicks={item.linkclicks}
-      puntos={item.engagement}
+      puntos={parseInt(item.engagement)}
       reproducciones={item.videoViews}
       />
       
          );
     })}
+
      </Slider>  
+
     </div>
   );
 };
