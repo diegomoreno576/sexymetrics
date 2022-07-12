@@ -9,40 +9,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ChartPie from "../components/ChartPie";
 import ChartCountries from '../components/ChartCountries';
-var settings = {
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  initialSlide: 0,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: false,
-        dots: false
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        initialSlide: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
-};
+import useTimeLine from "../hooks/useTimeLine";
+import { settings } from "../slicks/slickConfig";
+import useCount from '../hooks/useCount';
+
+
 const Facebook = () => {
   const [state, dispatch] = useContext(ThemeContext);
   const start = state.TimeStart;
@@ -66,10 +37,7 @@ const Facebook = () => {
 
 
   //Datos  
-  const AllPost = fbPost.map((item) => {
-    return +item[1];
-  });
-  const totalPost = AllPost.reduce((acc, curr) => acc + curr, 0);
+  const totalPost = useCount(fbPost)
 
   //Alcance
 
@@ -77,13 +45,7 @@ const Facebook = () => {
 
   //Datos
   //Impresiones
-   const AllfbImpresiones = fbImpresiones.map((item) => {
-    return +item[1];
-  });
-  const totalfbImpresiones = AllfbImpresiones.reduce(
-    (acc, curr) => acc + curr,
-    0
-  );
+  const totalfbImpresiones = useCount(fbImpresiones)
 
   //Click en la pagina
   const fbctaClicks = useData(`/stats/timeline/ctaClicks`, start, end);
@@ -102,38 +64,17 @@ const Facebook = () => {
   //Datos
   //Clicks
 
-   const AllfbctaClicks = fbctaClicks.map((item) => {
-    return +item[1];
-  });
-  const totalfbctaClicks = AllfbctaClicks.reduce((acc, curr) => acc + curr, 0);
+  const totalfbctaClicks = useCount(fbctaClicks)
 
   //direcctionClicks
-  const AlldirecctionClicks = [];
-  fbgetDirectionsClicks.map((item) => {
-    AlldirecctionClicks.push(+item[1]);
-  });
-  const totaldirecctionClicks = AlldirecctionClicks.reduce(
-    (acc, curr) => acc + curr,
-    0
-  );
+  const totaldirecctionClicks = useCount(fbgetDirectionsClicks)
     //telefono
-  
-     const AllfbcallPhoneClicks =  fbcallPhoneClicks.map((item) => {
-      return +item[1];
-    });
-    const totalfbcallPhoneClicks = AllfbcallPhoneClicks.reduce(
-      (acc, curr) => acc + curr,
-      0
-    );
+
+    const totalfbcallPhoneClicks = useCount(fbcallPhoneClicks)
+
         //vistas de la pàgina
-      
-        const AllfbpageViews =   fbpageViews.map((item) => {
-          return +item[1];
-        });
-        const totalfbpageViews = AllfbpageViews.reduce(
-          (acc, curr) => acc + curr,
-          0
-        );
+ 
+        const totalfbpageViews = useCount(fbpageViews)
 
   //Publicaciones
   const fbDailyEngagement = useData(
@@ -189,12 +130,7 @@ const Facebook = () => {
   //Lista de publicaciones
   const fbListPublications = useData(`/stats/facebook/posts`, start, end);
 
-const fbPostss = fbPost.map(([key, value]) => {
- 
- return  +key
-});
-
-  
+//TimeLine
 
   const TimeLine = fbLikes.map(([key, value]) => {
     
@@ -202,39 +138,49 @@ const fbPostss = fbPost.map(([key, value]) => {
 
   });
 
- let Post = [];
+//Me gusta
+const fbLikesAll = useTimeLine(fbLikes)
+
+//Ganados
+const fbFollowsAll = useTimeLine(fbFollows)
 
 
+// Count Posts
+  const post = useTimeLine(fbPost)
 
 
-  TimeLine.forEach((key, index)=>{
-   let countPost = fbPostss.includes(key) ? fbPostss : [key,[0]]
+  //fbDailyEngagement
 
-   Post.push(countPost)
-  })
+  const engagement = useTimeLine(fbDailyEngagement)
 
-  console.log(Post)
- 
+  //fbDailyInteractions
 
+  const fbInteractions = useTimeLine(fbDailyInteractions)
 
+  //fbdailyImpressionsUnique
 
-  
+  const fbAlance = useTimeLine(fbdailyImpressionsUnique)
 
-  
+  //fbdailyImpressions
+  const fbImpresionesall = useTimeLine(fbdailyImpressions)
 
+  //Reaciones
+ const fbReaciones = useTimeLine(fbdailyReactions)
 
+ //Comentarios
+ const fbComentarios = useTimeLine(fbComments)
 
+ //Compartidos
+ const fbCompartidos = useTimeLine(fbdailyShares)
 
-
-
+ //clicks
+ const fbClicks = useTimeLine(fbdailyClicks)
 
 
 
   const FbDatosCrecimiento = [
     {
-      data: fbLikes.map(([key, value]) => {
-        return value;
-      }),
+      data: fbLikesAll,
       dataNumber:
         fbLikes.length != 0 ? parseInt(fbLikes[fbLikes.length - 1][1], 0) : "",
       dataNumberPast: "5",
@@ -246,9 +192,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       icono: "fa-solid fa-thumbs-up",
     },
     {
-      data: fbFollows.map((d) => {
-        return parseInt(d[1]);
-      }),
+      data: fbFollowsAll,
       dataNumber: fbbody.Follows,
       dataNumberPast: fbbodyPast.Follows,
       type: "area",
@@ -272,7 +216,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       icono: "fa-solid fa-arrow-down",
     },
     {
-      data: '0',
+      data: post,
       dataNumber: totalPost,
       dataNumberPast: "5",
       type: "bar",
@@ -297,9 +241,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#42a5f5",
     },
     {
-      data: fbPost.map(([key, value]) => {
-        return +value;
-      }),
+      data: post,
       dataNumber: totalPost,
       type: "bar",
       id: "FbPost",
@@ -311,9 +253,7 @@ const fbPostss = fbPost.map(([key, value]) => {
 
   const FbPublicaciones = [
     {
-      data: fbDailyEngagement.map((d) => {
-        return parseInt(d[1]);
-      }),
+      data: engagement,
       dataNumber: "10",
       type: "line",
       id: "FbDailyEngagement",
@@ -322,9 +262,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#42a5f5",
     },
     {
-      data: fbDailyInteractions.map((d) => {
-        return parseInt(d[1]);
-      }),
+      data: fbInteractions,
       dataNumber: "10",
       type: "area",
       id: "FbDailyInteraction",
@@ -333,9 +271,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#4dd0e1",
     },
     {
-      data: fbdailyImpressionsUnique.map((d) => {
-        return parseInt(d[1]);
-      }),
+      data: fbAlance,
       dataNumber: "10",
       type: "line",
       id: "FbDayliImpresionsUnique",
@@ -344,9 +280,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#f06292",
     },
     {
-      data: fbdailyImpressions.map((d) => {
-        return parseInt(d[1]);
-      }),
+      data: fbImpresionesall,
       dataNumber: "10",
       type: "bar",
       id: "Fbdailyimprsions",
@@ -405,9 +339,7 @@ const fbPostss = fbPost.map(([key, value]) => {
 
   const Fbinteracciones = [
     {
-      data: fbdailyReactions.map((d) => {
-        return +d[1];
-      }),
+      data: fbReaciones,
       dataNumber: "10",
       type: "line",
       id: "FbMG",
@@ -416,9 +348,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#42a5f5",
     },
     {
-      data: fbComments.map((d) => {
-        return +d[1];
-      }),
+      data: fbComentarios,
       dataNumber: "10",
       type: "area",
       id: "FbG",
@@ -427,9 +357,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#4dd0e1",
     },
     {
-      data: fbdailyShares.map((d) => {
-        return +d[1];
-      }),
+      data: fbCompartidos,
       dataNumber: "10",
       type: "line",
       id: "FbP",
@@ -438,9 +366,7 @@ const fbPostss = fbPost.map(([key, value]) => {
       color: "#f06292",
     },
     {
-      data: fbdailyClicks.map((d) => {
-        return +d[1];
-      }),
+      data: fbClicks,
       dataNumber: "10",
       type: "bar",
       id: "FbPost",
@@ -456,42 +382,27 @@ const fbPostss = fbPost.map(([key, value]) => {
       data: FbDatosCrecimiento,
       name: "Crecimiento",
       colors: ["#42a5f5", "#4dd0e1", "#f06292", "#fff176"],
-      timeLine: fbLikes.map((d) => {
-        return +d[0];
-      }),
     },
     {
       id: "Alcance de pagina",
       data: AlcancePag,
       name: "Alcance de Páginna",
       colors: ["#42a5f5", "#4dd0e1", "#f06292", "#fff176"],
-      timeLine: fbImpresiones.map((d) => {
-        return +d[0];
-      }),
     },
     {
       id: "Clicks en pagina",
       data: FbClickPagina,
       name: "Clicks en la página",
-      timeLine: fbctaClicks.map((d) => {
-        return +d[0];
-      }),
     },
     {
       id: "Publicaciones",
       data: FbPublicaciones,
       name: "Publicaciones",
-      timeLine: fbLikes.map((d) => {
-        return +d[0];
-      }),
     },
     {
       id: "interacciones",
       data: Fbinteracciones,
       name: "Interacciones",
-      timeLine: fbLikes.map((d) => {
-        return +d[0];
-      }),
     },
   ];
 
