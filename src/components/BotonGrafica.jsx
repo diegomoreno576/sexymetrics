@@ -35,12 +35,12 @@ function BotonGrafica(props) {
           </div>
           <div className="btnNumberPast">
             <div className="btnIconPast">
-              {props.dataNumber > props.dataNumberPast ? (
+              {props.dataNumber < props.dataNumberPast ? (
                 <HiTrendingDown />
               ) : (
                 ""
               )}
-              {props.dataNumber < props.dataNumberPast ? <HiTrendingUp /> : ""}
+              {props.dataNumber > props.dataNumberPast ? <HiTrendingUp /> : ""}
               {props.dataNumber == props.dataNumberPast ? (
                 <MdTrendingFlat />
               ) : (

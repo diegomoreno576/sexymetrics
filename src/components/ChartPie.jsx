@@ -4,6 +4,7 @@ import ApexCharts from "apexcharts";
 import '../assets/styles/components/ChartPie.css';
 
 const ChartPie = (props) => {
+  
   return (
     <Chart
     series={props.series }

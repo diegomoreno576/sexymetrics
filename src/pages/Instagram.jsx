@@ -2,6 +2,8 @@ import React, { useContext} from 'react';
 import useData from '../hooks/useData';
 import SeccionesGraficas from '../components/SeccionesGraficas';
 import { ThemeContext } from '../context';
+import useTimeLine from '../hooks/useTimeLine';
+import useCount from '../hooks/useCount';
 
 
 const Instagram = () => {
@@ -51,11 +53,9 @@ const visitasPerfil = useData("/stats/timeline/igPosts", start, end);
       color: '#f06292'
     },
     {
-      data: igPost.map((d) => {
-        return +d[1];
-      }),
-      dataNumber: '10',
-      dataNumberPast: '5',
+      data: useTimeLine(igPost),
+      dataNumber: useCount(igPost),
+      dataNumberPast: useCount(igPost),
       type: 'bar',
       id: 'igPost',
       name: 'Posts',
@@ -79,10 +79,8 @@ const visitasPerfil = useData("/stats/timeline/igPosts", start, end);
     color: '#42a5f5'
 },
 {
-  data: igPost.map((d) => {
-    return +d[1];
-  }),
-  dataNumber: '10',
+  data: useTimeLine(igPost),
+  dataNumber: useCount(igPost),
   dataNumberPast: '5',
   type: 'bar',
   id: 'igPost',
@@ -95,10 +93,8 @@ const visitasPerfil = useData("/stats/timeline/igPosts", start, end);
 ]
 
 const igAlcancePagina = [{
-  data: igimpresiones.map((d) => {
-    return +d[1];
-  }),
-  dataNumber: '10',
+  data: useTimeLine(igimpresiones),
+  dataNumber: useCount(igimpresiones),
   dataNumberPast: '5',
   type: 'line',
   id: 'igIP',
@@ -107,10 +103,8 @@ const igAlcancePagina = [{
   color: '#42a5f5'
 },
 {
-data: igAlcance.map((d) => {
-  return +d[1];
-}),
-dataNumber: '10',
+data: useTimeLine(igAlcance),
+dataNumber: useCount(igAlcance),
 dataNumberPast: '5',
 type: 'line',
 id: 'igPost',
@@ -119,10 +113,8 @@ group: 'crecimiento',
 color: '#4dd0e1'
 },
 {
-  data: visitasPerfil.map((d) => {
-    return +d[1];
-  }),
-  dataNumber: '10',
+  data: useTimeLine(visitasPerfil),
+  dataNumber:useCount(visitasPerfil),
   dataNumberPast: '5',
   type: 'line',
   id: 'igPost',
@@ -131,10 +123,8 @@ color: '#4dd0e1'
   color: '#f06292'
   },
   {
-    data: igPost.map((d) => {
-      return +d[1];
-    }),
-    dataNumber: '10',
+    data: useTimeLine(igPost),
+    dataNumber: useCount(igPost),
     dataNumberPast: '5',
     type: 'bar',
     id: 'igPost',

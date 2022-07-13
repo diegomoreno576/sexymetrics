@@ -6,7 +6,7 @@ const useCount = (URL) => {
       });
     const totalPost = AllPost.reduce((acc, curr) => acc + curr, 0);
 
-    return totalPost;
+    return parseInt(totalPost);
 }
 
 export default useCount
