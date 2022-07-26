@@ -1,4 +1,3 @@
-import React from 'react'
 
 const useCount = (URL) => {
     const AllPost = URL.map(([key, value]) => {

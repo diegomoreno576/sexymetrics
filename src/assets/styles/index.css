@@ -1,0 +1,42 @@
+
+html[data-theme='dark'] {
+  --App-color: #333;
+  --Text-color:  white;
+}
+html[data-theme='light'] {
+  --App-color:  white;
+  --Text-color:  #333;
+}
+
+
+body {
+  background-color: var(--App-color);
+  overflow-x: hidden;
+  color: var(--Text-color);
+}
+
+
+main {
+  padding: 20px 10px;
+}
+.Ancl {
+  margin-bottom: 4em;
+  margin-top: 1em;
+}
+a.SectionsAncles {
+  box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+  padding: 1.5em;
+  color: white;
+  margin: 5px;
+  background-color: #333;
+  border-radius: 10px;
+}
+a {
+  text-decoration: none;
+}
+a:active, a:focus, a:hover {
+  text-decoration: none;
+}
+.PageTitle {
+  text-align: center;
+}

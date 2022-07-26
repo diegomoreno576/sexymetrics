@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import "../assets/styles/components/BotonGrafica.css";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import { MdTrendingFlat } from "react-icons/md";
+import { ThemeContext } from "../context";
+import Spinner from 'react-bootstrap/Spinner';
+
+
 function BotonGrafica(props) {
+  const [state, dispatch] = useContext(ThemeContext);
   const [isToggled, setToggled] = useState(false);
 
   const handleToogleClick = () => {
@@ -17,6 +22,19 @@ function BotonGrafica(props) {
       opacity: !isToggled ? "1" : "0.5",
     },
   };
+
+  if(props.datos.length == 0){
+    return (
+      <div
+      style={styles.ChartBtn}
+      className="ChartsButtons loadingButton"
+    >
+          <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+      </div>
+    )
+  }else{
   return (
     <div
       style={styles.ChartBtn}
@@ -138,5 +156,5 @@ function BotonGrafica(props) {
     </div>
   );
 }
-
+}
 export default BotonGrafica;

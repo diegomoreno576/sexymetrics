@@ -7,7 +7,7 @@ import {  AiOutlineGlobal } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
-import DarkMode from './DarkMode';
+import DarkMode from "./DarkMode";
 import '../assets/styles/components/SideBar.css';
 
 
@@ -120,9 +120,10 @@ const routes = [
 ];
 
 const Sidebar = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -193,7 +194,7 @@ const Sidebar = () => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <DarkMode />
+          <DarkMode/>
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {

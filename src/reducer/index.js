@@ -2,6 +2,22 @@ import types from "../actions/types";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case types.SET_LOGIN:
+      return {
+        ...state,
+        isLoggedIn: action.payload,
+        Loading: false,
+      };
+      case types.SET_BLOG_ID:
+        return {
+          ...state,
+          blog_id: action.payload,
+        };
+      case types.SET_LOGIN_ERROR:
+        return {
+          ...state,
+          loginError: action.payload,
+        };
     case types.SET_THEME:
       return {
         ...state,
@@ -16,6 +32,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         FbDatos: action.payload,
+        Loading: false,
       };
     case types.SET_TIMESTART:
       return {

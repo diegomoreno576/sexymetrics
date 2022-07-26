@@ -1,5 +1,18 @@
 import types from '../actions/types';
 
+const setBlog_id = (payload) => ({
+  type: types.SET_BLOG_ID,
+  payload,
+});
+
+const setIslogin = (payload) => ({
+  type: types.SET_LOGIN,
+  payload,
+});
+const setLoginError = (payload) => ({
+  type: types.SET_LOGIN_ERROR,
+  payload,
+});
 const setTheme = (payload) => ({
   type: types.SET_THEME,
   payload,
@@ -30,4 +43,4 @@ const setTimeEndPast = (payload) => ({
 });
 
 
-export { setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast};
+export {setBlog_id, setIslogin, setLoginError, setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast};

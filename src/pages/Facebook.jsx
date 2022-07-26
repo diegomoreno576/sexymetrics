@@ -12,18 +12,19 @@ import ChartCountries from "../components/ChartCountries";
 import useTimeLine from "../hooks/useTimeLine";
 import { settings } from "../slicks/slickConfig";
 import useCount from "../hooks/useCount";
+import ChartEdad from "../components/ChartEdad";
+import CitiesList from "../components/CitiesList";
 
 const Facebook = () => {
   const [state, dispatch] = useContext(ThemeContext);
   const start = state.TimeStart;
   const end = state.TimeEnd;
-
   //Fecha pasada a la selecionada
   const startPast =  state.TimeStartPast
   const endPast =   state.TimeEndPast
+ 
 
-
-
+ 
   //FbBody
   const fbbody = useData(
     `/stats/aggregations/Facebook`,
@@ -211,25 +212,16 @@ const Facebook = () => {
 
   //Sexo
   const fbsexo = useData(`/stats/gender/facebook`, start, end);
-
-  let sexData = [];
-  let sexValue = [];
-
-  for (const [key, value] of Object.entries(fbsexo)) {
-    sexData.push(value);
-    sexValue.push(key);
-  }
-
-
-
+  //Edad
+  const fbage = useData(`/stats/age/facebook`, start, end);
   // Paises
   const fbCountries = useData(`/stats/country/facebook`, start, end);
-
   const fbCountry = Object.entries(fbCountries);
-
+  //Ciudades
+  const fbCities = useData(`/stats/city/facebook`, start, end);
+  const fbCity = Object.entries(fbCities);
   //Lista de publicaciones
   const fbListPublications = useData(`/stats/facebook/posts`, start, end);
-
   //TimeLine
 
   const TimeLine = fbLikes.map(([key, value]) => {
@@ -241,8 +233,8 @@ const Facebook = () => {
     {
       data: useTimeLine(fbLikes),
       dataNumber:
-        fbLikes.length != 0 ? parseInt(fbLikes[fbLikes.length - 1][1], 0) : "",
-      dataNumberPast: fbLikesPast.length != 0 ? parseInt(fbLikesPast[fbLikesPast.length - 1][1], 0) : "",
+        fbLikes.length !== 0 ? parseInt(fbLikes[fbLikes.length - 1][1], 0) : "",
+      dataNumberPast: fbLikesPast.length !== 0 ? parseInt(fbLikesPast[fbLikesPast.length - 1][1], 0) : "",
       type: "line",
       id: "FbMG",
       name: "Me gusta",
@@ -499,13 +491,25 @@ const Facebook = () => {
       </div>
 
       <div className="row">
-        <div className="charPie col-6">
-          <h5>Sexo</h5>
-          <ChartPie series={sexData} labels={sexValue} />
+        <div className="charsex col-6">
+          <h5 className="Subtitle">Sexo</h5>
+          <ChartPie data={fbsexo} />
         </div>
-        <div className="charPie col-6">
-          <h5>Paises</h5>
+        <div className="Subtitle chartGender col-6">
+          <h5>Edad</h5>
+
+          <ChartEdad data={fbage}/>
+        </div>
+        <div className="chartCountries col-6">
+          <h5 className="Subtitle">Paises de los Seguidores</h5>
           <ChartCountries data={fbCountry} />
+        </div>
+        <div className="CitiesList col-6">
+          <h5 className="Subtitle">Ciudades de los Seguidores</h5>
+          <div className="ListCities">
+          <CitiesList data={fbCity}/>
+          </div>
+         
         </div>
       </div>
 

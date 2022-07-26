@@ -1,0 +1,8 @@
+.mainAppFooter {
+    height: 138px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7em;
+    box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+}

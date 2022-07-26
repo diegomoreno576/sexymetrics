@@ -14,9 +14,12 @@ const endPast = String(date.getFullYear() + String(date.getMonth()).padStart(2, 
 
 const ThemeContext = createContext({});
 const initialState = {
+  isLoggedIn: false,
+  loginError: null,
   darkmode: true,
   FbDatos: [],
   Loading: true,
+  blog_id: [],
   TimeStart: start,
   TimeEnd: end,
   TimeStartPast: startPast,

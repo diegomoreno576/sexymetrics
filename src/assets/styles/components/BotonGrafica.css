@@ -1,7 +1,13 @@
 .ChartsButtons {
     border-radius: 20px;
     overflow: hidden;
+    height: 254px;
     cursor: pointer;
+}
+.loadingButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btnNumberPast {
     font-size: 20px;

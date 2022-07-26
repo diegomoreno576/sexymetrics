@@ -1,0 +1,44 @@
+.loginInputs input{
+    height: 4em !important;
+    border-radius: 50px;
+    width: 100%;
+    border: 0;
+    padding: 2em;
+    color: black;
+    margin: 5px;
+}
+.LoginButton {
+    text-align: center;
+    margin-top: 5px;
+}
+.MainLoginPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.LoginForm {
+    background-color: #333333;
+    padding: 8em;
+    box-shadow: 0em 0em 3em 0em rgb(24 24 24 / 44%);
+    border-radius: 20px;
+}
+.LoginButton button{
+    background: rgb(255,0,255);
+    background: linear-gradient( 315deg ,rgba(255,0,255,1) 4%,rgba(153,0,204,1) 100%);
+    border-radius: 50px !important;
+    box-shadow: 0 0em 0 0 #19397c, 0 0px 0px rgb(0 0 0 / 0%);
+    width: 70%;
+    border-color: #272727;
+    height: 60px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+.LoginEror {
+    padding: 2em;
+    text-align: center;
+}
+.DakmodeLoginDisable{
+    display: none;
+}

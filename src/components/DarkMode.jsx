@@ -1,38 +1,27 @@
-import React, { useEffect, useContext } from 'react';
-import { Link } from "react-router-dom";
-import { ThemeContext } from '../context';
-import { setTheme } from '../actions';
+import React,{ useEffect} from "react";
+import useDarkMode from "../hooks/useDarkMode";
 
-import '../assets/styles/components/Header.scss';
-
-const Sidebar = () => {
-  const [state, dispatch] = useContext(ThemeContext);
-
-  const handleDarkMode = () => {
-    dispatch(setTheme(!state.darkmode));
-  };
+const DarkMode = () => {
+  const [darkMode, setDarkMode] = useDarkMode(false);
 
   useEffect(() => {
-    if (state.darkmode) {
+    if (darkMode) {
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
     }
-  }, [state.darkmode]);
+  }, [darkMode]);
 
-  return (
-    
-    <div className='Header'>
-      <input
-        type='checkbox'
-        id='checkbox'
-        onChange={handleDarkMode}
-        checked={state.darkmode}
-      />
-      <label className='Header__switch' htmlFor='checkbox'></label>
-
-    </div>
-  );
+return(
+  <div className="dark-mode-toggle">
+  <button onClick={() => setDarkMode(!darkMode)}>
+    <span>🌓</span>
+  </button>
+</div>
+)
 };
 
-export default Sidebar;
+export default DarkMode;
+
+
+

@@ -20,6 +20,7 @@ function MixedGrafica(props) {
             enabled: false,
           },
           labels: props.Timeline,
+          
           xaxis: {
             type: "datetime",
             labels: {

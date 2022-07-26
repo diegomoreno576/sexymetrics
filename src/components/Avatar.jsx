@@ -1,28 +1,37 @@
-import React from 'react'
-import useData from '../hooks/useData';
+import React, { useState, useContext } from 'react'
+import useAvatar from '../hooks/useAvatar';
 import '../assets/styles/components/Avatar.css';
+import { ThemeContext } from "../context";
+
 
 
 
 const Avatar = () => {
-   
-    const avatar= useData("/admin/profile");
+  const [state, dispatch] = useContext(ThemeContext);
 
-    return (
+  
 
-        <div className="row MainAvatar">
-            <div className="col-6  avatarName">
-            <p> {avatar.label}</p>
+  
+   return(
+    <div className='mainMarcas'>
+      {
+        state.blog_id.map((item) => {
+         return (
+          <div className='MarcasChild'>
+          <div className='avatar'>
+            <img src={item.avatar } alt=""/>
           </div>
-        <div className="col-4 avatarImg">
-        <div className="avatarImg">
-            <img src={avatar.facebookPicture} />
-            </div>
+          <div className='AvatarName'>
+            {item.name}
           </div>
-        
-        
         </div>
-    );
+         )
+          })
+      }
+    </div>
+   )
+  
+
 }
 
 export default Avatar

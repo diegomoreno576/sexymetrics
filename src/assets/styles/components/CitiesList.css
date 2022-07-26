@@ -1,0 +1,13 @@
+ul.citiesList {
+    list-style: none;
+}
+.citiesList li{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.ListCities{
+    height: 300px;
+    overflow: auto;
+}

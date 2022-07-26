@@ -13,3 +13,17 @@
 .calendarNavbar{
     text-align: end;
 }
+
+.LogoutButton  > svg{
+    background-color: red;
+    padding: 0.4em;
+    border-radius: 100px;
+    width: 35px;
+    height: 35px;
+}
+.LogoutButton {
+    background-color: transparent;
+}
+.rs-anim-fade.rs-anim-in.rs-picker-daterange-menu.rs-picker-menu.placement-bottom-start {
+    right: 20;
+}
