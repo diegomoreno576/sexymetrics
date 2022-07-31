@@ -1,61 +1,33 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
-import { ThemeContext } from "../../context";
-import { setIslogin } from "../../actions";
-import { setLoginError } from "../../actions";
-import { setBlog_id } from "../../actions";
+import React, { useState, useEffect } from "react";
 import '../../assets/styles/components/Login.css';
-import Spinner from "../Spinner";
 import DarkMode from "../DarkMode";
-
+import useUser from "../../hooks/useUser";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
-  const [state, dispatch] = useContext(ThemeContext);
+ 
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
+  const {isLoginLoading, hasLoginError, login, isLogged } = useUser()
 
-  const handleChangeEmail = (event) => {
-    setemail(event.target.value)
-  }
-  const handleChangePassword = (event) => {
-    setpassword(event.target.value)
+
+  useEffect(() => {
+    if(isLogged){
+      return <Navigate to="/"  replace />;
+    }
+  }, [isLogged])
+
+
+ const handleSubmit = (e) => {
+    e.preventDefault();
+    login({email, password})
   }
 
- const handleSubmit = (event) => {
-
-    axios
-      .post(
-        "https://notecopies.herokuapp.com/api/v1/sessions",
-        {
-          user: {
-            email: email,
-            password: password
-          }
-        },
-        { withCredentials: true }
-      )
-      .then(response => {
-        console.log(response)
-        if(response.data.logged_in){
-          dispatch(setBlog_id(response.data.blog)); 
-          dispatch(setIslogin(response.data.logged_in)); 
-        }else{
-          dispatch(setLoginError(response.data.status));
-        }
-        
-      })
-      .catch(error => {
-        console.log("login error", error);
-      });
-    event.preventDefault();
-  }
-  if(state.Loading == true){
-    return <Spinner/>
-  }else{
     return (
+      
       <div className="MainLoginPage">
-        
-     
+       
+    
         <div className="container">
          <div className="DakmodeLoginDisable">
          <DarkMode/>
@@ -69,15 +41,18 @@ const Login = () => {
         </div>
         <div className="col-6">
       <div className="LoginForm">
+
+
+
       <form onSubmit={handleSubmit}>
          <div className="row">
            <div className="col-12 loginInputs">
            <input
            type="email"
            name="email"
-           placeholder="Email"
+           placeholder="email"
            value={email}
-           onChange={handleChangeEmail}
+           onChange={(e) => setemail(e.target.value)}
            required
          />
            </div>
@@ -87,7 +62,7 @@ const Login = () => {
            name="password"
            placeholder="Password"
            value={password}
-           onChange={handleChangePassword}
+           onChange={(e) => setpassword (e.target.value)}
            required
          />
              </div>
@@ -98,16 +73,21 @@ const Login = () => {
        <button type="submit">Iniciar sessión</button>
        </div>
        </form>
+
+
+       
       </div>
        <div className="LoginEror">
-       <h4>{state.loginError == 401 ? "Usuario o contraseña invalidos": ""}</h4>
+       <h4>
+       {isLoginLoading &&  <strong>Chequeando credenciales</strong>}
+        {hasLoginError && "Usuario o contraseña invalidos"}
+        </h4>
        </div>
      </div>
          </div>
    </div>
    </div>
  )
-  }
 
 }
 

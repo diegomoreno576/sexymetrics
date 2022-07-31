@@ -5,7 +5,7 @@ import { setLoading } from '../actions';
 const useData = (API_URL, START, END) => {
   const [state, dispatch] = useContext(ThemeContext);
   const [Data, setData] = useState([]);
-  const blog_id = state.blog_id[0].code
+  const blog_id = state.blog_id.code
  
 
 

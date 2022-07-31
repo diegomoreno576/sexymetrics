@@ -1,26 +1,17 @@
-import React,{ useContext } from 'react'
+import React from 'react'
 import MonthYearCalendar from "./MonthCalendar";
 import '../assets/styles/components/Navbar.css';
 import Avatar from './Avatar';
-import axios from 'axios';
-import { ThemeContext } from "../context";
-import { setIslogin } from "../actions";
-import { setLoginError } from "../actions";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import useUser from '../hooks/useUser';
+
 
 const Navbar = () => {
-  const [state, dispatch] = useContext(ThemeContext);
+  const {isLogged, logout} = useUser()
 
- const handleLogoutClick = () =>  {
-    axios
-      .delete("https://notecopies.herokuapp.com/api/v1/logout", { withCredentials: true })
-      .then(response => {
-       dispatch(setIslogin(response.data.logged_in));
-       dispatch(setLoginError(null));
-      })
-      .catch(error => {
-        console.log("logout error", error);
-      });
+ const handleLogoutClick = (e) =>  {
+  e.preventDefault()
+  logout()
   }
   return (
     <div className="container">

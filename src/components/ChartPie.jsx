@@ -12,7 +12,7 @@ const ChartPie = (props) => {
     sexData.push(value);
     sexValue.push(key);
   }
-  
+                                                                                                                                          
   return (
     <Chart
     series={sexData }

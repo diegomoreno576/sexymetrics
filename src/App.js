@@ -1,5 +1,4 @@
-import React,{useContext, useEffect} from "react";
-import axios from "axios";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Facebook from './pages/Facebook';
@@ -10,33 +9,13 @@ import FacebooksAds from "./pages/FacebooksAds";
 import Web from "./pages/Web";
 import './App.css';
 import Login from './components/auth/Login';
-import { ThemeContext } from "./context";
-import { setIslogin } from "./actions";
-import { setBlog_id } from "./actions";
 import Chat from './pages/Chat';
-
+import useUser from "./hooks/useUser";
 
 function App() {
-  const [state, dispatch] = useContext(ThemeContext);
+  const {isLogged, logout} = useUser()
 
-
-useEffect(() => {
-  axios
-  .get("https://notecopies.herokuapp.com/api/v1/logged_in", { withCredentials: true })
-  .then(response => {
-    dispatch(setIslogin(response.data.logged_in));
-    dispatch(setBlog_id(response.data.blog)); 
-  })
-  .catch(error => {
-    console.log("check login error", error);
-  });
-
-
-}, [])
-
-
-
-      if (!state.isLoggedIn) {
+      if (!isLogged) {
         return <Login />;
       }
       else{
