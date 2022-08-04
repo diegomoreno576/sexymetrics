@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from "react"
+import { useCallback, useContext, useState, useEffect } from "react"
 import  UserContext  from "../context/userContext"
 import loginService from "../services/login"
 
@@ -24,16 +24,24 @@ export default function useUser () {
         })
     }, [setJWT])
 
+ 
+
+
+
+
     const logout = useCallback(() => {
         setJWT(null)
+        window.sessionStorage.removeItem('jwt', jwt)
     })    
+
 
     return {
         isLogged: Boolean(jwt),
         isLoginLoading: state.loading,
         hasLoginError: state.error,
         login,
-        logout,
+        logout
+        
 
     }
 }

@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from '../context';
+import  UserContext  from "../context/userContext"
 import { setLoading } from '../actions';
 
+
+
 const useData = (API_URL, START, END) => {
+  const { jwt, setJWT } = useContext(UserContext)
   const [state, dispatch] = useContext(ThemeContext);
   const [Data, setData] = useState([]);
-  const blog_id = state.blog_id.code
- 
+  const blog_id = jwt.blog?.[0].code
 
 
   useEffect(() => {
