@@ -6,6 +6,7 @@ import { ThemeContextProvider } from './context';
 import { UserContextProvider } from './context/userContext';
 import './assets/styles/index.css';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

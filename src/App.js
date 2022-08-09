@@ -7,10 +7,18 @@ import Twitter from "./pages/Twitter";
 import GoogleMyBussines from "./pages/GoogleMyBussines";
 import FacebooksAds from "./pages/FacebooksAds";
 import Web from "./pages/Web";
+import GoogleAds from "./pages/GoogleAds";
 import './App.css';
 import Login from './components/auth/Login';
 import Chat from './pages/Chat';
 import useUser from "./hooks/useUser";
+import Planificacion from "./pages/Planificacion";
+import actionCable from 'actioncable';
+import { APP_CABLE_URL } from './constants';
+import 'animate.css';
+
+const CableApp = {};
+CableApp.cable = actionCable.createConsumer(APP_CABLE_URL);
 
 function App() {
   const {isLogged, logout} = useUser()
@@ -28,8 +36,10 @@ function App() {
             <Route path="/twitter" element={<Twitter/>} exact />
             <Route path="/googlemybussines" element={<GoogleMyBussines/>} exact />
             <Route path="/web" element={<Web/>} exact />
+            <Route path="/googleads" element={<GoogleAds/>} exact />
             <Route path="/facebookads" element={<FacebooksAds/>} exact />
-            <Route path="/chat" element={<Chat/>} exact />
+            <Route path="/planificacion" element={<Planificacion/>} exact />
+            <Route path="/chat" element={<Chat cableApp={CableApp}/>} exact />
           </Routes>
           </Layout>
         </BrowserRouter>

@@ -1,6 +1,7 @@
+@import "./../ThemeColor.css";
 /* Sidebar */
 .sidebar {
-  background: #333;
+  background-color: var(--App-color);
   color: white;
   box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
   height: 100vh;
@@ -52,7 +53,7 @@
     display: flex;
     font-size: 22px;
     align-items: center;
-    color: white;
+    color: var(--Text-color);
     gap: 10px;
     padding: 9px 17px;
     border-right: 4px solid transparent;

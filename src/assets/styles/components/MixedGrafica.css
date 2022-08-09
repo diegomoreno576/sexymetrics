@@ -1,0 +1,11 @@
+@import "./../ThemeColor.css";
+
+.apexcharts-toolbar {
+    display: none !important;
+}
+.apexcharts-text tspan {
+    fill: var(--Text-color);
+}
+.mainGraficMixed {
+    margin-top: 2em;
+}

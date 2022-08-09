@@ -1,33 +1,36 @@
+@import "./../ThemeColor.css";
+
 /* text editor*/
 .rs-picker-default .rs-picker-toggle.rs-btn {
     padding-top: 7px;
     padding-bottom: 7px;
     width: 282px;
 }
-
+.rs-picker-daterange-panel {
+    background-color: var(--App-color);
+    box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
+}
 /* picked date align */
 .rs-picker-default .rs-picker-toggle {
     position: relative;
     z-index: 5;
-    padding-right: 67px;
     display: inline-block;
     outline: none;
     cursor: pointer;
-    color: #575757;
+    color: #ec00f5;
     border: 1px solid #e5e5ea;
     padding-left: 44px;
 }
 /* calander align */
 .rs-picker-toggle-caret {
     display: inline-block;
-    margin-right: 240px;
-    position: absolute;
     top: 8px;
-    right: 12px;
     font-weight: normal;
-    color: #8e8e93;
+    color: #ec00f5;
 }
-
+.rs-picker-daterange-header {
+    display: none;
+}
 /* ok button style */
 .rs-picker-toolbar-right-btn-ok { 
     text-align: center; 
@@ -38,7 +41,7 @@
     font-size: 14px; 
     border-radius: 30px;
     color: #fff;
-    background-color: #3498ff;
+    background-color: #ec00f5;
     width: 100px;
 }
 
@@ -48,4 +51,12 @@
     padding-right: 0;
     border-radius: 21px;
     display: inline-block;
+}
+span.rs-picker-toggle-clean.rs-btn-close{
+    display: none ;
+}
+.rs-picker-menu {
+    position: fixed;
+    text-align: left;
+    z-index: 999999999999999999999999;
 }

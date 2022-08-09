@@ -1,13 +1,5 @@
 
-html[data-theme='dark'] {
-  --App-color: #333;
-  --Text-color:  white;
-}
-html[data-theme='light'] {
-  --App-color:  white;
-  --Text-color:  #333;
-}
-
+@import "./ThemeColor.css";
 
 body {
   background-color: var(--App-color);
@@ -26,9 +18,9 @@ main {
 a.SectionsAncles {
   box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
   padding: 1.5em;
-  color: white;
+  color: var(--Text-color);
   margin: 5px;
-  background-color: #333;
+  background-color: var(--App-color);
   border-radius: 10px;
 }
 a {
@@ -40,3 +32,21 @@ a:active, a:focus, a:hover {
 .PageTitle {
   text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

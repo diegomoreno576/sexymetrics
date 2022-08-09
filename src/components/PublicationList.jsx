@@ -46,8 +46,11 @@ const PublicationList = (props) => {
 </tbody></table>
       </div>
       <div className="ContectText">
-        <p>{props.text.length > 160 ? props.text.substr(0, 160) + '...' : props.text
-        }  </p>
+        
+        <p>{
+        !props.text.length > 160 ? props.text.substr(0, 160) + '...' : props.text
+        }  
+        </p>
       </div>
     </div>
   );

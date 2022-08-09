@@ -1,17 +1,15 @@
-.avatarImg img{
-    border-radius: 100px;
-    width: 60px;
-    object-fit: cover;
-}
-.MainAvatar{
+@import "./../ThemeColor.css";
+.AvatarChild {
+    display: flex;
+    gap: 10px;
+    align-content: center;
     align-items: center;
 }
-.avatarImg {
-    text-align: end;
+.avatar img {
+    width: 55px;
+    border-radius: 100%;
+    box-shadow: 0em 0em 5em 0em rgb(255 0 179);
 }
-.avatarName {
-    text-align: end;
+.AvatarName {
+    color: var(--Text-color);
 }
-
-
-

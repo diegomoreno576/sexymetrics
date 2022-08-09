@@ -5,7 +5,9 @@ import { setTimeStart } from '../actions';
 import { setTimeEnd } from '../actions';
 import { setTimeStartPast } from '../actions';
 import { setTimeEndPast } from '../actions';
+import { startOfDay, endOfDay, addDays, subDays } from 'date-fns';
 import 'rsuite/dist/rsuite.min.css';
+import "../assets/styles/components/MonthCalendar.css";
 
 const MonthCalendar = () => {
   const [state, dispatch] = useContext(ThemeContext);
@@ -28,9 +30,25 @@ const MonthCalendar = () => {
     dispatch(setTimeEndPast(endPast));
   }, [value]); 
 
+  const Ranges = [
+  
+    {
+      label: 'Últimos 7 días',
+      value: [startOfDay(subDays(new Date(), 6)), endOfDay(new Date())]
+    },
+    {
+      label: 'Últimos 14 días',
+      value: [startOfDay(subDays(new Date(), 14)), endOfDay(new Date())]
+    },
+    {
+      label: 'Últimos 30 días',
+      value: [startOfDay(subDays(new Date(), 29)), endOfDay(new Date())]
+    }
+  ];
+
 
   return (
-    <DateRangePicker format="dd-MM-yyyy" value={value} onChange={setValue} />
+    <DateRangePicker ranges={Ranges} size="lg" format="dd-MM-yyyy" value={value} onChange={setValue} />
   )
 }
 

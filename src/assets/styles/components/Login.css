@@ -1,44 +1,130 @@
-.loginInputs input{
-    height: 4em !important;
+.loginInputs input {
+    height: 3.2em !important;
     border-radius: 50px;
     width: 100%;
     border: 0;
-    padding: 2em;
-    color: black;
-    margin: 5px;
+    font-size: 13px;
+    padding: 2.5em;
+    color: #4c4848;
+    margin: 7px;
 }
-.LoginButton {
-    text-align: center;
-    margin-top: 5px;
-}
-.MainLoginPage {
-    height: 100vh;
+.playstoreImg {
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonPlaystore {
+    width: 30%;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+.PlaysotreText {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.LoginForm {
-    background-color: #333333;
-    padding: 8em;
-    box-shadow: 0em 0em 3em 0em rgb(24 24 24 / 44%);
+.LoginText {
+    color: white;
+    font-size: 14px;
+}
+.playstoreImg img{
+    width: 84%;
+}
+.LoginSpiner.spinner-border {
+    border: var(--bs-spinner-border-width) solid white;
+    border-right-color: transparent;
+}
+.LoginButton {
+    text-align: center;
+    margin-top: 7px;
+}
+.mainInputs {
+    display: flex;
+    justify-content: center;
+}
+.LoginButton {
+    background: #12307c;
+    position: sticky;
+    z-index: 9999999999999;
+    margin: 0;
+}
+.loginImage {
+    filter: contrast(200%);
+    transform: translate(0px,0px);
+}
+.mainInputs {
+    box-shadow: 0px -50px 5em 1em rgb(0 0 0 / 46%);
+    width: 100%;
+    margin: 0 !important;
+    z-index: 0;
+}
+.MainLoginPage {
+    background-color: #0b257c;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 8em;
+}
+.LoginForm {    
     border-radius: 20px;
 }
-.LoginButton button{
-    background: rgb(255,0,255);
-    background: linear-gradient( 315deg ,rgba(255,0,255,1) 4%,rgba(153,0,204,1) 100%);
+.loginInputs {
+    width: 80% !important;
+}
+.LoginButton button {
+    background: linear-gradient(258deg,#9d1d5d 13%,#e5097f 100%) !important;
     border-radius: 50px !important;
     box-shadow: 0 0em 0 0 #19397c, 0 0px 0px rgb(0 0 0 / 0%);
-    width: 70%;
-    border-color: #272727;
-    height: 60px;
+    width: 55%;
+    font-size: 18px;
+    padding: 1em;
+    margin-top: 2rem;
+    font-weight: 500;
     color: white;
-    font-size: 16px;
-    font-weight: 600;
+    border-color: #f5deb300;
 }
 .LoginEror {
     padding: 2em;
     text-align: center;
 }
-.DakmodeLoginDisable{
-    display: none;
+.loginImage img {
+    width: 200px;
+    height: 50vh;
+    object-fit: cover;
+}
+.LogoLogin img{
+    width: 50%;
+    object-fit: contain; 
+}
+.LogoLogin {
+    padding-bottom: 3em;
+    display: flex;
+    justify-content: center;
+    background-color: #12307c;
+    position: sticky;
+}
+.login-left-col.col-3 {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 0;
+}
+.login-right-col.col-3 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+}
+
+.formColum.col-6 {
+    padding: 0;
+    background-color: #12307c;
+    z-index: 9;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale3d(1.12,1.12,1.12);
+    animation-duration: 1000ms;
 }

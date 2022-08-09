@@ -59,8 +59,8 @@ const GoogleMyBussines = () => {
     const GmCrecimiento = [
       {
         data: useTimeLine(viewsMaps),
-        dataNumber: gmbBody["VIEWS_MAPS"],
-        dataNumberPast:gmbBodyPast["VIEWS_MAPS"],
+        dataNumber: gmbBody["QUERIES_DIRECT"],
+        dataNumberPast:gmbBodyPast["QUERIES_DIRECT"],
         type: "line",
         id: "GmDirectas",
         name: "Directas",
@@ -70,8 +70,8 @@ const GoogleMyBussines = () => {
       },
       {
         data: useTimeLine(viewsSearch),
-        dataNumber: gmbBody["VIEWS_SEARCH"],
-        dataNumberPast: gmbBodyPast["VIEWS_SEARCH"],
+        dataNumber: gmbBody["QUERIES_INDIRECT"],
+        dataNumberPast: gmbBodyPast["QUERIES_INDIRECT"],
         type: "area",
         id: "GmIndirectas",
         name: "Indirectas",
@@ -106,8 +106,8 @@ const GoogleMyBussines = () => {
     const GmVisitas = [
       {
         data: useTimeLine(actionsWebsite),
-        dataNumber: gmbBody["QUERIES_DIRECT"],
-        dataNumberPast:gmbBodyPast["QUERIES_DIRECT"],
+        dataNumber: gmbBody["VIEWS_MAPS"],
+        dataNumberPast:gmbBodyPast["VIEWS_MAPS"],
         type: "line",
         id: "GmGoogle Maps",
         name: "Google Maps",
@@ -115,26 +115,16 @@ const GoogleMyBussines = () => {
         color: "#42a5f5",
         icono: "fa-solid fa-thumbs-up",
       },
-      {
-        data: useTimeLine(actionsPhone),
-        dataNumber: gmbBody["QUERIES_INDIRECT"],
-        dataNumberPast: gmbBodyPast["QUERIES_INDIRECT"],
-        type: "area",
-        id: "GmIndirectas",
-        name: "Indirectas",
-        group: "visitas",
-        color: "#4dd0e1",
-        icono: "fa-solid fa-arrow-up",
-      },
+     
       {
         data: useTimeLine(actionsDrivingDirectory),
-        dataNumber: gmbBody["QUERIES_CHAIN"],
-        dataNumberPast: gmbBodyPast["QUERIES_CHAIN"],
+        dataNumber: gmbBody["VIEWS_SEARCH"],
+        dataNumberPast: gmbBodyPast["VIEWS_SEARCH"],
         type: "line",
         id: "GmBúscador de Google",
         name: "Búscador de Google",
         group: "visitas",
-        color: "#f06292",
+        color: "#4dd0e1",
         icono: "fa-solid fa-arrow-down",
       },
       {
@@ -230,7 +220,7 @@ const GoogleMyBussines = () => {
             );
           })}
         </div>
-        <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE FACEBOOK</h3>
+        <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE GOOGLE MY BUSSINES</h3>
         <div className="row">
           {GmAllData.map((item) => {
             return (

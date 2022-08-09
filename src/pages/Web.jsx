@@ -48,10 +48,18 @@ const Web = () => {
     //Países de los visitantes
     const Webcountries = useData("/stats/distribution/country", start, end); 
     const Webcountry = Object.entries(Webcountries);
-
-    //Ciudades de los visitantes
+    
+    //fuente de trafico de los visitantes
     const Websourcies = useData("/stats/distribution/sources", start, end);
     const Websources = Object.entries(Websourcies);
+
+    //páginas vistas de los visitantes
+    const Webreferer = useData("/stats/distribution/referers", start, end);
+    const Webreferers = Object.entries(Webreferer);
+
+    //Lista de publicaciones
+    const webPost = useData("/stats/posts", start, end);
+  
 
     const TimeLine = pageviews.map(([key, value]) => {
       return +key;
@@ -139,7 +147,7 @@ const Web = () => {
           );
         })}
       </div>
-      <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE FACEBOOK</h3>
+      <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE WEB</h3>
       <div className="row">
         {WebAllData.map((item) => {
           return (
@@ -155,27 +163,58 @@ const Web = () => {
       </div>
       <div className="row">
       <div className="chartCountries col-6">
-          <h5 className="Subtitle">Paises de los Seguidores</h5>
+          <h5 className="Subtitle">PAÍSES DE LOS VISITANTES</h5>
           <ChartCountries data={Webcountry} />
         </div>
-   
+        <div className="charsex col-6">
+          <h5 className="Subtitle">
+          CIUDADES DE LOS VISITANTES
+            </h5>
+            <div className="ListCities">
+          <CitiesList data={Webcountry}/>
+          </div>
+        </div>
 
         <div className="charsex col-6">
           <h5 className="Subtitle">
            Páginas Vistas
             </h5>
-          
+            <div className="ListCities">
+          <CitiesList data={Webreferers}/>
+          </div>
         </div>
         <div className="Subtitle chartGender col-6">
           <h5>Fuentes de Tráfico</h5>
 
-        
+          <div className="ListCities">
+          <CitiesList data={Websources}/>
+          </div>
         </div>
      
-      
+        
       </div>
 
+      <h3>Lista de Publicaciones</h3>
+      <Slider {...settings}>
+        {webPost.map((item) => {
+          const fecha = new Date(item.date).toDateString();
 
+          return (
+            <PublicationList
+              picture={item.picture}
+              link={item.url}
+              fecha={fecha}
+              type={item.type}
+              clicks={item.clicks}
+              text={item.excerpt}
+              Likes={item.likes}
+              linkclicks={item.linkclicks}
+              puntos={parseInt(item.engagement)}
+              reproducciones={item.impressions}
+            />
+          );
+        })}
+      </Slider>
    
     </div>
   );

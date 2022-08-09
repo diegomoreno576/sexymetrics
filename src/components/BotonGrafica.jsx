@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import "../assets/styles/components/BotonGrafica.css";
@@ -23,13 +23,18 @@ function BotonGrafica(props) {
     },
   };
 
+  useEffect(() => {
+    setToggled(false);
+  }, [state.TimeStart, state.TimeEnd]);
+  
+
   if(props.datos.length == 0){
     return (
       <div
       style={styles.ChartBtn}
       className="ChartsButtons loadingButton"
     >
-          <Spinner animation="border" role="status">
+          <Spinner animation="border" role="status" className="buttonsSpinners">
       <span className="visually-hidden">Loading...</span>
     </Spinner>
       </div>

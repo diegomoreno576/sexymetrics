@@ -8,17 +8,19 @@ export default function useUser () {
    
     const [state, setState] = useState( {loading: false, error: false} )
 
-    const login = useCallback(({email, password}) => {
+    const login = useCallback(({user:{ username, password }}) => {
         setState({loading: true, error: false})
 
-    loginService({email, password})
-        .then(jwt => {
-            window.sessionStorage.setItem('jwt', jwt)
+    loginService({user:{ username, password }})
+        .then(data => {
+            window.sessionStorage.setItem('jwt', data.token)
+            window.sessionStorage.setItem('blog', JSON.stringify(data.blog) )
             setState({loading: false, error: false})
-            setJWT(jwt)
+            setJWT(data.token)
         })
         .catch(err => {
             window.sessionStorage.removeItem('jwt', jwt)
+            window.sessionStorage.removeItem('blog')
             setState({loading: false, error: true})
             console.error(err)
         })
@@ -32,6 +34,7 @@ export default function useUser () {
     const logout = useCallback(() => {
         setJWT(null)
         window.sessionStorage.removeItem('jwt', jwt)
+        window.sessionStorage.removeItem('blog')
     })    
 
 

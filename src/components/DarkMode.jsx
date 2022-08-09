@@ -1,5 +1,8 @@
 import React,{ useEffect} from "react";
 import useDarkMode from "../hooks/useDarkMode";
+import { IoIosFlash} from "react-icons/io";
+import '../assets/styles/components/Darkmode.css';
+
 
 const DarkMode = () => {
   const [darkMode, setDarkMode] = useDarkMode(false);
@@ -14,8 +17,8 @@ const DarkMode = () => {
 
 return(
   <div className="dark-mode-toggle">
-  <button onClick={() => setDarkMode(!darkMode)}>
-    <span>🌓</span>
+  <button className="DakmodeButton" onClick={() => setDarkMode(!darkMode)}>
+ <IoIosFlash/>
   </button>
 </div>
 )

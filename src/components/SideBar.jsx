@@ -6,9 +6,10 @@ import { MdCampaign} from "react-icons/md";
 import {  AiOutlineGlobal } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import SidebarMenu from "./SidebarMenu";
 import DarkMode from "./DarkMode";
 import '../assets/styles/components/SideBar.css';
+import Logout from "./auth/Logout";
+import Avatar from "./Avatar"
 
 
 const routes = [
@@ -57,69 +58,10 @@ const routes = [
     name: "Planificación",
     icon: <BsCalendarRange />,
   },
-  // {
-  //   path: "/analytics",
-  //   name: "Analytics",
-  //   icon: <BiAnalyse />,
-  // },
-  // {
-  //   path: "/file-manager",
-  //   name: "File Manager",
-  //   icon: <AiTwotoneFileExclamation />,
-  //   subRoutes: [
-  //     {
-  //       path: "/settings/profile",
-  //       name: "Profile ",
-  //       icon: <FaUser />,
-  //     },
-  //     {
-  //       path: "/settings/2fa",
-  //       name: "2FA",
-  //       icon: <FaLock />,
-  //     },
-  //     {
-  //       path: "/settings/billing",
-  //       name: "Billing",
-  //       icon: <FaMoneyBill />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: "/order",
-  //   name: "Order",
-  //   icon: <BsCartCheck />,
-  // },
-  // {
-  //   path: "/settings",
-  //   name: "Settings",
-  //   icon: <BiCog />,
-  //   exact: true,
-  //   subRoutes: [
-  //     {
-  //       path: "/settings/profile",
-  //       name: "Profile ",
-  //       icon: <FaUser />,
-  //     },
-  //     {
-  //       path: "/settings/2fa",
-  //       name: "2FA",
-  //       icon: <FaLock />,
-  //     },
-  //     {
-  //       path: "/settings/billing",
-  //       name: "Billing",
-  //       icon: <FaMoneyBill />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: "/saved",
-  //   name: "Saved",
-  //   icon: <AiFillHeart />,
-  // },
 ];
 
 const Sidebar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -185,7 +127,8 @@ const Sidebar = () => {
                   exit="hidden"
                   className="logo"
                 >
-                 Notecopies
+                  <Avatar/>
+                
                 </motion.h1>
               )}
             </AnimatePresence>
@@ -194,19 +137,13 @@ const Sidebar = () => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <DarkMode/>
+          <div className="UltilsButtons">
+                  <DarkMode/>
+                      <Logout/>
+                  </div>
           <section className="routes">
             {routes.map((route, index) => {
-              if (route.subRoutes) {
-                return (
-                  <SidebarMenu
-                    setIsOpen={setIsOpen}
-                    route={route}
-                    showAnimation={showAnimation}
-                    isOpen={isOpen}
-                  />
-                );
-              }
+            
 
               return (
                 <NavLink
