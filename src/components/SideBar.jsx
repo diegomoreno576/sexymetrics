@@ -3,6 +3,7 @@ import { FaBars, FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsTwitter, BsLinkedin, BsCalendarRange } from "react-icons/bs";
 import { SiGooglemybusiness, SiGoogleads} from "react-icons/si";
 import { MdCampaign} from "react-icons/md";
+import { RiHome6Fill } from "react-icons/ri";
 import {  AiOutlineGlobal } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,11 +16,16 @@ import Avatar from "./Avatar"
 const routes = [
   {
     path: "/",
+    name: "inicio",
+    icon: <RiHome6Fill />,
+  },
+  {
+    path: "/facebook",
     name: "Facebook",
     icon: <FaFacebookF />,
   },
   {
-    path: "/Instagram",
+    path: "/instagram",
     name: "Instagram",
     icon: <BsInstagram />,
   },

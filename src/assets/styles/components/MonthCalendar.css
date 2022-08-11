@@ -56,6 +56,7 @@ span.rs-picker-toggle-clean.rs-btn-close{
     display: none ;
 }
 .rs-picker-menu {
+    left: 73% !important;
     position: fixed;
     text-align: left;
     z-index: 999999999999999999999999;

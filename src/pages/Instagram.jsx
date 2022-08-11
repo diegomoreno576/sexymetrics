@@ -393,20 +393,20 @@ const igAllData = [
     <div className="row">
     <div className="row">
     <div className="row">
-        <div className="charsex col-6">
+        <div className="charsex col-lg-6 col-12">
           <h5 className="Subtitle">Sexo</h5>
           <ChartPie data={igsexo} />
         </div>
-        <div className="Subtitle chartGender col-6">
+        <div className="Subtitle chartGender col-lg-6 col-12">
           <h5>Edad</h5>
 
           <ChartEdad data={igAge}/>
         </div>
-        <div className="chartCountries col-6">
+        <div className="chartCountries col-lg-6 col-12">
           <h5 className="Subtitle">Paises de los Seguidores</h5>
           <ChartCountries data={igCountry} />
         </div>
-        <div className="CitiesList col-6">
+        <div className="CitiesList col-lg-6 col-12">
           <h5 className="Subtitle">Ciudades de los Seguidores</h5>
           <div className="ListCities">
           <CitiesList data={igCity}/>

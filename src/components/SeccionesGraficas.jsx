@@ -21,7 +21,7 @@ const SeccionesGraficas = (props) => {
           props.data.map(items => {
 
             return(
-              <div key={items.id} className="col-lg-3 col-6">
+              <div key={items.id} className="col-lg-3 col-md-6 col-12">
               <BotonGrafica
               idMixed={props.id}
                datos={items.data} 

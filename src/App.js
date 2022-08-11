@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
+import Inicio from "./pages/Inicio";
 import Facebook from './pages/Facebook';
 import Instagram from './pages/Instagram';
 import Twitter from "./pages/Twitter";
@@ -31,7 +32,8 @@ function App() {
           <BrowserRouter>
           <Layout> 
           <Routes> 
-            <Route path="/" element={<Facebook/>} exact />
+          <Route path="/" element={<Inicio/>} exact />
+            <Route path="/facebook" element={<Facebook/>} exact />
             <Route path="/instagram" element={<Instagram/>} exact />
             <Route path="/twitter" element={<Twitter/>} exact />
             <Route path="/googlemybussines" element={<GoogleMyBussines/>} exact />

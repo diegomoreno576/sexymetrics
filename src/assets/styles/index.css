@@ -32,7 +32,14 @@ a:active, a:focus, a:hover {
 .PageTitle {
   text-align: center;
 }
-
+@media only screen and (max-width: 800px){
+  .Ancl {
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+}
 
 
 

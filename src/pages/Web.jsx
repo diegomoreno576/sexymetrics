@@ -162,11 +162,11 @@ const Web = () => {
         })}
       </div>
       <div className="row">
-      <div className="chartCountries col-6">
+      <div className="chartCountries col-lg-6 col-12">
           <h5 className="Subtitle">PAÍSES DE LOS VISITANTES</h5>
           <ChartCountries data={Webcountry} />
         </div>
-        <div className="charsex col-6">
+        <div className="charsex col-lg-6 col-12">
           <h5 className="Subtitle">
           CIUDADES DE LOS VISITANTES
             </h5>
@@ -175,7 +175,7 @@ const Web = () => {
           </div>
         </div>
 
-        <div className="charsex col-6">
+        <div className="charsex col-lg-6 col-12">
           <h5 className="Subtitle">
            Páginas Vistas
             </h5>
@@ -183,7 +183,7 @@ const Web = () => {
           <CitiesList data={Webreferers}/>
           </div>
         </div>
-        <div className="Subtitle chartGender col-6">
+        <div className="Subtitle chartGender col-lg-6 col-12">
           <h5>Fuentes de Tráfico</h5>
 
           <div className="ListCities">
