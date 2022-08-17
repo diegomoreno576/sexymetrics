@@ -1,6 +1,6 @@
 import React from 'react'
-import MonthYearCalendar from "./MonthCalendar";
-import '../assets/styles/components/Navbar.css';
+import MonthYearCalendar from "../MonthCalendar";
+import '../../assets/styles/components/Navbar.css';
 
 
 const Navbar = () => {

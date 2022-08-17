@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import useData from "../hooks/useData";
 import { ThemeContext } from "../context";
-import SeccionesGraficas from "../components/SeccionesGraficas";
-import PublicationList from "../components/PublicationList";
+import SeccionesGraficas from "../components/charts/SeccionesGraficas";
+import PublicationList from "../components/Lists/PublicationList";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

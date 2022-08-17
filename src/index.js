@@ -5,6 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './context';
 import { UserContextProvider } from './context/userContext';
 import './assets/styles/index.css';
+import actionCable from 'actioncable';
+import { APP_CABLE_URL } from './constants';
+
+
+const CableApp = {};
+CableApp.cable = actionCable.createConsumer(APP_CABLE_URL);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +18,7 @@ root.render(
   <React.StrictMode>
     <UserContextProvider>
      <ThemeContextProvider>
-    <App />
+    <App cableApp={CableApp}/>
     </ThemeContextProvider>
     </UserContextProvider>
   </React.StrictMode>

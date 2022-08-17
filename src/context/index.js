@@ -15,6 +15,7 @@ const endPast = String(date.getFullYear() + String(date.getMonth()).padStart(2, 
 const ThemeContext = createContext({});
 const initialState = {
   isLoggedIn: false,
+  currentuser:[],
   loginError: null,
   darkmode: true,
   FbDatos: [],

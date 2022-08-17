@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import CustomTuiCalendar from "../components/CustomTuiCalendar";
-import CustomTuiModal from "../components/CustomTuiModal";
+import CustomTuiCalendar from "../components/calendar/CustomTuiCalendar";
+import CustomTuiModal from "../components/calendar/CustomTuiModal";
 import useData from "../hooks/useData";
 import Spinner from 'react-bootstrap/Spinner';
 

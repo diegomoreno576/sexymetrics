@@ -1,5 +1,11 @@
+@import "./../ThemeColor.css";
+
 .mainContainer {
     margin-top: 9em !important;
+}
+.mainApp {
+    background-color: var(--App-color);
+    color: var(--Text-color);
 }
 .Subtitle {
     padding: 2em;

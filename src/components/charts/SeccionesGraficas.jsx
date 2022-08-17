@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import MixedGrafica from '../components/MixedGrafica';
-import BotonGrafica from '../components/BotonGrafica';
-import '../assets/styles/components/seccionesGraficas.css';
+import MixedGrafica from './MixedGrafica';
+import BotonGrafica from './BotonGrafica';
+import '../../assets/styles/components/seccionesGraficas.css';
 
 const SeccionesGraficas = (props) => {
     

@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/styles/components/PublicationList.css";
+import "../../assets/styles/components/PublicationList.css";
 
 
 const PublicationList = (props) => {

@@ -1,32 +1,35 @@
 import { useCallback, useContext, useState, useEffect } from "react"
+import { ThemeContext } from '../context';
+import { setCurrentuser } from "../actions";
 import  UserContext  from "../context/userContext"
 import loginService from "../services/login"
 
 export default function useUser () {
 
     const { jwt, setJWT } = useContext(UserContext)
+    const [state, dispatch] = useContext(ThemeContext);
    
-    const [state, setState] = useState( {loading: false, error: false} )
+    const [loading, setloading] = useState( {loading: false, error: false} )
 
     const login = useCallback(({user:{ username, password }}) => {
-        setState({loading: true, error: false})
+        setloading({loading: true, error: false})
 
     loginService({user:{ username, password }})
         .then(data => {
+            dispatch(setCurrentuser(data.user.data));
             window.sessionStorage.setItem('jwt', data.token)
             window.sessionStorage.setItem('blog', JSON.stringify(data.blog) )
-            setState({loading: false, error: false})
+            setloading({loading: false, error: false})
             setJWT(data.token)
         })
         .catch(err => {
             window.sessionStorage.removeItem('jwt', jwt)
             window.sessionStorage.removeItem('blog')
-            setState({loading: false, error: true})
+            setloading({loading: false, error: true})
             console.error(err)
         })
     }, [setJWT])
 
- 
 
 
 
@@ -37,11 +40,10 @@ export default function useUser () {
         window.sessionStorage.removeItem('blog')
     })    
 
-
     return {
         isLogged: Boolean(jwt),
-        isLoginLoading: state.loading,
-        hasLoginError: state.error,
+        isLoginLoading: loading.loading,
+        hasLoginError: loading.error,
         login,
         logout
         

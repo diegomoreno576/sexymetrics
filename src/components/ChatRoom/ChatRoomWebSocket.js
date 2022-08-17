@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
+import React,{useEffect} from 'react'
 
-class ChatroomWebSocket extends Component {
-    componentDidMount() {
-        // used getRoomData() to render data on ChatroomShow component
-        this.props.getRoomData(window.location.href.match(/\d+$/)[0])
-        // the to send params to the subscribed action in ChatroomsChannel
-        this.props.cableApp.room = this.props.cableApp.cable.subscriptions.create({
-            channel: 'ChatroomsChannel',
-            room: window.location.href.match(/\d+$/)[0]
-        }, 
-        {
-            received: (updatedRoom) => {
-                this.props.updateApp(updatedRoom)
-            }
-        })
-    }
+const ChatRoomWebSocket = (props) => {
 
-    render() {
-        return (
-            <div></div>
-        )
-    }
+    useEffect(() => {
+      // used getRoomData() to render data on ChatroomShow component
+      props.getRoomData(window.location.href.match(/\d+$/)[0])
+      // the to send params to the subscribed action in ChatroomsChannel
+      props.cableApp.room = props.cableApp.cable.subscriptions.create({
+          channel: 'ChatroomsChannel',
+          room: window.location.href.match(/\d+$/)[0]
+      }, 
+      {
+          received: (updatedRoom) => {
+              props.updateApp(updatedRoom)
+          }
+      }) 
+    }, [])
+    
+
+  return (
+    <div></div>
+  )
 }
 
-export default ChatroomWebSocket
+export default ChatRoomWebSocket

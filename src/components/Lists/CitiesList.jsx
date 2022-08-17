@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/styles/components/CitiesList.css'
+import '../../assets/styles/components/CitiesList.css'
 
 const CitiesList = (props) => {
     

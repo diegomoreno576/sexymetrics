@@ -10,6 +10,7 @@ export default function loginService ({user:{ username, password }}) {
         body: JSON.stringify({user:{ username, password }})
         
     }).then(res=> {
+        
         if (!res.ok) throw new Error('Response is no ok')
         return res.json()
     }).then(res=> {

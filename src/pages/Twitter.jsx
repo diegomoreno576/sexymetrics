@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import useData from "../hooks/useData";
 import { ThemeContext } from "../context";
-import SeccionesGraficas from "../components/SeccionesGraficas";
+import SeccionesGraficas from "../components/charts/SeccionesGraficas";
 import useTimeLine from "../hooks/useTimeLine";
 import useCount from "../hooks/useCount";
 

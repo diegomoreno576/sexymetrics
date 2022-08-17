@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from '../context';
-import  UserContext  from "../context/userContext"
 import { setLoading } from '../actions';
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import ApexCharts from "apexcharts";
 import Chart from "react-apexcharts";
-import "../assets/styles/components/MixedGrafica.css";
+import "../../assets/styles/components/MixedGrafica.css";
 
 function MixedGrafica(props) {
 

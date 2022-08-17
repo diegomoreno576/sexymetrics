@@ -7,10 +7,10 @@ import { RiHome6Fill } from "react-icons/ri";
 import {  AiOutlineGlobal } from "react-icons/ai";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import DarkMode from "./DarkMode";
-import '../assets/styles/components/SideBar.css';
-import Logout from "./auth/Logout";
-import Avatar from "./Avatar"
+import DarkMode from "../DarkMode";
+import '../../assets/styles/components/SideBar.css';
+import Logout from "../auth/Logout";
+import Avatar from "../Avatar"
 
 
 const routes = [
@@ -64,11 +64,16 @@ const routes = [
     name: "Planificación",
     icon: <BsCalendarRange />,
   },
+  {
+    path: "/chat",
+    name: "Chat",
+    icon: <BsCalendarRange />,
+  },
 ];
 
 const Sidebar = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
 
 
@@ -81,7 +86,7 @@ const Sidebar = () => {
       },
     },
     show: {
-      width: "180px",
+      width: "260px",
       padding: "5px 15px",
       transition: {
         duration: 0.2,
@@ -112,7 +117,7 @@ const Sidebar = () => {
 
         <motion.div
           animate={{
-            width: isOpen ? "240px" : "60px",
+            width: isOpen ? "400px" : "60px",
 
             transition: {
               duration: 0.5,

@@ -1,7 +1,7 @@
 import React from 'react'
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
-import '../assets/styles/components/ChartPie.css';
+import '../../assets/styles/components/ChartPie.css';
 
 const ChartPie = (props) => {
 

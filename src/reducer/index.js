@@ -8,6 +8,11 @@ const reducer = (state, action) => {
         isLoggedIn: action.payload,
         Loading: false,
       };
+      case types.SET_CURRENTUSER:
+        return {
+          ...state,
+          currentuser: action.payload,
+        };
       case types.SET_BLOG_ID:
         return {
           ...state,

@@ -2,8 +2,10 @@
 html[data-theme='dark'] {
     --App-color: #333;
     --Text-color:  white;
+    --BlackAndGray: #181818;
   }
   html[data-theme='light'] {
     --App-color:  #f1f1f1;
     --Text-color:  #333;
+    --BlackAndGray: #d8d8d8;
   }

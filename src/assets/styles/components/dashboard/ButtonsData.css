@@ -1,0 +1,29 @@
+@import "./../../ThemeColor.css";
+.DashboardsThree {
+    height: 64px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+.MinDashboarTreBtn {
+    height: 100%;
+    padding-top: 10px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.BtnDashboardTotal {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+}
+.BtnDashboardname {
+    background-color: white;
+    width: 92%;
+    font-size: 0.7em;
+    padding: 1px;
+    color: black;
+    border-radius: 20px;
+    text-align: center;
+}

@@ -49,7 +49,7 @@ const ChatRooms = (props) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'token': localStorage.getItem("jwt")
+                'token': sessionStorage.getItem("jwt") 
             } 
         })
         .then(response => response.json())

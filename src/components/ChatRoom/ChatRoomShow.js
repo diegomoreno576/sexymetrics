@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect, useState } from 'react';
+import React, {Fragment, useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -11,6 +11,7 @@ import avatar from './img/avatar.jpg';
 import { APP_URL } from '../../constants';
 import ChatMessage from './ChatMessage';
 import ChatroomWebSocket from './ChatRoomWebSocket';
+import { ThemeContext } from '../../context';
 
 const styles = theme => ({
     table: {
@@ -32,71 +33,92 @@ const styles = theme => ({
     }
 });
 
+const ChatRoomShow = (props) => {
+    const [ messageText, setmessageText] = useState([])
 
-class ChatRoomShow extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            messageText: []
-        }
-    }
-
-    handleChange = (e) => {
+    const handleChange = (e) => {
         e.preventDefault()
-        this.setState({
-            messageText: e.target.value
-        })
+        setmessageText( e.target.value)
     }   
-    
-    handleSendMessage = (e) => {
-        e.preventDefault();
-        
-        const message = {
-            body: this.state.messageText,
-            chatroom_id: this.props.roomData.chatroom.id
+    const handleKeyDown = (e) => {
+        if(e.key === "Enter"){
+           console.log("enter")
+           const message = {
+            body: messageText,
+            chatroom_id: props.roomData.chatroom.id
         }
 
+    
         fetch(`${APP_URL}/api/v1/messages`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                'token': localStorage.getItem("jwt")
+                'token': sessionStorage.getItem("jwt") 
             },
             body: JSON.stringify({
                 message: message, 
-                user_id: this.props.currentUser.attributes.id
+                user_id: props.currentUser.attributes.id
             })
         })
         .then(resp => resp.json())
         .then(result => {
             let messageDiv = document.getElementById('messages')
             messageDiv.scrollTop = messageDiv.scrollHeight
-            this.setState({
-                messageText: ''
+            setmessageText('')
+        })
+        }
+      }
+
+   
+   const handleSendMessage = (e) => {
+        e.preventDefault();
+        
+        const message = {
+            body: messageText,
+            chatroom_id: props.roomData.chatroom.id
+        }
+
+    
+        fetch(`${APP_URL}/api/v1/messages`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                'token': sessionStorage.getItem("jwt") 
+            },
+            body: JSON.stringify({
+                message: message, 
+                user_id: props.currentUser.attributes.id
             })
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            let messageDiv = document.getElementById('messages')
+            messageDiv.scrollTop = messageDiv.scrollHeight
+            setmessageText('')
         })
     }
 
-    whichUser = (message) => {
-        const user = this.props.roomData.users.data.find(user => parseInt(user.id) === message.user_id )
+    const whichUser = (message) => {
+        const user = props.roomData.users.data.find(user => parseInt(user.id) === message.user_id )
         return user
     }
 
-    displayMessages = (messages) => {
+    const displayMessages = (messages) => {
         return messages.map(message => {
-            const user = this.whichUser(message)
+            const user = whichUser(message)
             return (
                 message.body !== null ? 
-                    <ChatMessage key={message.id} message={message} user={user} currentUser={this.props.currentUser}/> :
+                    <ChatMessage key={message.id} message={message} user={user} currentUser={props.currentUser}/> :
                     <div></div>
             )
         }) 
     }
 
-    render() {
-        const { classes } = this.props;
-        console.log('messages ==>', this.props.roomData.messages)
+ 
+        const { classes } = props;
+        console.log('messages ==>', props.roomData.messages)
         return(
             <Fragment>
                 <div>
@@ -107,9 +129,9 @@ class ChatRoomShow extends Component {
                                     <Grid item xs={12}>
                                         <div id='chat-feed'>
                                             <h3>Chat Feed:</h3>
-                                            <div id='messages'>
-                                                { this.props.roomData.messages !== undefined && this.props.roomData.messages.length > 0 ? (
-                                                    this.displayMessages(this.props.roomData.messages)
+                                            <div id='messages'> 
+                                                { props.roomData.messages !== undefined && props.roomData.messages.length > 0 ? (
+                                                    displayMessages(props.roomData.messages)
                                                 ) : (
                                                     <h3>This room has no messages yet - be the first to post!</h3>
                                                 ) }
@@ -122,24 +144,25 @@ class ChatRoomShow extends Component {
                         <Divider />
                         <Grid container style={{padding: '20px'}}>
                             <Grid item xs={11}>
-                                <TextField id="outlined-basic-email" label="Type Something" value={this.state.messageText} onChange={this.handleChange} fullWidth />
+                                <TextField id="outlined-basic-email" label="Type Something" value={messageText} onChange={handleChange} onKeyDown={handleKeyDown} fullWidth />
                             </Grid>
                             <Grid xs={1} align="right">
-                                <Fab color="primary" aria-label="add" onClick={this.handleSendMessage}><SendIcon /></Fab>
+                                <Fab color="primary" aria-label="add" onClick={handleSendMessage}><SendIcon /></Fab>
                             </Grid>
                         </Grid>
                     </Grid>
     
                     <ChatroomWebSocket
-                        cableApp={this.props.cableApp}
-                        getRoomData={this.props.getRoomData}
-                        roomData={this.props.roomData}
-                        updateApp={this.props.updateApp}
+                        cableApp={props.cableApp}
+                        getRoomData={props.getRoomData}
+                        roomData={props.roomData}
+                        updateApp={props.updateApp}
                     />
                 </div>
+               
             </Fragment>
         )
     }
-}
+
 
 export default withStyles(styles)(ChatRoomShow);

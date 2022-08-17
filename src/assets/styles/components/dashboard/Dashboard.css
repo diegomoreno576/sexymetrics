@@ -1,0 +1,37 @@
+@import "./../../ThemeColor.css";
+
+.ScheshuleMonth {
+    width: 100%;
+    font-size: 1em;
+    padding: 1.5em;
+    background-color: var(--BlackAndGray);
+    border-radius: 10px;
+    color: var(--Text-color);
+    font-weight: 400;
+}
+.Resumen {
+    margin-top: 4em;
+}
+.mainResumenTitle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.mainDashboard {
+    padding: 1em 3em 1em 1em;
+}
+.CountrysMax, .CountrysCity {
+    width: 49%;
+    background-color: var(--BlackAndGray);
+    border-radius: 10px;
+    padding: 0.5em;
+    text-align: center;
+    color: var(--color-fuente);
+}
+.mainDatabuttons {
+    margin-top: 0.3em !important;
+}
+.mainAgeSex {
+    margin-top: 1.7em !important;
+    margin-bottom: 1.5em;
+}

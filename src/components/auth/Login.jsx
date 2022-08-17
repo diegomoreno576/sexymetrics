@@ -29,7 +29,6 @@ const Login = () => {
             duration={0.5}
             delay={0}
           >
-          dsfdggfdsdfggfdsdfb
           </ScrollAnimation>
         <div className="row">
           <div className="login-left-col col-3 animate__animated animate__fadeInRight">
