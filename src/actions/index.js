@@ -4,6 +4,10 @@ const setBlog_id = (payload) => ({
   type: types.SET_BLOG_ID,
   payload,
 });
+const setchangeLayout = (payload) => ({
+  type: types.SET_CHANGELAYOUT,
+  payload,
+});
 const setCurrentuser = (payload) => ({
   type: types.SET_CURRENTUSER,
   payload,
@@ -47,4 +51,4 @@ const setTimeEndPast = (payload) => ({
 });
 
 
-export {setBlog_id, setCurrentuser, setIslogin, setLoginError, setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast};
+export {setBlog_id,setchangeLayout, setCurrentuser, setIslogin, setLoginError, setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast};

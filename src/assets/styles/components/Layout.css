@@ -1,7 +1,7 @@
 @import "./../ThemeColor.css";
 
 .mainContainer {
-    margin-top: 9em !important;
+    margin-top: 4em !important;
 }
 .mainApp {
     background-color: var(--App-color);

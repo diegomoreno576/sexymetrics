@@ -16,17 +16,23 @@
     z-index: 5;
     display: inline-block;
     outline: none;
+    text-align: center;
     cursor: pointer;
-    color: #ec00f5;
-    border: 1px solid #e5e5ea;
+    width: 100% !important;
+    color: white;
+    border: 0px solid #e5e5ea;
+    background-color: transparent !important;
     padding-left: 44px;
+}
+button.rs-btn.rs-btn-link.rs-btn-sm {
+    color: white;
 }
 /* calander align */
 .rs-picker-toggle-caret {
     display: inline-block;
     top: 8px;
     font-weight: normal;
-    color: #ec00f5;
+    color: white;
 }
 .rs-picker-daterange-header {
     display: none;
@@ -56,8 +62,5 @@ span.rs-picker-toggle-clean.rs-btn-close{
     display: none ;
 }
 .rs-picker-menu {
-    left: 73% !important;
-    position: fixed;
-    text-align: left;
-    z-index: 999999999999999999999999;
+    z-index: 999999;
 }

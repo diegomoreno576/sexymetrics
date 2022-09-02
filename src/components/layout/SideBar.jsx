@@ -1,16 +1,19 @@
-import { NavLink } from "react-router-dom";
 import { FaBars, FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsTwitter, BsLinkedin, BsCalendarRange } from "react-icons/bs";
 import { SiGooglemybusiness, SiGoogleads} from "react-icons/si";
 import { MdCampaign} from "react-icons/md";
 import { RiHome6Fill } from "react-icons/ri";
 import {  AiOutlineGlobal } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { ThemeContext } from "../../context";
 import { AnimatePresence, motion } from "framer-motion";
 import DarkMode from "../DarkMode";
 import '../../assets/styles/components/SideBar.css';
 import Logout from "../auth/Logout";
-import Avatar from "../Avatar"
+import Avatar from "../Avatar";
+import  SelectorRedes from "../SelectorRedes";
+import MonthYearCalendar from "../MonthCalendar";
+import { setchangeLayout } from "../../actions";
 
 
 const routes = [
@@ -72,9 +75,13 @@ const routes = [
 ];
 
 const Sidebar = () => {
-
+  const [state, dispatch] = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
+ 
+  useEffect(() => {
+    dispatch(setchangeLayout(isOpen));
+  }, [isOpen]);
 
 
   const inputAnimation = {
@@ -89,7 +96,7 @@ const Sidebar = () => {
       width: "260px",
       padding: "5px 15px",
       transition: {
-        duration: 0.2,
+        duration: 0,
       },
     },
   };
@@ -99,14 +106,14 @@ const Sidebar = () => {
       width: 0,
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0,
       },
     },
     show: {
       opacity: 1,
       width: "auto",
       transition: {
-        duration: 0.5,
+        duration: 0,
       },
     },
   };
@@ -117,20 +124,34 @@ const Sidebar = () => {
 
         <motion.div
           animate={{
-            width: isOpen ? "400px" : "60px",
+            width: isOpen ? "25%" : "90px",
 
             transition: {
-              duration: 0.5,
+              duration: 0,
               type: "spring",
               damping: 10,
             },
           }}
           className={`sidebar `}
         >
-          <div className="top_section">
+          <div onClick={toggle} className="buttonFlag">
+          <div class="row">
+            <div class="">
+              <div class="toogleBarButton">
+                <i class={isOpen ? "menuIconCloseOpen fa-solid fa-angles-left" : "menuIconCloseOpen fa-solid fa-angles-right"}></i>
+                </div>
+               </div>
+            </div>
+          </div>
+
+          <div className="HeaderSection">
           <div className="sidebarName">
             <AnimatePresence>
-              {isOpen && (
+            <Avatar/>
+            
+            </AnimatePresence>
+            </div>
+            {isOpen && (
                 <motion.h1
                   variants={showAnimation}
                   initial="hidden"
@@ -138,49 +159,23 @@ const Sidebar = () => {
                   exit="hidden"
                   className="logo"
                 >
-                  <Avatar/>
+               <div className="UltilsButtons">
+                  <DarkMode/>
+                      <Logout/>
+                    
+                  </div>
                 
                 </motion.h1>
               )}
-            </AnimatePresence>
-            </div>
-            <div className="bars">
-              <FaBars onClick={toggle} />
-            </div>
+           
+           
           </div>
-          <div className="UltilsButtons">
-                  <DarkMode/>
-                      <Logout/>
-                  </div>
+         
+                 
           <section className="routes">
-            {routes.map((route, index) => {
-            
-
-              return (
-                <NavLink
-                  to={route.path}
-                  key={index}
-                  className="link"
-                  activeClassName="active"
-                >
-                  <div className="icon">{route.icon}</div>
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        variants={showAnimation}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                        className="link_text"
-                      >
-                        {route.name}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </NavLink>
-              );
-            })}
-            
+          <SelectorRedes/>
+     
+            <MonthYearCalendar/>
           </section>
         </motion.div>
       </div>

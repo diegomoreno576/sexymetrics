@@ -1,0 +1,46 @@
+.Redesdropdown-content {
+    background-color: #12307c;
+    left: 0px;
+    text-align: initial;
+    margin-left: 0;
+    padding-left: 0;
+    top: 0px;
+    height: 360px;
+    overflow: auto;
+    width: 100%;
+}
+
+.RedesIcono {
+    width: 30px;
+    height: 30px;
+}
+.Redesdropdown {
+    padding: 1.3em;
+}
+a.RedesLink:hover {
+    background-color: blue;
+    box-shadow: 0em 0em 2em 0em blue;
+    transition-duration: 300ms;
+}
+.Redesdropdown-btn {
+    background-color: #12307c;
+    padding: 2em;
+    cursor: pointer;
+}
+a.RedesLink {
+    padding: 1em;
+    display: block;
+    font-size: 22px;
+    color: var(--Text-color);
+    gap: 10px;
+}
+.RedesText {
+    font-size: 17px;
+    margin-left: 1em;
+}
+.IconoCaret{
+    float: right;
+}
+.active{
+    display: none !important;
+}

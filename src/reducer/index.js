@@ -2,6 +2,12 @@ import types from "../actions/types";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case types.SET_CHANGELAYOUT:
+      return {
+        ...state,
+        changeLayout: action.payload,
+        Loading: false,
+      };
     case types.SET_LOGIN:
       return {
         ...state,

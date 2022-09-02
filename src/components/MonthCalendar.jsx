@@ -48,7 +48,7 @@ const MonthCalendar = () => {
 
 
   return (
-    <DateRangePicker ranges={Ranges} size="lg" format="dd-MM-yyyy" value={value} onChange={setValue} />
+    <DateRangePicker className='MonthCalendar' ranges={Ranges}  format="dd-MM-yyyy" value={value} onChange={setValue} />
   )
 }
 
