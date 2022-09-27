@@ -1,11 +1,9 @@
 .Redesdropdown-content {
     background-color: #12307c;
     left: 0px;
-    text-align: initial;
-    margin-left: 0;
-    padding-left: 0;
-    top: 0px;
+    z-index: 99;
     height: 360px;
+    position: absolute;
     overflow: auto;
     width: 100%;
 }
@@ -21,10 +19,11 @@ a.RedesLink:hover {
     background-color: blue;
     box-shadow: 0em 0em 2em 0em blue;
     transition-duration: 300ms;
+    color: white;
 }
 .Redesdropdown-btn {
     background-color: #12307c;
-    padding: 2em;
+    padding: 1em;
     cursor: pointer;
 }
 a.RedesLink {

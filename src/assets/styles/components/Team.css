@@ -1,0 +1,33 @@
+.notecopiesLogoimg img{
+    width: 110px;
+}
+.notecopiesLogoimg{
+    display: flex;
+    justify-content: center;
+}
+.avatarImg img{
+    width: 50px;
+}
+.TeamContainer {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.avatarItem {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+.avatarWorking {
+    margin-top: 12px;
+}
+.avatarDescriptcion {
+    margin-top: 9px;
+}
+.mainAvatarTeam {
+    margin-top: 1em;
+}
+.avatarList {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}

@@ -14,7 +14,6 @@ const endPast = String(date.getFullYear() + String(date.getMonth()).padStart(2, 
 
 const ThemeContext = createContext({});
 const initialState = {
-  changeLayout: true,
   isLoggedIn: false,
   currentuser:[],
   loginError: null,

@@ -23,6 +23,7 @@ import 'animate.css';
 
 function App(props) {
   const [state, dispatch] = useContext(ThemeContext);
+  console.log(state)
   const {currentuser} = state
   const [currentUserRooms, setcurrentUserRooms] = useState([])
   const [currentRoom, setcurrentRoom] = useState({

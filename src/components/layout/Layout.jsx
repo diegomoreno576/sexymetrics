@@ -1,11 +1,11 @@
 import React,{useContext} from 'react'
-import { ThemeContext } from '../../context';
+import { LayoutContext } from '../../context/layoutContext';
 import Sidebar from './SideBar'
 import '../../assets/styles/components/Layout.css';
 import Footer from './Footer';
 
 const Layout = ({children}) => {
-  const [state, dispatch] = useContext(ThemeContext);
+  const [state, dispatch] = useContext(LayoutContext);
   const  changeLayout  = state.changeLayout;
   
   return (

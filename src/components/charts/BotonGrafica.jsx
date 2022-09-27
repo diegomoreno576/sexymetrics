@@ -28,7 +28,7 @@ function BotonGrafica(props) {
   }, [state.TimeStart, state.TimeEnd]);
   
 
-  if(props.datos.length == 0){
+  if(props.datos.length == 0 || state.Loading == true){
     return (
       <div
       style={styles.ChartBtn}

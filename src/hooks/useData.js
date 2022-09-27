@@ -16,7 +16,8 @@ const useData = (API_URL, START, END) => {
       .catch((error) => console.log(error.message));
       
       dispatch(setLoading(false));
-    
+   
+  
   }, [state.TimeStart, state.TimeEnd]);
   return Data;
 };

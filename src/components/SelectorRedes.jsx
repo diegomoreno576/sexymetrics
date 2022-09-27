@@ -78,9 +78,10 @@ const SelectorRedes = () => {
           <span
             className={isActive ? "IconoCaret fas fa-caret-up" : "IconoCaret fas fa-caret-down"}
           />
-        </div>
+        
 
-        <div className="Redesdropdown-content" style={{ display: isActive ? "block" : "none" }} >
+        <div className="Redesdropdown-content" style={{ display: isActive ? "block" : "none" }}>  
+        <div  className="Redesdropdown-contentChild" >
 
           {routes.map((route, index) => {
             
@@ -112,7 +113,8 @@ const SelectorRedes = () => {
             );
           })}
      
-         
+     </div>
+        </div>
         </div>
       </div>
     </div>

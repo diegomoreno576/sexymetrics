@@ -62,5 +62,51 @@ span.rs-picker-toggle-clean.rs-btn-close{
     display: none ;
 }
 .rs-picker-menu {
-    z-index: 999999;
+    position: fixed;
+    width: 25%;
+    box-shadow: none;
 }
+.rs-picker-toolbar-right {
+    float: right;
+    width: 100%;
+}
+button.rs-btn.rs-btn-primary.rs-btn-sm {
+    width: 100% !important;
+    background-color: #12307c;
+    padding: 0.6em;
+    border-radius: 0;
+}
+.rs-picker-daterange-calendar-group {
+    width: 100%;
+    min-width: 100% !important;
+}
+.rs-calendar {
+    width: 50%;
+    min-width: 50% !important;
+}
+.rs-picker-toolbar {
+    padding: 11px 0px 0px 0px !important;
+}
+.rs-picker-toolbar-ranges {
+    padding-bottom: 0.5em;
+}
+span.rs-picker-toggle-value {
+    color: white !important;
+}
+svg.rs-picker-toggle-caret.rs-icon {
+    display: none;
+}
+.rs-picker-toggle-active, .rs-picker.rs-picker-focused {
+    box-shadow: none;
+}
+.MonthCalendar {
+    pointer-events: none;
+}
+button.rs-calendar-header-backward.rs-btn-icon, button.rs-calendar-header-forward {
+    background-color: #12307c;
+    border-radius: 100%;
+}
+.Redesdropdown-contentChild{
+    margin-top: 28px;
+}
+

@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './context';
 import { UserContextProvider } from './context/userContext';
+import { LayoutContextProvider } from './context/layoutContext';
 import './assets/styles/index.css';
 import actionCable from 'actioncable';
 import { APP_CABLE_URL } from './constants';
@@ -18,7 +19,9 @@ root.render(
   <React.StrictMode>
     <UserContextProvider>
      <ThemeContextProvider>
-    <App cableApp={CableApp}/>
+       <LayoutContextProvider>
+       <App cableApp={CableApp}/>
+      </LayoutContextProvider>
     </ThemeContextProvider>
     </UserContextProvider>
   </React.StrictMode>

@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import '../assets/styles/components/Avatar.css';
 import useData from '../hooks/useData';
+import { LayoutContext } from '../context/layoutContext';
 
 const Avatar = () => {
+  const [state, dispatch] = useContext(LayoutContext);
  
   //FbBody
   const Avatar = useData(
@@ -12,10 +14,13 @@ const Avatar = () => {
    return (
      <div className="mainAvatar">
        <div className="AvatarChild">
-         <div className="avatar">
+         <div className={state.changeLayout ? "avatar avatarOpen" : "avatar avatarClose" }>
            <img src={Avatar.picture} alt="" />
          </div>
-         <div className="AvatarName">{Avatar.label}</div>
+         {state.changeLayout == true && 
+          <div className="AvatarName">{Avatar.label}</div>
+         }
+        
        </div>
      </div>
    );

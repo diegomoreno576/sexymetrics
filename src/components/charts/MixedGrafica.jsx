@@ -7,6 +7,7 @@ function MixedGrafica(props) {
 
   return (
     <div className="ChartsMixed">
+      
       <Chart
         series={props.MixedData}
         options={{

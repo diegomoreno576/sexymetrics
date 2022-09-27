@@ -49,21 +49,25 @@ const reducer = (state, action) => {
       return {
         ...state,
         TimeStart: action.payload,
+        Loading: false,
       };
     case types.SET_TIMEEND:
       return {
         ...state,
         TimeEnd: action.payload,
+        Loading: false,
       };
     case types.SET_TIMEENDPAST:
       return {
         ...state,
         TimeStartPast: action.payload,
+        Loading: false,
       };
     case types.SET_TIMESTARTPAST:
       return {
         ...state,
         TimeEndPast: action.payload,
+        Loading: false,
       };
 
     default:

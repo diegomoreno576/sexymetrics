@@ -6,13 +6,19 @@
     align-items: center;
 }
 .avatar img {
-    width: 55px;
+    width: 50px;
 }
 .AvatarName {
     color: var(--Text-color);
+    font-size: 1.7em;
+}
+.avatarClose {
+    margin: 0.4em 0em 0.4em 0em;
+}
+.avatarOpen{
+    box-shadow: 0em 0em 5em 0.7em rgb(0 0 255);
 }
 .avatar {
-    box-shadow: 0em 0em 5em 0.7em rgb(0 0 255);
     margin-top: 0em;
     border-radius: 100%;
     margin-right: 0.5em;
@@ -32,6 +38,11 @@
     border-left-color: rgba(0,0,255,0.61);
 }
 .avatar img {
-    width: 55px;
     border-radius: 100%;
+}
+.avatarOpen img{
+    width: 55px;
+}
+.avatarClose img{
+    width: 45px;  
 }

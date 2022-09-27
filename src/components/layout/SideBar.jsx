@@ -1,20 +1,25 @@
 import { FaBars, FaFacebookF } from "react-icons/fa";
-import { BsInstagram, BsTwitter, BsLinkedin, BsCalendarRange } from "react-icons/bs";
-import { SiGooglemybusiness, SiGoogleads} from "react-icons/si";
-import { MdCampaign} from "react-icons/md";
+import {
+  BsInstagram,
+  BsTwitter,
+  BsLinkedin,
+  BsCalendarRange,
+} from "react-icons/bs";
+import { SiGooglemybusiness, SiGoogleads } from "react-icons/si";
+import { MdCampaign } from "react-icons/md";
 import { RiHome6Fill } from "react-icons/ri";
-import {  AiOutlineGlobal } from "react-icons/ai";
+import { AiOutlineGlobal } from "react-icons/ai";
 import { useState, useContext, useEffect } from "react";
-import { ThemeContext } from "../../context";
+import { LayoutContext } from "../../context/layoutContext";
 import { AnimatePresence, motion } from "framer-motion";
 import DarkMode from "../DarkMode";
-import '../../assets/styles/components/SideBar.css';
+import "../../assets/styles/components/SideBar.css";
 import Logout from "../auth/Logout";
 import Avatar from "../Avatar";
-import  SelectorRedes from "../SelectorRedes";
+import SelectorRedes from "../SelectorRedes";
 import MonthYearCalendar from "../MonthCalendar";
 import { setchangeLayout } from "../../actions";
-
+import Team from "../Team";
 
 const routes = [
   {
@@ -75,109 +80,60 @@ const routes = [
 ];
 
 const Sidebar = () => {
-  const [state, dispatch] = useContext(ThemeContext);
+  const [state, dispatch] = useContext(LayoutContext);
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
- 
   useEffect(() => {
     dispatch(setchangeLayout(isOpen));
   }, [isOpen]);
 
-
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      width: "260px",
-      padding: "5px 15px",
-      transition: {
-        duration: 0,
-      },
-    },
-  };
-
-  const showAnimation = {
-    hidden: {
-      width: 0,
-      opacity: 0,
-      transition: {
-        duration: 0,
-      },
-    },
-    show: {
-      opacity: 1,
-      width: "auto",
-      transition: {
-        duration: 0,
-      },
-    },
-  };
-
   return (
     <>
       <div className="main-container">
-
-        <motion.div
-          animate={{
-            width: isOpen ? "25%" : "90px",
-
-            transition: {
-              duration: 0,
-              type: "spring",
-              damping: 10,
-            },
-          }}
-          className={`sidebar `}
-        >
+        <div className={isOpen ? "sidebar" : "sidebar closeSidebar"}>
           <div onClick={toggle} className="buttonFlag">
-          <div class="row">
-            <div class="">
-              <div class="toogleBarButton">
-                <i class={isOpen ? "menuIconCloseOpen fa-solid fa-angles-left" : "menuIconCloseOpen fa-solid fa-angles-right"}></i>
+            <div class="row">
+              <div class="">
+                <div class="toogleBarButton">
+                  <i
+                    class={
+                      isOpen
+                        ? "menuIconCloseOpen fa-solid fa-angles-left"
+                        : "menuIconCloseOpen fa-solid fa-angles-right"
+                    }
+                  ></i>
                 </div>
-               </div>
+              </div>
             </div>
           </div>
-
-          <div className="HeaderSection">
-          <div className="sidebarName">
-            <AnimatePresence>
-            <Avatar/>
-            
-            </AnimatePresence>
-            </div>
-            {isOpen && (
-                <motion.h1
-                  variants={showAnimation}
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  className="logo"
-                >
-               <div className="UltilsButtons">
-                  <DarkMode/>
-                      <Logout/>
-                    
-                  </div>
-                
-                </motion.h1>
-              )}
-           
-           
-          </div>
-         
-                 
-          <section className="routes">
-          <SelectorRedes/>
      
-            <MonthYearCalendar/>
-          </section>
-        </motion.div>
+            <div className="sidebarElements">
+              <div className="HeaderSection">
+                <div className="sidebarName">
+                  <Avatar />
+                </div>
+
+                <div className="UltilsButtons">
+                  <DarkMode />
+                  <Logout />
+                </div>
+              </div>
+              <div className="logo">
+                <section className="MainTeam">
+                  <Team />
+                </section>
+                <section className="MainRedes">
+                  <SelectorRedes />
+                </section>
+              </div>
+              <div className="monthPicker">
+                <section className="mainCalendar">
+                  <MonthYearCalendar />
+                </section>
+              </div>
+            </div>
+
+        </div>
       </div>
     </>
   );

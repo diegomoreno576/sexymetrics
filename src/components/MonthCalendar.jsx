@@ -1,15 +1,17 @@
 import React, { useContext, useEffect} from 'react';
 import { DateRangePicker } from 'rsuite';
 import { ThemeContext } from '../context';
-import { setTimeStart } from '../actions';
+import { setLoading, setTimeStart } from '../actions';
 import { setTimeEnd } from '../actions';
 import { setTimeStartPast } from '../actions';
 import { setTimeEndPast } from '../actions';
 import { startOfDay, endOfDay, addDays, subDays } from 'date-fns';
 import 'rsuite/dist/rsuite.min.css';
 import "../assets/styles/components/MonthCalendar.css";
+import { LayoutContext } from '../context/layoutContext';
 
 const MonthCalendar = () => {
+  const [stateLayout, dispatchLayout] = useContext(LayoutContext);
   const [state, dispatch] = useContext(ThemeContext);
 
   let date = new Date();
@@ -28,8 +30,8 @@ const MonthCalendar = () => {
     dispatch(setTimeEnd(end));
     dispatch(setTimeStartPast(startPast));
     dispatch(setTimeEndPast(endPast));
+    dispatch(setLoading(true));
   }, [value]); 
-
   const Ranges = [
   
     {
@@ -37,19 +39,34 @@ const MonthCalendar = () => {
       value: [startOfDay(subDays(new Date(), 6)), endOfDay(new Date())]
     },
     {
-      label: 'Últimos 14 días',
-      value: [startOfDay(subDays(new Date(), 14)), endOfDay(new Date())]
+      label: 'Últimos 15 días',
+      value: [startOfDay(subDays(new Date(), 15)), endOfDay(new Date())]
     },
     {
       label: 'Últimos 30 días',
       value: [startOfDay(subDays(new Date(), 29)), endOfDay(new Date())]
     }
   ];
+  if(stateLayout.changeLayout == true){
+  
+    return (
+      <DateRangePicker
+       className='MonthCalendar'  
+       editable={false}
+       cleanable={false}
+       container={document.querySelector(".sidebarElements")}
+       block={true}
+        ranges={Ranges}
+        format="dd-MM-yyyy" 
+        value={value} 
+       open={true}
+        onChange={setValue} />
+    )
+  }
 
-
-  return (
-    <DateRangePicker className='MonthCalendar' ranges={Ranges}  format="dd-MM-yyyy" value={value} onChange={setValue} />
-  )
+  
 }
 
 export default MonthCalendar
+
+
