@@ -6,14 +6,30 @@ body {
   overflow-x: hidden;
   color: var(--Text-color);
 }
-
-
+.ancle-item {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  position: fixed;
+  z-index: 99999;
+  padding-top: 2rem;
+}
+.descripcion-container {
+  padding-top: 7em;
+}
+.Ancl.ancle-container {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+}
+.seccionTitle {
+  padding-top: 14em;
+}
 main {
   padding: 20px 10px;
 }
 .Ancl {
   margin-bottom: 4em;
-  margin-top: 1em;
 }
 a.SectionsAncles {
   box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
@@ -22,6 +38,15 @@ a.SectionsAncles {
   margin: 5px;
   background-color: var(--App-color);
   border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  
+}
+.bannerPrincipal{
+  background-repeat: no-repeat;
+}
+.colorActive{
+  background-color: #3a313a;
 }
 a {
   text-decoration: none;
@@ -29,9 +54,7 @@ a {
 a:active, a:focus, a:hover {
   text-decoration: none;
 }
-.PageTitle {
-  text-align: center;
-}
+
 @media only screen and (max-width: 800px){
   .Ancl {
     overflow: auto;

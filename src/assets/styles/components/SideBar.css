@@ -24,7 +24,7 @@
 .toogleBarButton {
   padding: 27px 10px 25px 4px;
   box-shadow: 20px 3px 2em 0px rgb(0 0 0 / 27%);
-  border-radius: 0px 100px 100px 0px;
+  border-radius: 0px 10px 10px 0px;
   cursor: pointer;
   height: 6em;
   width: 3em;

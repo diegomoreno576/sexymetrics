@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState,  Fragment } from "react";
 import useData from "../hooks/useData";
 import { ThemeContext } from "../context";
 import { setFbDatos } from "../actions";
@@ -14,113 +14,79 @@ import { settings } from "../slicks/slickConfig";
 import useCount from "../hooks/useCount";
 import ChartEdad from "../components/charts/ChartEdad";
 import CitiesList from "../components/Lists/CitiesList";
-
-
-
+import { useActiveMenu } from "react-active-menu";
+import PageBanner from '../components/PageBanner';
+import Banner from "../assets/img/Banner.png"
 
 const Facebook = () => {
   const [state, dispatch] = useContext(ThemeContext);
   const start = state.TimeStart;
   const end = state.TimeEnd;
   //Fecha pasada a la selecionada
-  const startPast =  state.TimeStartPast
-  const endPast =   state.TimeEndPast
- 
+  const startPast = state.TimeStartPast;
+  const endPast = state.TimeEndPast;
 
- 
+  const { registerContainer, registerSection, registerTrigger } = useActiveMenu(
+    {
+      smooth: true,
+    }
+  );
+
   //FbBody
-  const fbbody = useData(
-    `/stats/aggregations/Facebook`,
-   start, 
-   end
-   );
+  const fbbody = useData(`/stats/aggregations/Facebook`, start, end);
 
   //FbBodyPast
   const fbbodyPast = useData(
-     `/stats/aggregations/Facebook`,
-   startPast, 
-   endPast);
-
+    `/stats/aggregations/Facebook`,
+    startPast,
+    endPast
+  );
 
   // Crecimiento
 
-  const fbLikes = useData(
-    `/stats/timeline/facebookLikes`,
-   start,
-    end)
-    ;
+  const fbLikes = useData(`/stats/timeline/facebookLikes`, start, end);
   const fbLikesPast = useData(
     `/stats/timeline/facebookLikes`,
-   startPast, 
-   endPast
-   );
-
-  const fbFollows = useData(
-    `/stats/timeline/fbFollows`,
-   start, 
-   end
-   );
-  const fbUnFollows = useData(
-    `/stats/timeline/fbUnfollows`,
-   start,
-    end
-    );
-  
-  const fbPost = useData(
-    `/stats/timeline/fbPosts`,
-   start, 
-   end
-   );
-  const fbPostPast = useData(
-    `/stats/timeline/fbPosts`,
-   startPast,
+    startPast,
     endPast
-    );
+  );
+
+  const fbFollows = useData(`/stats/timeline/fbFollows`, start, end);
+  const fbUnFollows = useData(`/stats/timeline/fbUnfollows`, start, end);
+
+  const fbPost = useData(`/stats/timeline/fbPosts`, start, end);
+  const fbPostPast = useData(`/stats/timeline/fbPosts`, startPast, endPast);
 
   //Alcance
 
-  const fbImpresiones = useData(
-    `/stats/timeline/pageImpressions`,
-   start, 
-   end
-   );
+  const fbImpresiones = useData(`/stats/timeline/pageImpressions`, start, end);
 
- 
   //Click en la pagina
-  const fbctaClicks = useData(
-    `/stats/timeline/ctaClicks`, 
-  start, 
-  end
-  );
+  const fbctaClicks = useData(`/stats/timeline/ctaClicks`, start, end);
 
   const fbgetDirectionsClicks = useData(
     `/stats/timeline/getDirectionsClicks`,
-   start,
+    start,
     end
-    );
+  );
   const fbgetDirectionsClicksPast = useData(
     `/stats/timeline/getDirectionsClicks`,
-   startPast,
+    startPast,
     endPast
-    );
+  );
 
   const fbcallPhoneClicks = useData(
     `/stats/timeline/callPhoneClicks`,
-   start,
-   end
-   );
+    start,
+    end
+  );
   const fbcallPhoneClicksPast = useData(
     `/stats/timeline/callPhoneClicks`,
-   startPast,
-   endPast
-   );
+    startPast,
+    endPast
+  );
 
-  const fbpageViews = useData(
-    `/stats/timeline/pageViews`, 
-  start,
-   end
-   );
-
+  const fbpageViews = useData(`/stats/timeline/pageViews`, start, end);
 
   //Publicaciones
   const fbDailyEngagement = useData(
@@ -180,38 +146,26 @@ const Facebook = () => {
     endPast
   );
 
-  const fbComments = useData(
-    `/stats/timeline/fbComments`
-    , start, 
-    end
-    );
-    const fbCommentsPast = useData(
-      `/stats/timeline/fbComments`
-      , startPast, 
-      endPast
-      );
+  const fbComments = useData(`/stats/timeline/fbComments`, start, end);
+  const fbCommentsPast = useData(
+    `/stats/timeline/fbComments`,
+    startPast,
+    endPast
+  );
 
-  const fbdailyShares = useData(
+  const fbdailyShares = useData(`/stats/timeline/dailyShares`, start, end);
+  const fbdailySharesPast = useData(
     `/stats/timeline/dailyShares`,
-     start, 
-     end
-     );
-     const fbdailySharesPast = useData(
-      `/stats/timeline/dailyShares`,
-       startPast, 
-       endPast
-       );
+    startPast,
+    endPast
+  );
 
-  const fbdailyClicks = useData(
+  const fbdailyClicks = useData(`/stats/timeline/dailyClicks`, start, end);
+  const fbdailyClicksPast = useData(
     `/stats/timeline/dailyClicks`,
-     start,
-      end
-      );
-      const fbdailyClicksPast = useData(
-        `/stats/timeline/dailyClicks`,
-         startPast,
-          endPast
-          );    
+    startPast,
+    endPast
+  );
 
   //Sexo
   const fbsexo = useData(`/stats/gender/facebook`, start, end);
@@ -231,13 +185,15 @@ const Facebook = () => {
     return +key;
   });
 
- 
   const FbDatosCrecimiento = [
     {
       data: useTimeLine(fbLikes),
       dataNumber:
         fbLikes.length !== 0 ? parseInt(fbLikes[fbLikes.length - 1][1], 0) : "",
-      dataNumberPast: fbLikesPast.length !== 0 ? parseInt(fbLikesPast[fbLikesPast.length - 1][1], 0) : "",
+      dataNumberPast:
+        fbLikesPast.length !== 0
+          ? parseInt(fbLikesPast[fbLikesPast.length - 1][1], 0)
+          : "",
       type: "line",
       id: "FbMG",
       name: "Me gusta",
@@ -467,77 +423,117 @@ const Facebook = () => {
   useEffect(() => {
     dispatch(setFbDatos(FbAllData));
   }, []);
+
+
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+      const onScroll = () => setOffset(window.pageYOffset);
+      // clean up code
+      window.removeEventListener('scroll', onScroll);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  console.log(offset); 
+
+
   return (
-    <div className="container">
-      <div className="Ancl">
-        {FbAllData.map((item) => {
-          return (
-            <a className="SectionsAncles" href={"#" + item.name}>
-              {item.name}
-            </a>
-          );
-        })}
-      </div>
-      <h3 className="PageTitle">VISIÓN GENERAL DE LA PÁGINA DE FACEBOOK</h3>
-      <div className="row">
-        {FbAllData.map((item) => {
-          return (
-            <SeccionesGraficas
-              id={item.id}
-              data={item.data}
-              timeLine={TimeLine}
-              name={item.name}
-              colors={item.colors}
-            />
-          );
-        })}
-      </div>
-
-      <div className="row">
-        <div className="charsex col-lg-6 col-12">
-          <h5 className="Subtitle">Sexo</h5>
-          <ChartPie data={fbsexo} />
-        </div>
-        <div className="Subtitle chartGender col-lg-6 col-12">
-          <h5>Edad</h5>
-
-          <ChartEdad data={fbage} horizontal={false} colors={["#fff176"]} gridShow={true} yaxisShow={true} height={350} labels={true}/>
-        </div>
-        <div className="chartCountries col-lg-6 col-12">
-          <h5 className="Subtitle">Paises de los Seguidores</h5>
-          <ChartCountries data={fbCountry} />
-        </div>
-        <div className="CitiesList col-lg-6 col-12">
-          <h5 className="Subtitle">Ciudades de los Seguidores</h5>
-          <div className="ListCities">
-          <CitiesList data={fbCity}/>
+    <Fragment>
+      <PageBanner />
+      <div
+        style={{ backgroundImage: `url(${Banner})` }}
+        className={
+          offset > 10 ? "bannerPrincipal " : "bannerPrincipal colorActive"
+        }
+      >
+        <div className="container">
+          <div className="Ancl ancle-container">
+            <div className="ancle-item">
+              {FbAllData.map((item) => {
+                return (
+                  <a
+                    ref={registerTrigger(item.name)}
+                    className="SectionsAncles"
+                    href={"#" + item.name}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
+            </div>
           </div>
-         
+
+         <div className="childContainer">
+          <div className="row">
+            {FbAllData.map((item) => {
+              return (
+                <SeccionesGraficas
+                  id={item.id}
+                  data={item.data}
+                  timeLine={TimeLine}
+                  name={item.name}
+                  colors={item.colors}
+                />
+              );
+            })}
+          </div>
+
+          <div className="row">
+            <div className="charsex col-lg-6 col-12">
+              <h5 className="Subtitle">Sexo</h5>
+              <ChartPie data={fbsexo} />
+            </div>
+            <div className="Subtitle chartGender col-lg-6 col-12">
+              <h5>Edad</h5>
+
+              <ChartEdad
+                data={fbage}
+                horizontal={false}
+                colors={["#fff176"]}
+                gridShow={true}
+                yaxisShow={true}
+                height={350}
+                labels={true}
+              />
+            </div>
+            <div className="chartCountries col-lg-6 col-12">
+              <h5 className="Subtitle">Paises de los Seguidores</h5>
+              <ChartCountries data={fbCountry} />
+            </div>
+            <div className="CitiesList col-lg-6 col-12">
+              <h5 className="Subtitle">Ciudades de los Seguidores</h5>
+              <div className="ListCities">
+                <CitiesList data={fbCity} />
+              </div>
+            </div>
+          </div>
+
+          <h3>Lista de Publicaciones</h3>
+          <Slider {...settings}>
+            {fbListPublications.map((item) => {
+              const fecha = new Date(item.timestamp).toDateString();
+
+              return (
+                <PublicationList
+                  picture={item.picture}
+                  link={item.link}
+                  fecha={fecha}
+                  type={item.type}
+                  clicks={item.clicks}
+                  text={item.text}
+                  Likes={item.reactions}
+                  linkclicks={item.linkclicks}
+                  puntos={parseInt(item.engagement)}
+                  reproducciones={item.videoViews}
+                />
+              );
+            })}
+          </Slider>
+         </div>
         </div>
       </div>
-
-      <h3>Lista de Publicaciones</h3>
-      <Slider {...settings}>
-        {fbListPublications.map((item) => {
-          const fecha = new Date(item.timestamp).toDateString();
-
-          return (
-            <PublicationList
-              picture={item.picture}
-              link={item.link}
-              fecha={fecha}
-              type={item.type}
-              clicks={item.clicks}
-              text={item.text}
-              Likes={item.reactions}
-              linkclicks={item.linkclicks}
-              puntos={parseInt(item.engagement)}
-              reproducciones={item.videoViews}
-            />
-          );
-        })}
-      </Slider>
-    </div>
+    </Fragment>
   );
 };
 

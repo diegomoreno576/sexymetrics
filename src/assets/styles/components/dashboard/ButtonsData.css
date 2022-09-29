@@ -4,6 +4,9 @@
     border-radius: 10px;
     height: 100%;
 }
+.buttonDashboard > div {
+    height: 260px;
+}
 .MinDashboarTreBtn {
     height: 100%;
     padding-top: 10px;

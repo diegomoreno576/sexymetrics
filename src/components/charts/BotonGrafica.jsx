@@ -94,7 +94,6 @@ function BotonGrafica(props) {
               },
               autoSelected: "zoom",
             },
-            height: 10,
             sparkline: {
               enabled: true,
             },
@@ -156,6 +155,7 @@ function BotonGrafica(props) {
             data: props.datos,
           },
         ]}
+        height={props.height ? props.height : 90}
         type={props.type}
       />
     </div>

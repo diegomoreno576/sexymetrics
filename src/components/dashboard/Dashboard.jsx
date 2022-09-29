@@ -17,7 +17,7 @@ export const Dashboard = (props) => {
 
      <div className="dashboardContainer">
      <div className="row">
-        <div key={props.dataGrafica.id} className="col-4">
+        <div key={props.dataGrafica.id} className="col-4 buttonDashboard">
           <BotonGrafica
             datos={props.dataGrafica.data}
             Timeline={props.timeLine}
@@ -28,6 +28,7 @@ export const Dashboard = (props) => {
             color={props.dataGrafica.color}
             dataNumber={props.dataGrafica.dataNumber}
             icono={props.dataGrafica.icono}
+            height={210}
           />
         </div>
 

@@ -55,4 +55,5 @@
 .buttonsItemsDown, .buttonsitems, .buttonsItemsDown, .col-item-posts  {
     padding-left: 7px !important;
     padding-right: 7px !important;
+    height: 100%;
 }
