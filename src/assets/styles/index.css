@@ -47,6 +47,7 @@ a.SectionsAncles {
 }
 .colorActive{
   background-color: #3a313a;
+  transition: background-color 1s ease;
 }
 a {
   text-decoration: none;
