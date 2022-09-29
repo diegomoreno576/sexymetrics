@@ -8,16 +8,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 1em 0em 2em 0em;
+    height: 100%;
 }
 .maxEdad {
-    color: var(--Text-color);
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 5px;
-    line-height: 1.4;
+    margin-left: 0px;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
     font-family: "Work Sans",sans-serif;
-    font-style: normal;
-    letter-spacing: 0em;
-    margin-top: 14px;
 }

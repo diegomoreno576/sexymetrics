@@ -106,7 +106,24 @@ button.rs-calendar-header-backward.rs-btn-icon, button.rs-calendar-header-forwar
     background-color: #12307c;
     border-radius: 100%;
 }
-.Redesdropdown-contentChild{
-    margin-top: 28px;
+button.rs-btn.rs-btn-primary.rs-btn-sm:hover {
+    background-color: blue;
+    box-shadow: 0em 0em 2em 0em blue;
+    transition-duration: 300ms;
 }
-
+.rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
+    background-color: #12307c;
+}
+.rs-calendar-table-cell-in-range:before {
+    background-color: blue;
+}
+.rs-btn-subtle {
+    color: white;
+}
+.rs-picker-menu .rs-calendar .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
+    background-color: #12307c;
+    color: #ffffff;
+}
+.rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
+    -webkit-box-shadow: inset 0 0 0 1px #12307c;
+}

@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../assets/styles/components/SelectorRedes.css";
+import useComponentVisible from '../hooks/useComponentVisible';
+import { LayoutContext } from "../context/layoutContext";
 const SelectorRedes = () => {
 
-    
-  const [isActive, setIsActive] = useState(false);
+  const [state, dispatch] = useContext(LayoutContext);
   const [selected, setIsSelected] = useState({
     Imagen: 'https://notecopies.app/wp-content/uploads/2022/06/DB_SM.png"', 
     Texto: 'Inicio',
@@ -63,29 +64,34 @@ const SelectorRedes = () => {
     },
   ];
 
- 
+
+  const {
+    ref,
+    isComponentVisible,
+    setIsComponentVisible
+  } = useComponentVisible(false);
+
+  if(state.changeLayout == true){
   return (
-    <div className="selectorRedes">
+    <div ref={ref} className="selectorRedes">
       <div className="RedesMaindropdown">
         <div
           onClick={(e) => {
-            setIsActive(!isActive);
+            setIsComponentVisible(!isComponentVisible);
           }}
           className="Redesdropdown-btn"
         >
            <img className="RedesIcono" src={selected.Imagen} width="64" height="64" alt="Image" loading="lazy"/>
             <span className="RedesText">{selected.Texto}</span>
           <span
-            className={isActive ? "IconoCaret fas fa-caret-up" : "IconoCaret fas fa-caret-down"}
+            className={isComponentVisible ? "IconoCaret fas fa-caret-up" : "IconoCaret fas fa-caret-down"}
           />
         
 
-        <div className="Redesdropdown-content" style={{ display: isActive ? "block" : "none" }}>  
+        <div  className="Redesdropdown-content" style={{ display: isComponentVisible ? "block" : "none" }}>  
         <div  className="Redesdropdown-contentChild" >
 
           {routes.map((route, index) => {
-            
-
             return (
               <div
             onClick={(e) => {
@@ -93,7 +99,7 @@ const SelectorRedes = () => {
                 Imagen: route.icon, 
                 Texto: route.name,
                 })
-              setIsActive(!isActive);
+              //  setIsComponentVisible(!isComponentVisible);
             }}
             className="Redesitem">
             <NavLink
@@ -113,12 +119,19 @@ const SelectorRedes = () => {
             );
           })}
      
-     </div>
+          </div>
         </div>
         </div>
       </div>
     </div>
   );
+   }else{
+    return(
+      <div className="Redesdropdown-btn-close">
+           <img className="RedesIcono-close" src={selected.Imagen} width="64" height="64" alt="Image" loading="lazy"/>    
+      </div>
+    )
+   }
 }
 
 export default SelectorRedes

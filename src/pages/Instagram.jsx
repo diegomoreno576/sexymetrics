@@ -400,7 +400,7 @@ const igAllData = [
         <div className="Subtitle chartGender col-lg-6 col-12">
           <h5>Edad</h5>
 
-          <ChartEdad data={igAge}/>
+          <ChartEdad data={igAge} horizontal={false} colors={["#fff176"]} height={350}/>
         </div>
         <div className="chartCountries col-lg-6 col-12">
           <h5 className="Subtitle">Paises de los Seguidores</h5>

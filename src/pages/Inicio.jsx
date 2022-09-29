@@ -76,6 +76,11 @@ const igBody = useData("/stats/aggregations/Instagram", start, end);
         dataNumber: "35-44",
         id: "Fbage",
     } 
+
+    //Sexo
+  const fbsexo = useData(`/stats/gender/facebook`, start, end);
+
+
     const Fbcountry = {
       name: "España",
       id: "Fbcountry",
@@ -173,6 +178,7 @@ const Igcity = {
               colors={item.colors}
               data={item.data}
               age={item.age}
+              sex={fbsexo}
               country={item.country}
               city={item.city}
             />

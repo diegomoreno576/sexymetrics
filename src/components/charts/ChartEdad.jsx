@@ -16,15 +16,19 @@ let ageValue = [];
     return (
         <Chart
         options={{
-            chart: {
-                height: 350,
-                toolbar: {
-                    show: false
-                }
-            },
+          chart: {
+            stacked: false,
+               toolbar: {
+                          show: false
+                      },
+               
+              },
             plotOptions: {
                 bar: {
-                    horizontal: false,
+                   distributed: true,
+                    horizontal: props.horizontal,
+                    barHeight: "100%",
+                    borderRadius: 3,
                     columnWidth: '95%',
                 },
             },
@@ -40,6 +44,7 @@ let ageValue = [];
             theme: "dark",
           },
         grid: {
+          show: props.gridShow,
             borderColor: '#e7e7e7',
             yaxis: {
                 lines: {
@@ -48,10 +53,13 @@ let ageValue = [];
             },
         },
           xaxis: {
+            labels: {
+              show: false
+            },
             categories: ageValue,
         },
         yaxis: {
-            show: true,
+            show: props.yaxisShow,
             showAlways: true,
             axisBorder: {
                 show: true,
@@ -74,21 +82,15 @@ let ageValue = [];
                 },
              }
         },
-        
-      
-          colors: ['#fff176'],
-          fill: {
-            type: 'gradient',
-            gradient: {
-             shade: 'dark',
-             gradientToColors: [ '#fff176'],
-             shadeIntensity: 1,
-             type: 'horizontal',
-             opacityFrom: 1,
-             opacityTo: 1,
-                 stops: [0, 100]
-           },
+        legend: {
+          show: false,
+            horizontalAlign: 'left',
+            offsetX: 0
           },
+        colors: props.colors,
+        fill: {
+           opacity: 1,
+         },
         }}
         series={[
           {
@@ -96,6 +98,7 @@ let ageValue = [];
             data: ageData,
           },
         ]}
+        height={props.height}
         type={'bar'}
       />
       )
