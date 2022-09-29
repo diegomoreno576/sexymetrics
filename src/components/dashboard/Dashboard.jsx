@@ -49,7 +49,7 @@ export const Dashboard = (props) => {
             <div className="col-4 buttonsItemsDown">
               <MaxAge number={props.age.dataNumber} />
             </div>
-            <div className="col-8">
+            <div className="col-8 buttonsItemsDown">
               <Userssex
                 sex={props.sex}
                 colors={["#fff176", "#4dd0e1", "#f06292"]}
@@ -62,7 +62,7 @@ export const Dashboard = (props) => {
       <div className="bottomItemsDashboard">
         <div className="row">
           <div className="col-4">
-            <div className="row">
+            <div className="row twoButtonsdown">
               <div className="col-12">
                 <MaxCountry name={props.country.name} />
               </div>

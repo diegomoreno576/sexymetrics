@@ -34,13 +34,34 @@
     text-align: center;
     color: var(--color-fuente);
 }
-
-.mainAgeSex, .mainDatabuttons  {
-    height: 50%;
+.buttonsitems {
+    padding: 0 !important;
 }
-.buttonsItemsDown {
-    padding: 0.5em 0px 0em 0.5em !important;
+.mainDatabuttons {
+    gap: 1em;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+}
+.mainAgeSex, .mainDatabuttons {
+    height: 50%;
+    width: 100%;
+    gap: 1em;
+    flex-wrap: nowrap !important;
+}
+.twoButtonsdown {
+    gap: 1em;
+}
+.bottomItemsDashboard {
+    padding-top: 1em;
 }
 .dashboardItems {
     margin-bottom: 0.8em;
+}
+.right-dashboardItems {
+    gap: 1em !important;
+    display: flex;
+    flex-direction: column;
+}
+.buttonsItemsDown {
+    padding: 0 !important;
 }
