@@ -1,0 +1,26 @@
+.container-last-post {
+    height: 100%;
+}
+.last-post-item {
+background-size: cover;
+background-repeat: no-repeat;
+background-image: url(https://scontent-lcy1-1.xx.fbcdn.net/v/t39.30808-6/280890365_5303996379653286_5097258576372355536_n.jpg?stp=dst-jpg_s130x130&_nc_cat=111&ccb=1-7&_nc_sid=2d5d41&_nc_ohc=mOrmTmQr-mkAX-uO5P8&_nc_ht=scontent-lcy1-1.xx&edm=AKIiGfEEAAAA&oh=00_AT-5Gic2NKOIAThjH_8PzpLTCRDyroKtZdV8zi6kH9PupA&oe=633A90C9);
+background-position: center;
+border-radius: 10px;
+height: 100%;
+}
+.last-post-date {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #00000059;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 900;
+    text-shadow: 0px 0px 5px rgb(24 24 24);
+}
+.last-posts {
+    height: 100%;
+}

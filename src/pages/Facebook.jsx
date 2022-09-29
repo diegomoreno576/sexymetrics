@@ -501,7 +501,7 @@ const Facebook = () => {
         <div className="Subtitle chartGender col-lg-6 col-12">
           <h5>Edad</h5>
 
-          <ChartEdad data={fbage} horizontal={false} colors={["#fff176"]} gridShow={true} yaxisShow={true} height={350}/>
+          <ChartEdad data={fbage} horizontal={false} colors={["#fff176"]} gridShow={true} yaxisShow={true} height={350} labels={true}/>
         </div>
         <div className="chartCountries col-lg-6 col-12">
           <h5 className="Subtitle">Paises de los Seguidores</h5>

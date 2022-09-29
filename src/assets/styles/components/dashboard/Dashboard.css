@@ -34,25 +34,15 @@
     text-align: center;
     color: var(--color-fuente);
 }
-.buttonsitems {
-    padding: 0 !important;
-}
-.mainDatabuttons {
-    gap: 1em;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-}
+
 .mainAgeSex, .mainDatabuttons {
     height: 50%;
-    width: 100%;
-    gap: 1em;
-    flex-wrap: nowrap !important;
-}
-.twoButtonsdown {
-    gap: 1em;
 }
 .bottomItemsDashboard {
     padding-top: 1em;
+}
+.twoButtonsdown {
+    gap: 1em;
 }
 .dashboardItems {
     margin-bottom: 0.8em;
@@ -62,6 +52,7 @@
     display: flex;
     flex-direction: column;
 }
-.buttonsItemsDown {
-    padding: 0 !important;
+.buttonsItemsDown, .buttonsitems, .buttonsItemsDown, .col-item-posts  {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
 }

@@ -6,6 +6,7 @@ import MaxAge from "./MaxAge";
 import MaxCountry from "./MaxCountry";
 import MaxCity from './MaxCity';
 import Userssex from "./Userssex";
+import LastPost from "./LastPost";
 
 export const Dashboard = (props) => {
   return (
@@ -72,7 +73,9 @@ export const Dashboard = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-8">publicaciones</div>
+          <div className="col-8">
+            <LastPost/>
+          </div>
         </div>
       </div>
      </div>

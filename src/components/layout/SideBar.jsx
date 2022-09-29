@@ -1,4 +1,4 @@
-import { FaBars, FaFacebookF } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import {
   BsInstagram,
   BsTwitter,

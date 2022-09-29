@@ -4,3 +4,16 @@
     height: 100%;
     width: 100%;
 }
+.col-sex-grafic {
+    padding-left: 0 !important;
+}
+.col-1.col-se-icons {
+    padding-right: 0 !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+}
+.sex-icons{
+    font-size: 20px;
+}
