@@ -1,5 +1,7 @@
+@import "./../ThemeColor.css";
+
 .Redesdropdown-content {
-    background-color: #12307c;
+    background-color: var(--button-color);
     left: 0px;
     z-index: 99;
     height: 360px;
@@ -9,10 +11,12 @@
     width: 100%;
 }
 .Redesdropdown-btn:hover {
-    background-color: blue;
-    box-shadow: 0em 0em 2em 0em blue;
+       background-color: #ec00f5;
+    box-shadow: 0em 0.15em 1.3570000000000002em 0em #ec00f5;
     transition-duration: 300ms;
 }
+    
+
 .Redesdropdown-btn-close {
     text-align: center;
     padding-top: 1em;
@@ -29,13 +33,13 @@ img.RedesIcono-close {
     padding: 1.3em;
 }
 a.RedesLink:hover {
-    background-color: blue;
-    box-shadow: 0em 0em 2em 0em blue;
+    background-color: #ec00f5;
+    box-shadow: 0em 0em 2em 0em #ec00f5;
     transition-duration: 300ms;
     color: white;
 }
 .Redesdropdown-btn {
-    background-color: #12307c;
+    background-color: var(--button-color);
     padding: 1em;
     cursor: pointer;
 }

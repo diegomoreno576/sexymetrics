@@ -1,11 +1,14 @@
 
 html[data-theme='dark'] {
-    --App-color: #161338;
+    --App-color: #333333;
     --Text-color:  white;
-    --BlackAndGray: #12307c;
+    --BlackAndGray: #181818;
+    --button-color: black;
   }
   html[data-theme='light'] {
     --App-color:  #f1f1f1;
     --Text-color:  #333;
     --BlackAndGray: #d8d8d8;
+    --button-color: white;
   }
+  

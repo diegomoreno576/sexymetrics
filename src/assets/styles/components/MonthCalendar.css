@@ -62,19 +62,32 @@ span.rs-picker-toggle-clean.rs-btn-close{
     display: none ;
 }
 .rs-picker-menu {
+    margin-top: 2em;
     position: fixed;
     width: 25%;
+    border-radius: 0px !important;
     box-shadow: none;
 }
 .rs-picker-toolbar-right {
     float: right;
     width: 100%;
 }
+.monthpickerTime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    font-size: 17px;
+}
 button.rs-btn.rs-btn-primary.rs-btn-sm {
     width: 100% !important;
-    background-color: #12307c;
-    padding: 0.6em;
+    background-color: var(--button-color);
+    padding: 1.15em;
     border-radius: 0;
+    font-size: 18px;
+}
+.MonthCalendar.MonthCalendar.rs-picker.rs-picker-daterange.rs-picker-default.rs-picker-toggle-wrapper.rs-picker-has-value.rs-picker-block {
+    display: none;
 }
 .rs-picker-daterange-calendar-group {
     width: 100%;
@@ -103,27 +116,47 @@ svg.rs-picker-toggle-caret.rs-icon {
     pointer-events: none;
 }
 button.rs-calendar-header-backward.rs-btn-icon, button.rs-calendar-header-forward {
-    background-color: #12307c;
+    background-color: var(--button-color);
     border-radius: 100%;
 }
 button.rs-btn.rs-btn-primary.rs-btn-sm:hover {
-    background-color: blue;
-    box-shadow: 0em 0em 2em 0em blue;
+    background-color: #ec00f5;
+    box-shadow: 0em 0.15em 1.3570000000000002em 0em #ec00f5;
     transition-duration: 300ms;
 }
 .rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
-    background-color: #12307c;
+    background-color: #6e6e6e;
+    color: black;
+    transform: scale(1.2);
+}
+.rs-picker-menu .rs-calendar .rs-calendar-month-dropdown-cell-content, .rs-picker-menu .rs-calendar .rs-calendar-table-cell-content {
+    border-radius: 5px !important;
 }
 .rs-calendar-table-cell-in-range:before {
-    background-color: blue;
+    background-color: var(--button-color);
+}
+.rs-calendar-table-cell-content:hover {
+    transform: scale(1.2);
+    color: black !important;
+}
+.rs-picker-toolbar {
+    border-top: 0;
 }
 .rs-btn-subtle {
     color: white;
 }
 .rs-picker-menu .rs-calendar .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
-    background-color: #12307c;
+    background-color: #ec00f5;
     color: #ffffff;
 }
 .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
-    -webkit-box-shadow: inset 0 0 0 1px #12307c;
+    -webkit-box-shadow: none;
+}
+.rs-picker-daterange-menu .rs-calendar:first-child {
+    border-right: 0px;
+}
+.rs-picker-toolbar-ranges {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 2.2em;
 }

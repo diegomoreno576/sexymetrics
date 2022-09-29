@@ -50,7 +50,11 @@ const MonthCalendar = () => {
   if(stateLayout.changeLayout == true){
   
     return (
-      <DateRangePicker
+     <div>
+      <div className="monthpickerTime">
+      <span>1 Sep 2022  -  29 Oct 2022</span>
+      </div>
+       <DateRangePicker
        className='MonthCalendar'  
        editable={false}
        cleanable={false}
@@ -61,6 +65,7 @@ const MonthCalendar = () => {
         value={value} 
        open={true}
         onChange={setValue} />
+     </div>
     )
   }
 
