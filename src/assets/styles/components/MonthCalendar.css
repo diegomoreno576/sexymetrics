@@ -62,7 +62,6 @@ span.rs-picker-toggle-clean.rs-btn-close{
     display: none ;
 }
 .rs-picker-menu {
-    margin-top: 2em;
     position: fixed;
     width: 25%;
     border-radius: 0px !important;
@@ -87,7 +86,7 @@ button.rs-btn.rs-btn-primary.rs-btn-sm {
     font-size: 18px;
 }
 .MonthCalendar.MonthCalendar.rs-picker.rs-picker-daterange.rs-picker-default.rs-picker-toggle-wrapper.rs-picker-has-value.rs-picker-block {
-    display: none;
+    opacity: 0;
 }
 .rs-picker-daterange-calendar-group {
     width: 100%;
