@@ -10,6 +10,9 @@
     background-color: var(--App-color);
     box-shadow: 0 0 20px 8px rgb(0 0 0 / 16%);
 }
+span.rs-calendar-table-cell-day {
+    color: var(--Text-color);
+}
 /* picked date align */
 .rs-picker-default .rs-picker-toggle {
     position: relative;
@@ -66,7 +69,8 @@ span.rs-picker-toggle-clean.rs-btn-close{
     box-shadow: none;
     padding-bottom: 2em !important;
     position: fixed;
-    background-color: #333333;
+    background-color: var(--App-color);
+    color: var(--Text-color);
     width: 25%;
 }
 .rs-picker-toolbar-right {
@@ -84,6 +88,7 @@ button.rs-btn.rs-btn-primary.rs-btn-sm {
     width: 100% !important;
     background-color: var(--button-color);
     padding: 1.15em;
+    color: var(--Text-color);
     border-radius: 0;
     font-size: 18px;
 }
@@ -119,6 +124,7 @@ svg.rs-picker-toggle-caret.rs-icon {
 button.rs-calendar-header-backward.rs-btn-icon, button.rs-calendar-header-forward {
     background-color: var(--button-color);
     border-radius: 100%;
+    color: var(--Text-color);
 }
 button.rs-btn.rs-btn-primary.rs-btn-sm:hover {
     background-color: #ec00f5;
@@ -144,11 +150,11 @@ button.rs-btn.rs-btn-primary.rs-btn-sm:hover {
     border-top: 0;
 }
 .rs-btn-subtle {
-    color: white;
+    color: var(--Text-color);
 }
 .rs-picker-menu .rs-calendar .rs-calendar-table-cell:hover .rs-calendar-table-cell-content {
     background-color: #ec00f5;
-    color: #ffffff;
+    color: var(--Text-color);
 }
 .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
     -webkit-box-shadow: none;

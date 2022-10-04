@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import "../../assets/styles/components/BotonGrafica.css";
-import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
+import { HiTrendingDown, HiTrendingUp, HiUserRemove } from "react-icons/hi";
 import { MdTrendingFlat } from "react-icons/md";
 import { ThemeContext } from "../../context";
 import Spinner from 'react-bootstrap/Spinner';

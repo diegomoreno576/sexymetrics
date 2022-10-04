@@ -53,6 +53,7 @@ a.RedesLink {
 .RedesText {
     font-size: 17px;
     margin-left: 1em;
+    color: var(--Text-color);
 }
 .IconoCaret{
     float: right;

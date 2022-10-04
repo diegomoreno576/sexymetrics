@@ -4,11 +4,14 @@ import React, {
   useEffect,
   useState,
   forwardRef,
-  useImperativeHandle
 } from "react";
 import TuiCalendar from "tui-calendar";
 import moment from "moment";
-
+import 'moment/locale/es';
+import FacebookIcon from '../../assets/img/FacebookIcono.png';
+import instagramIcon from '../../assets/img/instagramIcono.png';
+import TwitterIcon from '../../assets/img/TwitterIcono.png';
+import googlemybIcon from '../../assets/img/google-mybIcono.png';
 import "tui-calendar/dist/tui-calendar.css";
 
 import "./../styles.css";
@@ -17,17 +20,11 @@ const CustomTuiCalendar = forwardRef(
   (
     {
       height = "800px",
-      defaultView = "month",
       calendars = [],
       schedules = [],
       isReadOnly = true,
       showSlidebar = false,
       showMenu = false,
-      onCreate,
-      createText = "New schedule",
-      onBeforeCreateSchedule = () => false,
-      onBeforeUpdateSchedule = () => false,
-      onBeforeDeleteSchedule = () => false,
       ...rest
     },
     ref
@@ -37,63 +34,31 @@ const CustomTuiCalendar = forwardRef(
     const wrapperRef = useRef(null);
     const [open, setOpen] = useState(false);
     const [renderRange, setRenderRange] = useState("");
-    const [workweek, setWorkweek] = useState(true);
-    const [narrowWeekend, setNarrowWeekend] = useState(true);
-    const [startDayOfWeek, setStartDayOfWeek] = useState(1);
-    const [type, setType] = useState("Month");
+    const [type, setType] = useState("Mes");
     const [checkedCalendars, setCheckedCalendars] = useState(
       calendars.map((element) => ({ ...element, isChecked: true }))
     );
     const [filterSchedules, setFilterSchedules] = useState(schedules);
 
-    useImperativeHandle(ref, () => ({
-      getAlert() {
-        alert("getAlert from Child");
-      },
-      createSchedule,
-      updateSchedule,
-      deleteSchedule
-    }));
+
 
     useEffect(() => {
       calendarInstRef.current = new TuiCalendar(tuiRef.current, {
         useDetailPopup: true,
-        useCreationPopup: true,
+        useCreationPopup: false,
+        isReadOnly: true,
+        defaultView: "month",
+        taskView: true,
+        month: {
+            daynames: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            startDayOfWeek: 1,
+        },  
         template: {
-          milestone: function (schedule) {
-            return (
-              '<span class="calendar-font-icon ic-milestone-b"></span> <span style="background-color: ' +
-              schedule.bgColor +
-              '">' +
-              schedule.title +
-              "</span>"
-            );
-          },
-          milestoneTitle: function () {
-            return '<span class="tui-full-calendar-left-content">MILESTONE</span>';
-          },
-          task: function (schedule) {
-            return "#" + schedule.title;
-          },
-          taskTitle: function () {
-            return '<span class="tui-full-calendar-left-content">TASK</span>';
-          },
-          allday: function (schedule) {
-            return _getTimeTemplate(schedule, true);
-          },
-          alldayTitle: function () {
-            return '<span class="tui-full-calendar-left-content">ALL DAY</span>';
-          },
+     
           time: function (schedule) {
             return _getTimeTemplate(schedule, false);
           },
-          goingDuration: function (schedule) {
-            return (
-              '<span class="calendar-icon ic-travel-time"></span>' +
-              schedule.goingDuration +
-              "min."
-            );
-          },
+      
           comingDuration: function (schedule) {
             return (
               '<span class="calendar-icon ic-travel-time"></span>' +
@@ -155,64 +120,8 @@ const CustomTuiCalendar = forwardRef(
           weekGridFooterExceed: function (hiddenSchedules) {
             return "+" + hiddenSchedules;
           },
-          dayGridTitle: function (viewName) {
-            // use another functions instead of 'dayGridTitle'
-            // milestoneTitle: function() {...}
-            // taskTitle: function() {...}
-            // alldayTitle: function() {...}
-
-            // var title = "";
-            // switch (viewName) {
-            //   case "milestone":
-            //     title =
-            //       '<span class="tui-full-calendar-left-content">MILESTONE</span>';
-            //     break;
-            //   case "task":
-            //     title =
-            //       '<span class="tui-full-calendar-left-content">TASK</span>';
-            //     break;
-            //   case "allday":
-            //     title =
-            //       '<span class="tui-full-calendar-left-content">ALL DAY</span>';
-            //     break;
-            //   default:
-            //     break;
-            // }
-
-            // return title;
-          },
-          // schedule: function(schedule) {
-          //   // use another functions instead of 'schedule'
-          //   // milestone: function() {...}
-          //   // task: function() {...}
-          //   // allday: function() {...}
-
-          //   var tpl;
-
-          //   switch (category) {
-          //     case "milestone":
-          //       tpl =
-          //         '<span class="calendar-font-icon ic-milestone-b"></span> <span style="background-color: ' +
-          //         schedule.bgColor +
-          //         '">' +
-          //         schedule.title +
-          //         "</span>";
-          //       break;
-          //     case "task":
-          //       tpl = "#" + schedule.title;
-          //       break;
-          //     case "allday":
-          //       tpl = _getTimeTemplate(schedule, true);
-          //       break;
-          //     default:
-          //       break;
-          //   }
-
-          //   return tpl;
-          // },
-          collapseBtnTitle: function () {
-            return '<span class="tui-full-calendar-icon tui-full-calendar-ic-arrow-solid-top"></span>';
-          },
+      
+         
           // timezoneDisplayLabel: function(timezoneOffset, displayLabel) {
           //   var gmt, hour, minutes;
 
@@ -267,33 +176,7 @@ const CustomTuiCalendar = forwardRef(
 
             return templates.join("");
           },
-          popupIsAllDay: function () {
-            return "All Day";
-          },
-          popupStateFree: function () {
-            return "Free";
-          },
-          popupStateBusy: function () {
-            return "Busy";
-          },
-          titlePlaceholder: function () {
-            return "Subject";
-          },
-          locationPlaceholder: function () {
-            return "Location";
-          },
-          startDatePlaceholder: function () {
-            return "Start date";
-          },
-          endDatePlaceholder: function () {
-            return "End date";
-          },
-          popupSave: function () {
-            return "Save";
-          },
-          popupUpdate: function () {
-            return "Update";
-          },
+
           popupDetailDate: function (isAllDay, start, end) {
             var isSameDate = moment(start).isSame(end);
             var endFormat = (isSameDate ? "" : "YYYY/MM/DD ") + "HH:mm";
@@ -306,39 +189,87 @@ const CustomTuiCalendar = forwardRef(
             }
 
             return (
-              moment(start.toDate()).format("YYYY/MM/DD HH:mm") +
-              " - " +
-              moment(end.toDate()).format(endFormat)
+              moment(start.toDate()).format("MMM-DD") 
             );
           },
-          popupDetailLocation: function (schedule) {
-            return "Location : " + schedule.location;
-          },
-          // popupDetailUser: function (schedule) {
-          // 	return 'Staff : ' + (schedule.attendees || []).join(', ')
-          // },
-          popupDetailState: function (schedule) {
-            return "State : " + schedule.state || "Busy";
-          },
-          popupDetailRepeat: function (schedule) {
-            return "Repeat : " + schedule.recurrenceRule;
-          },
+        
+      
           popupDetailBody: function (schedule) {
-            return "Body : " + schedule.body;
+            const meses = [
+              "Ene.", "Feb.", "Mar.",
+              "Abr.", "May.", "Jun.", "Jul.",
+              "Ago.", "Sep.", "Oct.",
+              "Nov.", "Dic."
+            ]
+            
+            
+            var date = new Date(schedule.start._date);
+            var dia = date.getDate();
+            var mes = date.getMonth();
+            var FechaPublicacion = dia + ' de ' + meses[mes];
+
+
+           let avatar = '';
+           let  mediaUrl = '';
+           let rssPublicadas = '';
+
+            //Redes sociales
+            let rss = '' ;
+            schedule.raw[0].redes.map(TipodeRedes => {
+              switch (TipodeRedes.network) {
+													
+                case 'facebook':
+                    rss = FacebookIcon;
+                    break;
+                case 'gmb':
+                    rss = googlemybIcon;
+                    break;
+                case 'instagram':
+                    rss = instagramIcon;
+                    break;
+                case 'linkedin':
+                    rss = 'https://notecopies.es//wp-content/uploads/2019/11/LinkedIn.png';
+                    break;
+                case 'twitter':
+                    rss = TwitterIcon;
+                    break;
+
+             }
+
+                //Estado del post
+                let status
+                switch (TipodeRedes.status){
+                case 'PENDING':
+                status = "<div class='mainPublishPost'><span class='UnpublisPost'></span><span> Borrador</span></div>";
+                break;
+                case 'PUBLISHED':
+                status = "<div class='mainPublishPost'><span class='publisPost'></span><span>Publicado</span></div>";
+                break;
+                }               
+               let rssPublicasAvatar = rssPublicadas += '<img class="rssPublicadas" src="'+rss+'">';
+                avatar = '   <div class="mainCalendarPerfil"><div class="ContenrdormainCalendarAvatar"><div class="mainCalendarAvatar">'+rssPublicasAvatar+'</div><div class="PostStatus">'+status+'</div></div><div class="mainNameUserAvatar"><span>'+FechaPublicacion+'</span></div></div>';
+            });
+ 
+            
+
+
+
+
+           //Imagen o video
+              if(schedule.raw[0].mediaUrl.includes('.mp4')){
+                mediaUrl += '<video class="iconRsssCalendar calendarVideo" id="CalendarVideo" controls autoplay  src="'+schedule.raw[0].mediaUrl+'"></video>';
+                }else if ( schedule.raw.mediaUrl === null ){
+                mediaUrl += '<img class="iconRsssCalendar"  src="https://sexymetrics.com/wp-content/uploads/2022/05/Sexy-Metrics_EN-PROCESO.png">';
+                }else{
+                mediaUrl += '<img class="iconRsssCalendar"  src="'+schedule.raw[0].mediaUrl+'">';
+                }
+              
+                //return
+                return avatar + mediaUrl + schedule.body;
           },
-          popupEdit: function () {
-            return "Edit";
-          },
-          popupDelete: function () {
-            return "Delete";
-          }
+         
         },
-        // template: {
-        //   time: function(schedule) {
-        //     // console.log(schedule);
-        //     return _getTimeTemplate(schedule, false);
-        //   }
-        // },
+
         calendars,
         ...rest
       });
@@ -348,33 +279,7 @@ const CustomTuiCalendar = forwardRef(
       calendarInstRef.current.createSchedules(filterSchedules, true);
       calendarInstRef.current.render();
 
-      calendarInstRef.current.on("beforeCreateSchedule", function (event) {
-        onBeforeCreateSchedule(event);
-      });
-      calendarInstRef.current.on("beforeUpdateSchedule", function (event) {
-        onBeforeUpdateSchedule(event);
-      });
-      calendarInstRef.current.on("beforeDeleteSchedule", function (event) {
-        onBeforeDeleteSchedule(event);
-      });
-      calendarInstRef.current.on("clickSchedule", function (event) {
-        // var schedule = event.schedule;
-        // console.log("clickSchedule", event);
-        // if (lastClickSchedule) {
-        //   calendarInstRef.current.updateSchedule(
-        //     lastClickSchedule.id,
-        //     lastClickSchedule.calendarId,
-        //     {
-        //       isFocused: false
-        //     }
-        //   );
-        // }
-        // calendarInstRef.current.updateSchedule(schedule.id, schedule.calendarId, {
-        //   isFocused: true
-        // });
-        // lastClickSchedule = schedule;
-        // open detail view
-      });
+
       calendarInstRef.current.on("clickDayname", function (event) {
         // console.log("clickDayname", event);
         if (calendarInstRef.current.getViewName() === "week") {
@@ -393,15 +298,7 @@ const CustomTuiCalendar = forwardRef(
         // console.log(timezonesCollapsed);
       });
 
-      calendarInstRef.current.on("afterRenderSchedule", function (event) {
-        // var schedule = event.schedule;
-        // var element = calendarInstRef.current.getElement(
-        //   schedule.id,
-        //   schedule.calendarId
-        // );
-        // use the element
-        // console.log(element);
-      });
+     
 
       return () => {
         calendarInstRef.current.destroy();
@@ -413,6 +310,7 @@ const CustomTuiCalendar = forwardRef(
     });
 
     function currentCalendarDate(format) {
+      moment.locale('es');
       var currentDate = moment([
         calendarInstRef.current.getDate().getFullYear(),
         calendarInstRef.current.getDate().getMonth(),
@@ -428,23 +326,23 @@ const CustomTuiCalendar = forwardRef(
 
       var html = [];
       if (viewName === "day") {
-        html.push(currentCalendarDate("YYYY.MM.DD"));
+        html.push(currentCalendarDate("DD MMMM YYYY"));
       } else if (
         viewName === "month" &&
         (!options.month.visibleWeeksCount ||
           options.month.visibleWeeksCount > 4)
       ) {
-        html.push(currentCalendarDate("YYYY.MM"));
+        html.push(currentCalendarDate("MMMM YYYY"));
       } else {
         html.push(
           moment(calendarInstRef.current.getDateRangeStart().getTime()).format(
-            "YYYY.MM.DD"
+            "DD MMMM YYYY"
           )
         );
         html.push(" ~ ");
         html.push(
           moment(calendarInstRef.current.getDateRangeEnd().getTime()).format(
-            " MM.DD"
+            "MMMM YYYY"
           )
         );
       }
@@ -461,10 +359,7 @@ const CustomTuiCalendar = forwardRef(
             "</strong> "
         );
       }
-      if (schedule.isPrivate) {
-        html.push('<span class="calendar-font-icon ic-lock-b"></span>');
-        html.push(" Private");
-      } else {
+  
         if (schedule.isReadOnly) {
           html.push('<span class="calendar-font-icon ic-readonly-b"></span>');
         } else if (schedule.recurrenceRule) {
@@ -476,7 +371,7 @@ const CustomTuiCalendar = forwardRef(
         }
 
         html.push(" " + schedule.title);
-      }
+      
 
       return html.join("");
     }
@@ -501,15 +396,7 @@ const CustomTuiCalendar = forwardRef(
       setOpen(false);
     };
 
-    const handleAllChecked = (event) => {
-      const cloneCheckedCalendars = [...checkedCalendars];
-      cloneCheckedCalendars.forEach(
-        (element) => (element.isChecked = event.target.checked)
-      );
-      setCheckedCalendars(cloneCheckedCalendars);
-      filterCalendar(cloneCheckedCalendars);
-    };
-
+ 
     const handleCheckChildElement = (event) => {
       const cloneCheckedCalendars = [...checkedCalendars];
       cloneCheckedCalendars.forEach((element) => {
@@ -565,85 +452,43 @@ const CustomTuiCalendar = forwardRef(
       );
     }
 
-    function deleteSchedule(schedule) {
-      console.log("deleteSchedule");
-
-      calendarInstRef.current.deleteSchedule(schedule.id, schedule.calendarId);
-      const cloneFilterSchedules = [...filterSchedules];
-      setFilterSchedules((prevState) =>
-        cloneFilterSchedules.filter((item) => item.id !== schedule.id)
-      );
-    }
 
     return (
-      <div className="row">
-        {showSlidebar && (
-          <div class="col-lg-1" id="lnb">
-            {onCreate && (
-              <div className="lnb-new-schedule">
-                <button
-                  id="btn-new-schedule"
-                  type="button"
-                  className="btn btn-default btn-block lnb-new-schedule-btn"
-                  data-toggle="modal"
-                  onClick={onCreate}
-                >
-                  {createText}
-                </button>
-              </div>
-            )}
-            <div id="lnb-calendars" className="lnb-calendars">
-              <div>
-                <div className="lnb-calendars-item">
-                  <label>
-                    <input
-                      className="tui-full-calendar-checkbox-square"
-                      type="checkbox"
-                      defaultValue="all"
-                      checked={checkedCalendars.every(
-                        (element) => element.isChecked === true
-                      )}
-                      onChange={handleAllChecked}
-                    />
-                    <span />
-                    <strong>View all</strong>
-                  </label>
-                </div>
-              </div>
-              <div id="calendarList" className="lnb-calendars-d1">
-                {checkedCalendars.map((element, i) => {
-                  return (
-                    <div key={i} className="lnb-calendars-item">
-                      <label>
-                        <input
-                          type="checkbox"
-                          className="tui-full-calendar-checkbox-round"
-                          defaultValue={element.id}
-                          checked={element.isChecked}
-                          onChange={handleCheckChildElement}
-                        />
-                        <span
-                          style={{
-                            borderColor: element.bgColor,
-                            backgroundColor: element.isChecked
-                              ? element.bgColor
-                              : "transparent"
-                          }}
-                        />
-                        <span>{element.name}</span>
-                      </label>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+      <div>
+    
+        <div id="right" style={{ left: !showSlidebar && 0 }}>
           
-          </div>
-        )}
-
-        <div className="col-lg-11" id="right" style={{ left: !showSlidebar && 0 }}>
           {showMenu && (
+     
+      
             <div id="menu">
+                     
+                 <div id="calendarList" className="lnb-calendars-d1">
+                   {checkedCalendars.map((element, i) => {
+                     return (
+                       <div key={i} className="lnb-calendars-item">
+                         <label>
+                           <input
+                             type="checkbox"
+                             className="tui-full-calendar-checkbox-round"
+                             defaultValue={element.id}
+                             checked={element.isChecked}
+                             onChange={handleCheckChildElement}
+                           />
+                           <span
+                             style={{
+                               borderColor: element.bgColor,
+                               backgroundColor: element.isChecked
+                                 ? element.bgColor
+                                 : "transparent"
+                             }}
+                           />
+                           <span>{element.name}</span>
+                         </label>
+                       </div>
+                     );
+                   })}
+                 </div>
               <span
                 ref={wrapperRef}
                 style={{ marginRight: "4px" }}
@@ -685,7 +530,7 @@ const CustomTuiCalendar = forwardRef(
                       data-action="toggle-daily"
                     >
                       <i className="calendar-icon ic_view_day" />
-                      Daily
+                      Dia
                     </a>
                   </li>
                   <li role="presentation">
@@ -702,7 +547,7 @@ const CustomTuiCalendar = forwardRef(
                       data-action="toggle-weekly"
                     >
                       <i className="calendar-icon ic_view_week" />
-                      Weekly
+                     Semanas
                     </a>
                   </li>
                   <li role="presentation">
@@ -723,149 +568,12 @@ const CustomTuiCalendar = forwardRef(
                       data-action="toggle-monthly"
                     >
                       <i className="calendar-icon ic_view_month" />
-                      Month
+                      Mes
                     </a>
                   </li>
-                  <li role="presentation">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        calendarInstRef.current.setOptions(
-                          { month: { visibleWeeksCount: 2 } },
-                          true
-                        ); // or null
-                        calendarInstRef.current.changeView("month", true);
-                        setType("2 weeks");
-                        setOpen(false);
-                      }}
-                      className="dropdown-menu-title"
-                      role="menuitem"
-                      data-action="toggle-weeks2"
-                    >
-                      <i className="calendar-icon ic_view_week" />2 weeks
-                    </a>
-                  </li>
-                  <li role="presentation">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        calendarInstRef.current.setOptions(
-                          { month: { visibleWeeksCount: 3 } },
-                          true
-                        ); // or null
-                        calendarInstRef.current.changeView("month", true);
-                        setType("3 weeks");
-                        setOpen(false);
-                      }}
-                      className="dropdown-menu-title"
-                      role="menuitem"
-                      data-action="toggle-weeks3"
-                    >
-                      <i className="calendar-icon ic_view_week" />3 weeks
-                    </a>
-                  </li>
-                  <li role="presentation" className="dropdown-divider" />
-                  <li role="presentation">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        calendarInstRef.current.setOptions(
-                          { month: { workweek } },
-                          true
-                        );
-                        calendarInstRef.current.setOptions(
-                          { week: { workweek } },
-                          true
-                        );
-                        calendarInstRef.current.changeView(
-                          calendarInstRef.current.getViewName(),
-                          true
-                        );
-                        setWorkweek(!workweek);
-                        setOpen(false);
-                      }}
-                      role="menuitem"
-                      data-action="toggle-workweek"
-                    >
-                      <input
-                        type="checkbox"
-                        className="tui-full-calendar-checkbox-square"
-                        checked={workweek}
-                        onChange={() => {}}
-                      />
-                      <span className="checkbox-title" />
-                      Show weekends
-                    </a>
-                  </li>
-                  <li role="presentation">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        calendarInstRef.current.setOptions(
-                          { week: { startDayOfWeek } },
-                          true
-                        );
-                        calendarInstRef.current.setOptions(
-                          { month: { startDayOfWeek } },
-                          true
-                        );
-                        calendarInstRef.current.changeView(
-                          calendarInstRef.current.getViewName(),
-                          true
-                        );
-                        setStartDayOfWeek(startDayOfWeek === 1 ? 0 : 1);
-                        setOpen(false);
-                      }}
-                      role="menuitem"
-                      data-action="toggle-start-day-1"
-                    >
-                      <input
-                        type="checkbox"
-                        className="tui-full-calendar-checkbox-square"
-                        checked={startDayOfWeek !== 1 ? true : false}
-                        onChange={() => {}}
-                      />
-                      <span className="checkbox-title" />
-                      Start Week on Monday
-                    </a>
-                  </li>
-                  <li role="presentation">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        calendarInstRef.current.setOptions(
-                          { month: { narrowWeekend } },
-                          true
-                        );
-                        calendarInstRef.current.setOptions(
-                          { week: { narrowWeekend } },
-                          true
-                        );
-                        calendarInstRef.current.changeView(
-                          calendarInstRef.current.getViewName(),
-                          true
-                        );
-                        setNarrowWeekend(!narrowWeekend);
-                        setOpen(false);
-                      }}
-                      role="menuitem"
-                      data-action="toggle-narrow-weekend"
-                    >
-                      <input
-                        type="checkbox"
-                        className="tui-full-calendar-checkbox-square"
-                        checked={narrowWeekend}
-                        onChange={() => {}}
-                      />
-                      <span className="checkbox-title" />
-                      Narrower than weekdays
-                    </a>
-                  </li>
+                
+           
+                
                 </ul>
               </span>
 
@@ -881,7 +589,7 @@ const CustomTuiCalendar = forwardRef(
                     setRenderRangeText();
                   }}
                 >
-                  Today
+                 Mes actual
                 </button>
                 <button
                   type="button"
@@ -921,6 +629,7 @@ const CustomTuiCalendar = forwardRef(
               </span>
             </div>
           )}
+          
           <div ref={tuiRef} style={{ height }} />
         </div>
       </div>

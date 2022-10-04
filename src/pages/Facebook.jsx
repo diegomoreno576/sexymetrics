@@ -16,7 +16,6 @@ import ChartEdad from "../components/charts/ChartEdad";
 import CitiesList from "../components/Lists/CitiesList";
 import { useActiveMenu } from "react-active-menu";
 import PageBanner from '../components/PageBanner';
-import Banner from "../assets/img/Banner.png"
 
 const Facebook = () => {
   const [state, dispatch] = useContext(ThemeContext);
@@ -425,29 +424,11 @@ const Facebook = () => {
   }, []);
 
 
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-      const onScroll = () => setOffset(window.pageYOffset);
-      // clean up code
-      window.removeEventListener('scroll', onScroll);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  console.log(offset); 
-
 
   return (
     <Fragment>
       <PageBanner />
-      <div
-        style={{ backgroundImage: `url(${Banner})` }}
-        className={
-          offset > 10 ? "bannerPrincipal " : "bannerPrincipal colorActive"
-        }
-      >
-        <div className="container">
+        <div className="container page-container">
           <div className="Ancl ancle-container">
             <div className="ancle-item">
               {FbAllData.map((item) => {
@@ -532,7 +513,6 @@ const Facebook = () => {
           </Slider>
          </div>
         </div>
-      </div>
     </Fragment>
   );
 };

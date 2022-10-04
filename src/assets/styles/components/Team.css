@@ -22,6 +22,7 @@
 }
 .avatarDescriptcion {
     margin-top: 9px;
+    color: var(--Text-color);
 }
 .mainAvatarTeam {
     margin-top: 1em;

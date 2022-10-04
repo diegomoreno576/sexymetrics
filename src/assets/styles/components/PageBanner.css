@@ -1,0 +1,28 @@
+.page-banner-img{
+    opacity: 0;
+    -webkit-transition: opacity 500ms linear;
+    -moz-transition: opacity 200ms linear;
+    -o-transition: opacity 200ms linear;
+    -ms-transition: opacity 200ms linear;
+    transition: opacity 800ms ease-out; 
+}
+.page-banner-img-active{
+    opacity: 1;
+    -webkit-transition: opacity 500ms linear;
+    -moz-transition: opacity 200ms linear;
+    -o-transition: opacity 200ms linear;
+    -ms-transition: opacity 200ms linear;
+    transition: opacity 800ms ease-out; 
+}
+.page-banner {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+}
+.page-container{
+    z-index: 99999999;
+    position: relative;
+}
+.page-banner-img-active img{
+    width: 100%;
+}
