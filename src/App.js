@@ -78,7 +78,7 @@ const updateAppStateRoom = (newRoom) => {
           <BrowserRouter>
           <Layout> 
           <Routes> 
-          <Route path="/" element={<Inicio/>} exact />
+          {/* <Route path="/" element={<Inicio/>} exact />
             <Route path="/facebook" element={<Facebook/>} exact />
             <Route path="/instagram" element={<Instagram/>} exact />
             <Route path="/twitter" element={<Twitter/>} exact />
@@ -95,7 +95,9 @@ const updateAppStateRoom = (newRoom) => {
                                         roomData={currentRoom}
                                         updateApp={updateAppStateRoom}
                                     /> } exact />
-          <Route path="/ajustes" element={<Settings/>} exact />
+          <Route path="/ajustes" element={<Settings/>} exact /> */
+          <Route path="/" element={<Settings/>} exact />
+          }
           </Routes>
           </Layout>
         </BrowserRouter>
