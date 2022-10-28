@@ -1,5 +1,7 @@
 @import "./../ThemeColor.css";
 
+
+
 .Redesdropdown-content {
     background-color: var(--button-color);
     left: 0px;
@@ -58,6 +60,7 @@ a.RedesLink {
 .IconoCaret{
     float: right;
 }
-.active{
+
+.RedesLink.active{
     display: none !important;
 }

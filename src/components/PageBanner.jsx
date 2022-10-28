@@ -17,7 +17,6 @@ const PageBanner = () => {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    console.log(offset); 
       
   
   return (

@@ -36,7 +36,7 @@ export const Dashboard = (props) => {
           <div className="row mainDatabuttons ">
             {props.data.map((item) => {
               return (
-                <div className="col-4 buttonsitems">
+                <div key={item.name} className="col-4 buttonsitems">
                   <ButtonsData
                     number={item.dataNumber}
                     name={item.name}

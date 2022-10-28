@@ -6,12 +6,14 @@ const Team = () => {
   const [state, dispatch] = useContext(LayoutContext);
   const ntcTeam = [
     {
+      id: "1",
       avatarImg: "https://notecopies.app/wp-content/uploads/2021/06/david-1.png",
       avatarName: "David",
       avatarEmployment: "Marketing"
     
     },
     {
+      id: "2",
       avatarImg: "https://notecopies.app/wp-content/uploads/2022/01/DIEGO_baja.png",
       avatarName: "Diego",
       avatarEmployment: "Web"
@@ -34,7 +36,7 @@ const Team = () => {
         <div className="avatarList">
         {ntcTeam.map((item) => { 
           return(
-            <div className="avatarItem">
+            <div key={item.id} className="avatarItem">
             <div className="avatarImg">
               <img
                 src={item.avatarImg}

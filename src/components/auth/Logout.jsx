@@ -13,7 +13,7 @@ const Logout = () => {
      if(state.changeLayout == true){
       return (
         <button className='LogoutButton' onClick={handleLogoutClick}>
-           <i class="fa-solid fa-power-off"></i>
+           <i className="fa-solid fa-power-off"></i>
         </button>
       )
      }

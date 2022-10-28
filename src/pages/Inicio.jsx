@@ -170,7 +170,8 @@ const Igcity = {
     <div className="resumen">
         {RsAllData.map((item) => {
           return (
-            <Dashboard
+           <div key={item.id}>
+             <Dashboard
               id={item.id}
               dataGrafica={item.dataGrafica}
               timeLine={TimeLine}
@@ -182,6 +183,7 @@ const Igcity = {
               country={item.country}
               city={item.city}
             />
+           </div>
           );
         })}
       </div>

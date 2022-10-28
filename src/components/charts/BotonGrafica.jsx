@@ -9,6 +9,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 
 function BotonGrafica(props) {
+  
   const [state, dispatch] = useContext(ThemeContext);
   const [isToggled, setToggled] = useState(false);
 
@@ -27,7 +28,7 @@ function BotonGrafica(props) {
     setToggled(false);
   }, [state.TimeStart, state.TimeEnd]);
   
-
+ 
   if(props.datos.length == 0 || state.Loading == true){
     return (
       <div

@@ -93,7 +93,7 @@ const SelectorRedes = () => {
 
           {routes.map((route, index) => {
             return (
-              <div
+              <div key={index}
             onClick={(e) => {
               setIsSelected({
                 Imagen: route.icon, 
@@ -106,7 +106,7 @@ const SelectorRedes = () => {
                 to={route.path}
                 key={index}
                 className="RedesLink"
-                activeClassName="Redesactive"
+                activeclassname="Redesactive"
               >
                 <div className="icon">
                   <img className="RedesIcono" src={route.icon} width="64" height="64" alt="Image" loading="lazy"/>

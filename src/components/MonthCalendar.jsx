@@ -56,7 +56,6 @@ const MonthCalendar = () => {
       </div>
        <DateRangePicker
        className='MonthCalendar'  
-       editable={false}
        cleanable={false}
        container={document.querySelector(".sidebarElements")}
        block={true}

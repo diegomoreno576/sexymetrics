@@ -20,6 +20,7 @@ import SelectorRedes from "../SelectorRedes";
 import MonthYearCalendar from "../MonthCalendar";
 import { setchangeLayout } from "../../actions";
 import Team from "../Team";
+import Settings_button from '../settings/Settings_button';
 
 const routes = [
   {
@@ -92,11 +93,11 @@ const Sidebar = () => {
       <div className="main-container">
         <div className={isOpen ? "sidebar" : "sidebar closeSidebar"}>
           <div onClick={toggle} className="buttonFlag">
-            <div class="row">
-              <div class="">
-                <div class="toogleBarButton">
+            <div className="row">
+              <div className="">
+                <div className="toogleBarButton">
                   <i
-                    class={
+                    className={
                       isOpen
                         ? "menuIconCloseOpen fa-solid fa-angles-left"
                         : "menuIconCloseOpen fa-solid fa-angles-right"
@@ -114,6 +115,7 @@ const Sidebar = () => {
                 </div>
 
                 <div className="UltilsButtons">
+                  <Settings_button/>
                   <DarkMode />
                   <Logout />
                 </div>

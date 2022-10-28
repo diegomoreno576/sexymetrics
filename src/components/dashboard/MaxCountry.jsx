@@ -3,7 +3,7 @@ import '../../assets/styles/components/dashboard/MaxCountry.css'
 
 const MaxCountry = (props) => {
   return (
-    <div class="CountrysMax">
+    <div className="CountrysMax">
     {props.name}
 </div>
   )

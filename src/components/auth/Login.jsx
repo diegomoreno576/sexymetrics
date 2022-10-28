@@ -67,13 +67,13 @@ const Login = () => {
                 </div>
 
                 <div className="col-12 LoginButton">
-                  <button type="submit">Iniciar sessión</button>
+                  <button type="submit">{isLoginLoading ? <div className="LoginSpiner"><Spinner/></div> : "Iniciar sessión" }</button>
                 </div>
               </form>
             </div>
             <div className="LoginEror">
               <h4>
-                {isLoginLoading && <div className="LoginSpiner"><Spinner/></div> }
+                
                 {hasLoginError && "Usuario o contraseña invalidos"}
               </h4>
 

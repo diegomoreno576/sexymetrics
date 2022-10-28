@@ -19,6 +19,7 @@ import PageBanner from '../components/PageBanner';
 
 const Facebook = () => {
   const [state, dispatch] = useContext(ThemeContext);
+  
   const start = state.TimeStart;
   const end = state.TimeEnd;
   //Fecha pasada a la selecionada
@@ -420,9 +421,8 @@ const Facebook = () => {
   ];
 
   useEffect(() => {
-    dispatch(setFbDatos(FbAllData));
+    dispatch(setFbDatos(FbAllData ));
   }, []);
-
 
 
   return (

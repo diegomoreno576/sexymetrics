@@ -91,6 +91,7 @@
   }
   .UltilsButtons {
     display: flex;
+    gap: 0.6em;
 }
   .link_text {
     white-space: nowrap;

@@ -426,7 +426,7 @@ const CustomTuiCalendar = forwardRef(
     // };
 
     function createSchedule(schedule) {
-      console.log("createSchedule");
+      
 
       calendarInstRef.current.createSchedules([schedule]);
       const cloneFilterSchedules = [...filterSchedules];
@@ -434,7 +434,7 @@ const CustomTuiCalendar = forwardRef(
     }
 
     function updateSchedule(schedule, changes) {
-      console.log("updateSchedule");
+     
 
       calendarInstRef.current.updateSchedule(
         schedule.id,

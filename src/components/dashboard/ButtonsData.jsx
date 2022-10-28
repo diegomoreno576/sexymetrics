@@ -3,12 +3,12 @@ import '../../assets/styles/components/dashboard/ButtonsData.css'
 
 const ButtonsData = (props) => {
   return (
-    <div style={{backgroundColor:props.color}} class="DashboardsThree">
-      <div class="MinDashboarTreBtn">
-        <div class="BtnDashboardTotal">
-          <span class="actualDashboardNumber">{props.number}</span>
+    <div style={{backgroundColor:props.color}} className="DashboardsThree">
+      <div className="MinDashboarTreBtn">
+        <div className="BtnDashboardTotal">
+          <span className="actualDashboardNumber">{props.number}</span>
         </div>
-        <div class="BtnDashboardname">{props.name}</div>
+        <div className="BtnDashboardname">{props.name}</div>
       </div>
     </div>
   );

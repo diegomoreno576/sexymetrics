@@ -11,6 +11,7 @@ import GoogleMyBussines from "./pages/GoogleMyBussines";
 import FacebooksAds from "./pages/FacebooksAds";
 import Web from "./pages/Web";
 import GoogleAds from "./pages/GoogleAds";
+import Settings from "./pages/settings";
 import './App.css';
 import Login from './components/auth/Login';
 import useUser from "./hooks/useUser";
@@ -21,9 +22,10 @@ import 'animate.css';
 
 
 
+
 function App(props) {
   const [state, dispatch] = useContext(ThemeContext);
-  console.log(state)
+
   const {currentuser} = state
   const [currentUserRooms, setcurrentUserRooms] = useState([])
   const [currentRoom, setcurrentRoom] = useState({
@@ -93,6 +95,7 @@ const updateAppStateRoom = (newRoom) => {
                                         roomData={currentRoom}
                                         updateApp={updateAppStateRoom}
                                     /> } exact />
+          <Route path="/ajustes" element={<Settings/>} exact />
           </Routes>
           </Layout>
         </BrowserRouter>

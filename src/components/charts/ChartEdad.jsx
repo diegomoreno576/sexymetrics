@@ -2,7 +2,6 @@ import React,{ useState } from 'react'
 import Chart from "react-apexcharts";
 
 const ChartEdad = (props) => {
-  console.log(props.barBackground)
 // const [ageData, setageData] = useState([])
 // const [ageValue, setageValue] = useState([])
 let ageData = [];
