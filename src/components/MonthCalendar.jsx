@@ -19,18 +19,17 @@ const MonthCalendar = () => {
 
   const [value, setValue] = React.useState([new Date(startInitial), new Date()]);
 
-  const start = String(value[0].getFullYear() + String(value[0].getMonth() + 1).padStart(2, '0') + String(value[0].getDate()).padStart(2, '0'));
-  const end = String(value[1].getFullYear() + String(value[1].getMonth() + 1).padStart(2, '0') + String(value[1].getDate()).padStart(2, '0'));
+  const start = String(value[0].getFullYear() + "-" + String(value[0].getMonth() + 1).padStart(2, '0') + "-" + String(value[0].getDate()).padStart(2, '0'));
+  const end = String(value[1].getFullYear() + "-" + String(value[1].getMonth() + 1).padStart(2, '0') + "-" + String(value[1].getDate()).padStart(2, '0'));
 
-  const startPast = String(value[1].getFullYear() + String(value[1].getMonth()).padStart(2, '0') + String(value[1].getDate()).padStart(2, '0'));
-  const endPast = String(value[0].getFullYear() + String(value[0].getMonth()).padStart(2, '0') + String(value[0].getDate()).padStart(2, '0'));
+  const startPast = String(value[1].getFullYear() + "-" + String(value[1].getMonth()).padStart(2, '0') + "-" + String(value[1].getDate()).padStart(2, '0'));
+  const endPast = String(value[0].getFullYear() + "-" + String(value[0].getMonth()).padStart(2, '0') + "-" + String(value[0].getDate()).padStart(2, '0'));
 
   useEffect( () => {
     dispatch(setTimeStart(start));
     dispatch(setTimeEnd(end));
     dispatch(setTimeStartPast(startPast));
     dispatch(setTimeEndPast(endPast));
-    dispatch(setLoading(true));
   }, [value]); 
   const Ranges = [
   

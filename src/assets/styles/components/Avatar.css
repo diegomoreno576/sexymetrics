@@ -1,32 +1,17 @@
 @import "./../ThemeColor.css";
-.AvatarChild {
-    display: flex;
-    gap: 10px;
-    align-content: center;
-    align-items: center;
-}
-.avatar img {
-    width: 50px;
-}
-.AvatarName {
-    color: var(--Text-color);
-    font-size: 1.7em;
-}
-.avatarClose {
-    margin: 0.4em 0em 0.4em 0em;
-}
-.avatarOpen{
+
+
+img.brand_avatar {
+    border-radius: 100%;
     box-shadow: 0em 0em 5em 0em rgb(255 0 179);
 }
-.avatar {
-    border-radius: 100%;
+span.brand_text {
+    font-size: 18px;
 }
-.avatar img {
-    border-radius: 100%;
-}
-.avatarOpen img{
-    width: 55px;
-}
-.avatarClose img{
-    width: 45px;  
+.button_add_new_brand button{
+    width: 100%;
+    text-align: start;
+    background-color: white;
+    color: black;
+    padding: 0.6em 2em;
 }

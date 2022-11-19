@@ -13,7 +13,16 @@
     align-items: center;
     justify-content: center;
 }
-
+.login_with_facebook_button {
+    width: 50%;
+}
+.loging_with_facebook {
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+    background-color: #12307c;
+    position: sticky;
+}
 .buttonPlaystore {
     width: 30%;
     padding: 8px;

@@ -1,13 +1,14 @@
+
 import { APP_URL } from "../constants";
 
 
-export default function loginService ({user:{ email, password }}) {
-    return fetch(`${APP_URL}/api/v1/login`,{
+export default function registerServiceFacebook (facebook_access_token) {
+    return fetch(`${APP_URL}/api/v1/register_facebook`,{
         method: 'POST',
         headers: {
             "content-Type": "application/json"
         },
-        body: JSON.stringify({user:{ email, password }})
+        body: JSON.stringify({facebook_access_token})
         
     }).then(res=> {
         

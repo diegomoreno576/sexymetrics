@@ -49,6 +49,10 @@ const setTimeEndPast = (payload) => ({
   type: types.SET_TIMEENDPAST,
   payload,
 });
+const setBrand_id = (payload) => ({
+  type: types.SET_BRAND_ID,
+  payload,
+});
 
 
-export {setBlog_id,setchangeLayout, setCurrentuser, setIslogin, setLoginError, setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast};
+export {setBlog_id,setchangeLayout, setCurrentuser, setIslogin, setLoginError, setTheme, setLoading, setFbDatos, setTimeStart, setTimeEnd, setTimeStartPast, setTimeEndPast, setBrand_id};

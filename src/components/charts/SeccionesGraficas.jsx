@@ -24,7 +24,6 @@ const SeccionesGraficas = (props) => {
           </div>
 
           {props.data.map((items) => {
-            
             return (
               <div key={items.id} className="col-lg-3 col-md-6 col-12">
                 <BotonGrafica

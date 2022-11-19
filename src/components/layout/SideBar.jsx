@@ -124,9 +124,9 @@ const Sidebar = () => {
                 <section className="MainTeam">
                   <Team />
                 </section>
-                {/* <section className="MainRedes">
+                <section className="MainRedes">
                   <SelectorRedes />
-                </section> */}
+                </section>
               </div>
               <div className="monthPicker">
                 <section className="mainCalendar">

@@ -1,13 +1,14 @@
 import { APP_URL } from "../constants";
 
 
-export default function loginService ({user:{ email, password }}) {
-    return fetch(`${APP_URL}/api/v1/login`,{
-        method: 'POST',
+export default function currentUser () {
+
+    return fetch(`${APP_URL}/api/v1/current_user`,{
+        method: 'GET',
         headers: {
-            "content-Type": "application/json"
+            "content-Type": "application/json",
+            'token': sessionStorage.getItem("jwt") 
         },
-        body: JSON.stringify({user:{ email, password }})
         
     }).then(res=> {
         
@@ -17,4 +18,5 @@ export default function loginService ({user:{ email, password }}) {
         //const { jwt} = res
         return res
     })
+    
 }

@@ -69,6 +69,13 @@ const reducer = (state, action) => {
         TimeEndPast: action.payload,
         Loading: false,
       };
+    case types.SET_BRAND_ID:
+      return {
+        ...state,
+        brand_id: action.payload,
+        Loading: false,
+      };
+      
 
     default:
       return {

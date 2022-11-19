@@ -6,7 +6,8 @@
     background-color: var(--button-color);
     left: 0px;
     z-index: 99;
-    height: 360px;
+    max-height: 360px;
+    height: auto;
     margin-top: 18px;
     position: absolute;
     overflow: auto;
@@ -61,6 +62,6 @@ a.RedesLink {
     float: right;
 }
 
-.RedesLink.active{
-    display: none !important;
-}
+ .RedesLink.active{
+    /* display: none !important; */
+} 

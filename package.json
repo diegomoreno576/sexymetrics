@@ -23,6 +23,7 @@
     "bootstrap": "5.2.0",
     "date-fns": "2.28.0",
     "font-awesome": "4.7.0",
+    "formik": "^2.2.9",
     "framer-motion": "6.3.16",
     "moment": "^2.27.0",
     "node-sass-chokidar": "2.0.0",

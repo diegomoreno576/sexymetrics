@@ -1,13 +1,15 @@
 import { APP_URL } from "../constants";
 
 
-export default function loginService ({user:{ email, password }}) {
-    return fetch(`${APP_URL}/api/v1/login`,{
-        method: 'POST',
+export default function deleteConexionService (id) {
+    return fetch(`${APP_URL}/api/v1/connection_delete`,{
+        method: 'DELETE',
         headers: {
             "content-Type": "application/json"
         },
-        body: JSON.stringify({user:{ email, password }})
+        body: JSON.stringify({
+            "id":id
+        })
         
     }).then(res=> {
         

@@ -1,35 +1,51 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useInitFbSDK } from "../../hooks/fb-hooks";
 import "../../assets/styles/components/Login.css";
-import useUser from "../../hooks/useUser";
-import { useNavigate} from "react-router-dom";
+import { useInitFbSDK } from "../../hooks/fb-hooks";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import ScrollAnimation from "react-animate-on-scroll";
 import { Spinner } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import useUser from "../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
 import ContinueWithFacebook from "./ContinueWithFacebook";
 
-const Login = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-  const { isLoginLoading, hasLoginError, login, isLogged } = useUser();
-  const [fbUserAccessToken, setFbUserAccessToken] = useState();
-  const isFbSDKInitialized = useInitFbSDK();
-  const navigate = useNavigate();
-
+const validateFields = values => {
  
+    const errors = {};
   
+    if (!values.email) {
+      errors.email = "Email requerido";
+    }
+  
+    if (!values.password) {
+      errors.password = "Contraseña requerida";
+    } else if (values.password.length < 3) {
+      errors.password = "Length must be greater than 3";
+    }
+  
+    return errors;
+  }
+  
+  const initialValues = {
+    email: "",
+    password: ""
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login({ user: { email, password } });
-  };
+const Register = () => {
+    const { isLoginLoading, hasLoginError, continueWithFacebook, register, isLogged } = useUser();
+    const [fbUserAccessToken, setFbUserAccessToken] = useState();
+    const isFbSDKInitialized = useInitFbSDK();
+    const navigate = useNavigate();
 
-    // Logs in a Facebook user
-    const logInToFB = useCallback(() => {
-      window.FB.login((response) => {
-        setFbUserAccessToken(response.authResponse.accessToken);
-      });
-    }, []);
+      
+
+    const handleSubmit = (user) => {
+        register(user)
+    }
+
+
+
+
 
   return (
     <div className="MainLoginPage">
@@ -47,56 +63,59 @@ const Login = () => {
             <img src="https://notecopies.app/wp-content/uploads/2022/07/fondo-izq.png" width="347.5" height="865.5" alt="Image" loading="lazy"/>
             </div>
           </div>
-          {isLoginLoading}
+       
           <div className="formColum col-6">
             <div className="LoginForm">
               <div className="LogoLogin">
               <img src="https://notecopies.app/wp-content/uploads/2021/03/notecopies-blanco.gif" width="750" height="125.5" alt="Image" loading="lazy"/>
               </div>
-              <ContinueWithFacebook/> 
-              <form onSubmit={handleSubmit}>
+              <ContinueWithFacebook/>
+                <Formik
+                        initialValues={initialValues}
+                        validate={validateFields}
+                        onSubmit={handleSubmit}
+                    >
+                        {({ errors, isSubmitting }) => (
+                    <Form className="">
                 <div className="row mainInputs">
                   <div className="col-12 loginInputs">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="email"
-                      value={email}
-                      onChange={(e) => setemail(e.target.value)}
-                      required
-                    />
+                  <Field
+              className={errors.email ? 'error' : ''}
+              name="email"
+              placeholder="Email"
+            />
+            <ErrorMessage className='form-error' name='email' component='small' />
+                 
                   </div>
                   <div className="col-12 loginInputs">
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => setpassword(e.target.value)}
-                      required
-                    />
+                  <Field
+              className={errors.password ? 'error' : ''}
+              name="password"
+              placeholder="Contraseña"
+              type='password'
+            />
+            <ErrorMessage className='form-error' name='password' component='small' />
                   </div>
                 </div>
-
+                            
                 <div className="col-12 LoginButton">
-                  <button type="submit">{isLoginLoading ? <div className="LoginSpiner"><Spinner/></div> : "Iniciar sessión" }</button>
+                  <button type="submit">{isSubmitting ? <div className="LoginSpiner"><Spinner/></div> : " Registrarse" }</button>
                 </div>
-              </form>
+              </Form>
+                )}
+                </Formik>
             </div>
             <div className="LoginEror">
               <div className="register_account_redirect">
-              <p>¿No estás registrado/a?
+              <p>¿Ya tienes una cuenta?
                   <NavLink
-                    to="/register"
+                    to="/"
                     className="register_button"
                   >
-                Regístrate aquí
+                iniciar sessión
                 </NavLink></p>
               </div>
-              <h4>  
-                {hasLoginError && "Usuario o contraseña invalidos"}
-              </h4>
-
+  
               <p className="LoginText">Llévate a tu equipo de Marketing en el bolsillo.</p>
 
               <button className="buttonPlaystore">
@@ -123,4 +142,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

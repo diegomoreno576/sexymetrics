@@ -1,4 +1,4 @@
-import React,{useContext, useState} from "react";
+import React,{useContext, useState, useEffect} from "react";
 import { ThemeContext } from "./context";
 import { APP_URL } from "./constants";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,13 +19,14 @@ import ChatRooms from "./components/ChatRoom/ChatRooms";
 import ChatRoomShow from "./components/ChatRoom/ChatRoomShow";
 import Planificacion from "./pages/Planificacion";
 import 'animate.css';
-
+import Register from "./components/auth/Register";
+import { Navigate } from "react-router-dom";
+import { replace } from "formik";
 
 
 
 function App(props) {
   const [state, dispatch] = useContext(ThemeContext);
-
   const {currentuser} = state
   const [currentUserRooms, setcurrentUserRooms] = useState([])
   const [currentRoom, setcurrentRoom] = useState({
@@ -34,6 +35,11 @@ function App(props) {
     messages: []
 })
 
+
+let {brands} = currentuser;
+let {user} = currentuser;
+let currentBrand = brands?.[0]?.id
+let user_id = user?.data?.attributes?.id
  const updateCurrentUserRooms = (data) => {
     setcurrentUserRooms(data.chatrooms)
 }
@@ -69,13 +75,21 @@ const updateAppStateRoom = (newRoom) => {
   })
 }
   const {isLogged, logout} = useUser()
-
-      if (!isLogged) {
-        return <Login />;
+  
+      if (!isLogged ) {
+        return(
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+        </BrowserRouter>
+        );
       }
       else{
         return(
           <BrowserRouter>
+            
           <Layout> 
           <Routes> 
           {/* <Route path="/" element={<Inicio/>} exact />
@@ -96,8 +110,12 @@ const updateAppStateRoom = (newRoom) => {
                                         updateApp={updateAppStateRoom}
                                     /> } exact />
           <Route path="/ajustes" element={<Settings/>} exact /> */
-          <Route path="/" element={<Settings/>} exact />
+       
           }
+            <Route path="/" element={<Navigate to={`facebook/brand_id=${currentBrand}&user_id=${user_id}`}/>} />
+            <Route path="facebook/brand_id=:brand_id&user_id=:user_id" element={<Facebook/>} exact />
+            <Route path="ajustes/brand_id=:brand_id&user_id=:user_id" element={<Settings/>} exact />
+     
           </Routes>
           </Layout>
         </BrowserRouter>
