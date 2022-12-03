@@ -260,7 +260,7 @@ else{
           </p>
         </div>
         <div className="conect_account">
-        <NavLink to={`/ajustes/brand_id=${currentBrand}&user_id=${user_id}`}  className="btn fb_confirm-btn">
+        <NavLink to={`/ajustes/brand_id=${state.brand_id}&user_id=${user_id}`}  className="btn fb_confirm-btn">
                 Conectar Facebook <i class="fa-brands fa-facebook"></i>
               </NavLink>
         </div>

@@ -15,7 +15,7 @@ const Settings_button = () => {
 
   return (
     <NavLink
-    to={`/ajustes/brand_id=${currentBrand}&user_id=${user_id}`}
+    to={`/ajustes/brand_id=${state.brand_id}&user_id=${user_id}`}
     className="DakmodeButton"
     >
            <i class="fa-light fa-gear"></i>
