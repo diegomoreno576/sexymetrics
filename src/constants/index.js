@@ -1,2 +1,2 @@
-export const APP_URL = "https://prueba.notecopies.net"
-export const APP_CABLE_URL="ws://prueba.notecopies.net/cable";
+export const APP_URL = "https://api.notecopies.app/"
+export const APP_CABLE_URL="ws://api.notecopies.app/cable";
